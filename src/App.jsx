@@ -1,13 +1,12 @@
-
 import './App.css'
-
+import EventList from './components/EventList'
 function App() {
   
 
   return (
-    <>
-     <h2 className='text-xl font-bold text-purple-500'>Hello This is React Vite+Tailwind</h2>
-    </>
+    <div>
+      <EventList />
+    </div>
   )
 }
 
