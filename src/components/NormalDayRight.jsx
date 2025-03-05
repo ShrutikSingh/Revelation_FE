@@ -3,6 +3,8 @@ import Event from "./Event";
 
 const NormalDayRight = ({ inday }) => {
   return (
+    <div className="relative">
+      <div className="absolute inset-0 bg-white rounded-lg blur"></div>
     <div
       className="relative w-72 bg-[#200707] text-white p-4 shadow-lg border-4 border-white
        transform hover:scale-105 hover:bg-[#A10000] transition duration-300 cursor-pointer"
@@ -40,6 +42,7 @@ const NormalDayRight = ({ inday }) => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

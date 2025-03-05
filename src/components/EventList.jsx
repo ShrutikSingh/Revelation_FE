@@ -9,8 +9,8 @@ const eventSchedule = [
         date: "March 21st, 2025",
         events: [
             { name: "Inauguration", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
-            { name: "Quetam", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
-            { name: "Hackathon", time: "09:00 AM - 10:00 AM", isLive: true, gif: "vite.svg" }
+            { name: "Ganitam", time: "09:00 AM - 10:00 AM", isLive: true, gif: "vite.svg" },
+            { name: "Hackathon", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" }
         ]
     },
     {
@@ -70,11 +70,11 @@ const EventList = () => {
     }
 
     return (
-      <div className="relative w-full min-h-[90vh] bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[100vh] bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-hidden">
 
       
         
-        <h2 className="text-white text-[31.5px] font-bold tracking-wide uppercase text-center font-title">
+        <h2 className="text-white text-[31.5px] h-[25px]font-bold tracking-wide uppercase text-center font-title">
           Explore the Marvellous </h2>
         <h1 className="text-red-500 text-[74px] font-title">EVENTS</h1>
       
@@ -88,37 +88,34 @@ const EventList = () => {
           </div>
         </div>
       
-        {/* 🔥 Event Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 w-full max-w-[1200px] px-6">
+        {/* Event Cards Section*/}
+        <div className="flex w-full max-w-[1200px] px-6 mx-auto justify-between items-start mt-2">
+
+
 
           {/* Left Normal Day */}
           
-          <div className="w-full h-[55vh] flex justify-center " onClick={() => handleHighlighting(normalDays[0])}>
-          <div className="relative" >
-          <div className="absolute inset-0 bg-white rounded-lg blur"></div>
+          <div className="w-[30%] flex justify-center h-full relative p-[30px]" onClick={() => handleHighlighting(normalDays[0])}>
+          
           <div className="relative" >
             <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day}/>
-          </div>
           </div>  
           </div>
           
       
           {/* Center Highlighted Day */}
-          <div className="relative">
+          <div className="w-[38%] relative">
             <div className="absolute h-[465px] inset-0 bg-red-500 rounded-lg blur-xl"></div>
-            <div className="w-full flex justify-center items-center relative">
+            <div className="w-full flex justify-center items-center relative ">
                 <HighlightedDay inday={highlighted}/>
             </div>
           </div>
           
       
           {/* Right Normal Day*/}
-          <div className="w-full h-[55vh] flex justify-center " onClick={() => handleHighlighting(normalDays[1])}>
+          <div className="w-full h-[400px] flex justify-center w-[30%] flex p-[30px]" onClick={() => handleHighlighting(normalDays[1])}>
           <div className="relative" >
-         
-          
-            <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />
-          
+            <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />         
           </div>
           </div>
         </div>

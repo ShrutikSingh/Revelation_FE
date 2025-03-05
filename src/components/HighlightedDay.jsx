@@ -6,7 +6,7 @@ const HighlightedDay = ({ inday }) => {
         <div className="relative w-full h-full bg-[#250505] text-white p-8 border-4 border-[#FF0000]
       transform transition duration-300 cursor-pointer overflow-visible"
             style={{
-                clipPath: "polygon(0% 0%, 85% 0%, 100% 15%, 100% 100%, 15% 100%, 0% 85%)",
+                clipPath: "polygon(0% 0%, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0% 80%)",
             }}
         >
             {/* Day Header */}
