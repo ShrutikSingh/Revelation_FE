@@ -27,7 +27,7 @@ const NormalDayRight = ({ inday }) => {
             <Event event={e} type={{t: "1"}}/>
             </div>
 
-            {/* Dashed Line + Arrow: Only add if not the last event */}
+            {/* Dashed Line + Arrow */}
             {index < inday.events.length - 1 && (
               <div className="flex flex-col items-center">
                 {/* Dashed Line */}
