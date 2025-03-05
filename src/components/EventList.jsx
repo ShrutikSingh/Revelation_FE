@@ -62,7 +62,7 @@ const EventList = () => {
       <div className="relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
 
       {/* Title Section */}
-      <h2 className="text-white text-[31.5px] font-bold tracking-wide uppercase text-center font-title mt-2">
+      <h2 className="text-white sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
           Explore the Marvellous
       </h2>
       <h1 className="text-red-500 text-[74px] font-title">EVENTS</h1>
@@ -78,21 +78,21 @@ const EventList = () => {
       </div>
   
       {/* Centered Event Cards Section */}
-      <div className="grid xl:grid-cols-12 grid-cols-1 gap-8 w-full max-w-[1300px] px-6 mx-auto mt-5 place-items-center">
+      <div className="grid lg:grid-cols-12 grid-cols-1 gap-8 w-full max-w-[1300px] px-6 mx-auto mt-5 place-items-center">
   
           {/* Left Normal Day */}
           <div className="col-span-3 flex justify-center cursor-pointer xl:ml-0 ml-[84px]" onClick={() => handleHighlighting(normalDays[0])}>
               <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day} />
           </div>
   
-          {/* Center Highlighted Day (Larger) */}
-          <div className="col-span-6 relative flex justify-center items-center w-[355px] xl:w-[475px] ">
+          {/* Center Highlighted Day */}
+          <div className="col-span-6 relative flex justify-center items-center w-[355px] xl:w-[475px] lg:[370px] lg:ml-[80px] min-[1279px]:ml-[0px] max-[355px]:w-[325px]">
               <div className="absolute inset-0 bg-red-500 rounded-lg blur-xl"></div>
               <HighlightedDay inday={highlighted} />
           </div>
   
           {/* Right Normal Day */}
-          <div className="col-span-3 flex justify-center cursor-pointer xl:ml-0 ml-[84px]" onClick={() => handleHighlighting(normalDays[1])}>
+          <div className="col-span-3 flex justify-center cursor-pointer xl:ml-0 lg:ml-[50px] ml-[84px]" onClick={() => handleHighlighting(normalDays[1])}>
               <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />
           </div>
   
