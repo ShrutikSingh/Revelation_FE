@@ -68,17 +68,17 @@ const EventList = () => {
       <h1 className="text-red-500 text-[74px] font-title">EVENTS</h1>
   
       {/* Download Button & Live Announcement */}
-      <div className="flex flex-col items-center mt-1">
+      <div className="flex flex-col items-center">
           <button className="px-6 py-2 border-2 border-red-500 text-white text-lg font-bold rounded-md hover:bg-red-500 transition">
               DOWNLOAD SCHEDULE
           </button>
-          <div className="mt-2 text-red-500 text-sm font-bold px-4 py-2 rounded-md">
+          <div className=" text-red-500 text-sm font-bold px-4 py-2 rounded-md">
               LIVE <span className="text-white">Blood Donation Camp is live now!</span>
           </div>
       </div>
   
       {/* Centered Event Cards Section */}
-      <div className="grid grid-cols-12 gap-8 w-full max-w-[1300px] px-6 mx-auto mt-8 place-items-center">
+      <div className="grid grid-cols-12 gap-8 w-full max-w-[1300px] px-6 mx-auto mt-5 place-items-center">
   
           {/* Left Normal Day */}
           <div className="col-span-3 flex justify-center cursor-pointer" onClick={() => handleHighlighting(normalDays[0])}>
