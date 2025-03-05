@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Event = ({ event }) => {
+const Event = ({ event, type }) => {
   const [live, setLive] = useState(event.isLive);
 
   return (
@@ -11,7 +11,7 @@ const Event = ({ event }) => {
     >
       <img src={event.gif} alt={event.name} className="h-8 w-8 mr-2" />
       <div>
-        <p className={`text-sm font-semibold ${event.isLive ? "text-red-500" : ""}`}>
+        <p className={`${type.t === "1" ? "text-[11px]" : "text-[15px]"} font-semibold ${event.isLive ? "text-red-500" : ""}`}>
           {event.name}
         </p>
         <p className="text-xs">{event.time}</p>

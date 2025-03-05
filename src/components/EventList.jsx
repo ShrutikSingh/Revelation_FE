@@ -70,55 +70,55 @@ const EventList = () => {
     }
 
     return (
-        <div className="relative w-screen min-h-[90vh] bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center p-6">
-        {/* Background Grid Effect */}
-    
+      <div className="relative w-full min-h-[90vh] bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-hidden">
+
       
-        {/* Header Section (Navbar Space Preserved) */}
-        <h2 className="text-white text-xl font-bold tracking-wide uppercase text-center">
+        
+        <h2 className="text-white text-[31.5px] font-bold tracking-wide uppercase text-center font-title">
           Explore the Marvellous </h2>
-        <h1 className="text-red-500 text-5xl">EVENTS</h1>
+        <h1 className="text-red-500 text-[74px] font-title">EVENTS</h1>
       
         {/* Download Button & Live Announcement */}
-        <div className="mt-4 flex flex-col items-center">
+        <div className="flex flex-col items-center">
           <button className="px-6 py-2 border-2 border-red-500 text-white text-lg font-bold rounded-md hover:bg-red-500 transition">
             DOWNLOAD SCHEDULE
           </button>
-          <div className="mt-2 text-red-500 text-sm font-bold px-4 py-2 rounded-md">
+          <div className="mt-1 text-red-500 text-sm font-bold px-4 py-2 rounded-md">
             LIVE <span className="text-white">Blood Donation Camp is live now!</span>
           </div>
         </div>
       
         {/* 🔥 Event Cards Grid */}
-        <div className="grid grid-cols-3 gap-12 mt-6 w-full px-12">
-          {/* Left Normal Day (Smaller) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 w-full max-w-[1200px] px-6">
+
+          {/* Left Normal Day */}
           
-          <div className="w-full h-[55vh] flex justify-center items-center" onClick={() => handleHighlighting(normalDays[0])}>
+          <div className="w-full h-[55vh] flex justify-center " onClick={() => handleHighlighting(normalDays[0])}>
           <div className="relative" >
           <div className="absolute inset-0 bg-white rounded-lg blur"></div>
           <div className="relative" >
-            <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day} />
+            <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day}/>
           </div>
           </div>  
           </div>
           
       
-          {/* Center Highlighted Day (Smaller) */}
+          {/* Center Highlighted Day */}
           <div className="relative">
-            <div className="absolute inset-0 bg-red-500 rounded-lg blur-xl"></div>
-            <div className="w-full h-[65vh] flex justify-center items-center relative">
-                <HighlightedDay inday={highlighted} />
+            <div className="absolute h-[465px] inset-0 bg-red-500 rounded-lg blur-xl"></div>
+            <div className="w-full flex justify-center items-center relative">
+                <HighlightedDay inday={highlighted}/>
             </div>
           </div>
           
       
-          {/* Right Normal Day (Smaller) */}
-          <div className="w-full h-[55vh] flex justify-center items-center" onClick={() => handleHighlighting(normalDays[1])}>
+          {/* Right Normal Day*/}
+          <div className="w-full h-[55vh] flex justify-center " onClick={() => handleHighlighting(normalDays[1])}>
           <div className="relative" >
-          <div className="absolute inset-0 bg-white rounded-lg blur"></div>
-          <div className="relative" >
+         
+          
             <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />
-          </div>
+          
           </div>
           </div>
         </div>

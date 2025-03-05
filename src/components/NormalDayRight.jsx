@@ -19,10 +19,10 @@ const NormalDayRight = ({ inday }) => {
       {/* Events List */}
       <div className="mt-4 flex flex-col items-center space-y-6">
         {inday.events.map((e, index) => (
-          <div key={e.name} className="relative flex flex-col items-center w-full">
+          <div key={e.name} className="relative flex flex-col h-[70px] items-center w-full">
             {/* Event Component */}
             <div className="relative w-[80%]">
-            <Event event={e} />
+            <Event event={e} type={{t: "1"}}/>
             </div>
 
             {/* Dashed Line + Arrow: Only add if not the last event */}

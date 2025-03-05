@@ -3,6 +3,8 @@ import Event from "./Event";
 
 const NormalDayLeft = ({ inday }) => {
   return (
+    <div className="relative">
+      <div className="absolute inset-0 bg-white rounded-lg blur"></div>
     <div
       className="relative w-72 bg-[#200707] text-white p-4 shadow-lg border-4 border-white
       transform hover:scale-105 hover:bg-[#A10000] transition duration-300 cursor-pointer"
@@ -18,10 +20,10 @@ const NormalDayLeft = ({ inday }) => {
       {/* Events List */}
       <div className="mt-4 flex flex-col items-center space-y-6">
         {inday.events.map((e, index) => (
-          <div key={e.name} className="relative flex flex-col items-center w-full">
+          <div key={e.name} className="relative flex flex-col items-center h-[70px] w-full">
             {/* Event Component */}
             <div className="relative w-[80%]">
-            <Event event={e} />
+            <Event event={e} type={{t: "1"}}/>
             </div>
             
 
@@ -40,6 +42,7 @@ const NormalDayLeft = ({ inday }) => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

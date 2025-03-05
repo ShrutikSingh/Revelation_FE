@@ -16,7 +16,7 @@ const HighlightedDay = ({ inday }) => {
             {/* Events List */}
             <div className="mt-6 flex flex-col items-center space-y-8 relative">
                 {inday.events.map((e, index) => (
-                    <div key={e.name} className="relative flex flex-col items-center w-full">
+                    <div key={e.name} className="relative flex flex-col items-center w-full h-[86px]">
 
                         {/* Event Component */}
                         <div className="relative w-[90%] ">
@@ -32,7 +32,7 @@ const HighlightedDay = ({ inday }) => {
                                 </div>
                             )}
 
-                            <Event event={e} />
+                            <Event event={e} type={{t: "2"}}/>
                         </div>
 
                         {/*  Dashed Line + Arrow */}
