@@ -33,7 +33,6 @@ const eventSchedule = [
     }
 ];
 
-
 const EventList = () => {
     const [highlighted, setHighlighted] = useState(eventSchedule[0]);
     const [liveEvent, setLiveEvent] = useState(null);
@@ -55,72 +54,51 @@ const EventList = () => {
 
     const handleHighlighting = (selectedDay) => {
         setHighlighted(selectedDay);
-        // console.log(hello);
-        const dayToBeNormalised = [];
-
-        eventSchedule.forEach((d) => {
-            if(d.day !== selectedDay.day){
-                dayToBeNormalised.push(d);
-            }
-        })
-
+        const dayToBeNormalised = eventSchedule.filter(d => d.day !== selectedDay.day);
         setNormalDays(dayToBeNormalised);
-        console.log(highlighted);
-        console.log(normalDays);
-    }
+    };
 
     return (
-      <div className="relative w-full h-[100vh] bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-hidden">
+      <div className="relative w-full h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
 
-      
-        
-        <h2 className="text-white text-[31.5px] h-[25px]font-bold tracking-wide uppercase text-center font-title">
-          Explore the Marvellous </h2>
-        <h1 className="text-red-500 text-[74px] font-title">EVENTS</h1>
-      
-        {/* Download Button & Live Announcement */}
-        <div className="flex flex-col items-center">
+      {/* Title Section */}
+      <h2 className="text-white text-[31.5px] font-bold tracking-wide uppercase text-center font-title mt-2">
+          Explore the Marvellous
+      </h2>
+      <h1 className="text-red-500 text-[74px] font-title">EVENTS</h1>
+  
+      {/* Download Button & Live Announcement */}
+      <div className="flex flex-col items-center mt-1">
           <button className="px-6 py-2 border-2 border-red-500 text-white text-lg font-bold rounded-md hover:bg-red-500 transition">
-            DOWNLOAD SCHEDULE
+              DOWNLOAD SCHEDULE
           </button>
-          <div className="mt-1 text-red-500 text-sm font-bold px-4 py-2 rounded-md">
-            LIVE <span className="text-white">Blood Donation Camp is live now!</span>
+          <div className="mt-2 text-red-500 text-sm font-bold px-4 py-2 rounded-md">
+              LIVE <span className="text-white">Blood Donation Camp is live now!</span>
           </div>
-        </div>
-      
-        {/* Event Cards Section*/}
-        <div className="flex w-full max-w-[1200px] px-6 mx-auto justify-between items-start mt-2">
-
-
-
-          {/* Left Normal Day */}
-          
-          <div className="w-[30%] flex justify-center h-full relative p-[30px]" onClick={() => handleHighlighting(normalDays[0])}>
-          
-          <div className="relative" >
-            <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day}/>
-          </div>  
-          </div>
-          
-      
-          {/* Center Highlighted Day */}
-          <div className="w-[38%] relative">
-            <div className="absolute h-[465px] inset-0 bg-red-500 rounded-lg blur-xl"></div>
-            <div className="w-full flex justify-center items-center relative ">
-                <HighlightedDay inday={highlighted}/>
-            </div>
-          </div>
-          
-      
-          {/* Right Normal Day*/}
-          <div className="w-full h-[400px] flex justify-center w-[30%] flex p-[30px]" onClick={() => handleHighlighting(normalDays[1])}>
-          <div className="relative" >
-            <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />         
-          </div>
-          </div>
-        </div>
       </div>
-      
+  
+      {/* Centered Event Cards Section */}
+      <div className="grid grid-cols-12 gap-8 w-full max-w-[1300px] px-6 mx-auto mt-8 place-items-center">
+  
+          {/* Left Normal Day */}
+          <div className="col-span-3 flex justify-center cursor-pointer" onClick={() => handleHighlighting(normalDays[0])}>
+              <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day} />
+          </div>
+  
+          {/* Center Highlighted Day (Larger) */}
+          <div className="col-span-6 relative flex justify-center items-center w-[475px]">
+              <div className="absolute inset-0 bg-red-500 rounded-lg blur-xl"></div>
+              <HighlightedDay inday={highlighted} />
+          </div>
+  
+          {/* Right Normal Day */}
+          <div className="col-span-3 flex justify-center cursor-pointer" onClick={() => handleHighlighting(normalDays[1])}>
+              <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />
+          </div>
+  
+      </div>
+  </div>
+  
     );
 };
 
