@@ -1,11 +1,15 @@
 import './App.css'
-import EventList from './components/EventList'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import EventPage from './pages/EventPage'
 function App() {
   
 
   return (
     <div>
-      <EventList />
+      <Routes>
+        <Route path= "/eventpage" element = {<EventPage />} />
+      </Routes>
+      
     </div>
   )
 }
