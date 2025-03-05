@@ -6,16 +6,16 @@ import HighlightedDay from "./HighlightedDay";
 const eventSchedule = [
     {
         day: "DAY-1",
-        date: "March 21st, 2025",
+        date: "March 21, 2025",
         events: [
             { name: "Inauguration", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
-            { name: "Ganitam", time: "09:00 AM - 10:00 AM", isLive: true, gif: "vite.svg" },
+            { name: "Ganitam", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
             { name: "Hackathon", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" }
         ]
     },
     {
         day: "DAY-2",
-        date: "March 22nd, 2025",
+        date: "March 22, 2025",
         events: [
             { name: "Root Access", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
             { name: "BLOOD DONATION CAMP", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
@@ -24,10 +24,10 @@ const eventSchedule = [
     },
     {
         day: "DAY-3",
-        date: "March 23rd, 2025",
+        date: "March 6, 2025",
         events: [
             { name: "BLOOD DONATION CAMP", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
-            { name: "Valedictory", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
+            { name: "Murder Mystery", time: "09:00 AM - 10:00 AM", isLive: true, gif: "vite.svg" },
             { name: "Codestorm", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" }
         ]
     }
@@ -39,17 +39,37 @@ const EventList = () => {
     const [normalDays, setNormalDays] = useState([eventSchedule[1], eventSchedule[2]]);
 
     useEffect(() => {
-        let foundLiveEvent = null;
-        for (const day of eventSchedule) {
-            for (const event of day.events) {
-                if (event.isLive) {
-                    foundLiveEvent = event;
-                    break;
-                }
-            }
-            if (foundLiveEvent) break;
+        const today = new Date();
+        const formattedToday = today.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+        console.log(formattedToday);
+        const eventDay = eventSchedule.find(event => event.date === formattedToday);
+
+        if (eventDay) {
+            setHighlighted(eventDay);
+            setNormalDays(eventSchedule.filter(event => event !== eventDay));
+        } else {
+            
+            setHighlighted(eventSchedule[0]);
+            setNormalDays([eventSchedule[1], eventSchedule[2]]);
         }
+
+        let foundLiveEvent = null;
+        
+        for (const event of highlighted.events) {
+            if (event.isLive) {
+                foundLiveEvent = event;
+                break;
+            }
+        }
+        if (foundLiveEvent) 
+        
         setLiveEvent(foundLiveEvent);
+
+
     }, []);
 
     const handleHighlighting = (selectedDay) => {
@@ -103,3 +123,5 @@ const EventList = () => {
 };
 
 export default EventList;
+
+
