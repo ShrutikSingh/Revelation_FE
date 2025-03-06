@@ -1,6 +1,6 @@
 import './App.css'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import EventPage from './pages/EventPage'
+import EventPage from './pages/EventPage/EventPage'
 function App() {
   
 
