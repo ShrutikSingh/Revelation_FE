@@ -1,13 +1,16 @@
-
 import './App.css'
-
+import { Routes, Route, Navigate } from 'react-router-dom'
+import EventPage from './pages/EventPage'
 function App() {
   
 
   return (
-    <>
-     <h2 className='text-xl font-bold text-purple-500'>Hello This is React Vite+Tailwind</h2>
-    </>
+    <div>
+      <Routes>
+        <Route path= "/eventpage" element = {<EventPage />} />
+      </Routes>
+      
+    </div>
   )
 }
 
