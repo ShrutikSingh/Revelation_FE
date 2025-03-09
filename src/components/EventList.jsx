@@ -45,12 +45,19 @@ const EventList = () => {
     const [highlighted, setHighlighted] = useState(eventSchedule[0]);
     const [normalDays, setNormalDays] = useState([eventSchedule[1], eventSchedule[2]]);
     const [isDayChanging, setIsDayChanging] = useState(false);
-    const [isPhoneSize, setIsPhoneSize] = useState(false);
+    const [isPhoneSize, setIsPhoneSize] = useState(window.innerWidth < 1045);
+    useEffect(() => {
+        console.log("Updated highlighted:", highlighted);
+        console.log("Updated normalDays:", normalDays);
+    }, [highlighted, normalDays]);
+
 
     useEffect(() => {
         const handleResize = () => {
             setIsPhoneSize(window.innerWidth < 1045);
         };
+
+        handleResize();
 
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
@@ -58,24 +65,29 @@ const EventList = () => {
 
     useEffect(() => {
 
-        if(!isPhoneSize){
+        if (!isPhoneSize) {
             const today = new Date();
-        const formattedToday = today.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-        });
+            const formattedToday = today.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            });
 
-        const eventDay = eventSchedule.find(event => event.date === formattedToday);
-        if (eventDay) {
-            setHighlighted(eventDay);
-            setNormalDays(eventSchedule.filter(event => event !== eventDay));
+            const eventDay = eventSchedule.find(event => event.date === formattedToday);
+            if (eventDay) {
+                setHighlighted(eventDay);
+                setNormalDays(eventSchedule.filter(event => event !== eventDay));
+            } else {
+                setHighlighted(eventSchedule[0]);
+                setNormalDays([eventSchedule[1], eventSchedule[2]]);
+
+            }
+
         } else {
-            setHighlighted(eventSchedule[0]);
-            setNormalDays([eventSchedule[1], eventSchedule[2]]);
+            setNormalDays([...eventSchedule]);
+
         }
-        }
-        
+
     }, [isPhoneSize]);
 
     const handleHighlighting = (selectedDay) => {
@@ -85,16 +97,16 @@ const EventList = () => {
             setHighlighted(selectedDay);
             setNormalDays(eventSchedule.filter(d => d !== selectedDay));
             setIsDayChanging(false);
-        }, 400); // Ensure the transition completes before resetting the state
+        }, 400); 
     };
 
-    return isPhoneSize ?( <div className="relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
+    return isPhoneSize ? (<div className="relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
         {/* Title Section */}
         <h2 className="text-white sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
             Explore the Marvellous
         </h2>
         <h1 className="text-red-500 text-[74px] font-title">EVENTS</h1>
-    
+
         {/* Download Button & Live Announcement */}
         <div className="flex flex-col items-center">
             <button className="px-6 py-2 border-2 border-red-500 text-white text-lg font-bold rounded-md hover:bg-red-500 transition">
@@ -104,55 +116,41 @@ const EventList = () => {
                 LIVE <span className="text-white">Blood Donation Camp is live now!</span>
             </div>
         </div>
-    
-        {/* Centered Event Cards Section */}
+
+        
         <div className="grid grid-cols-1 gap-8 w-full max-w-[1300px] px-6 mx-auto mt-5 place-items-center">
-    
-            {/* Left Normal Day */}
-            <CSSTransition
-                in={!isDayChanging}
-                timeout={400}
-                classNames="slide-right"
-                unmountOnExit
-                nodeRef={leftRef} // Add this line
-            >
+
+            
                 <div
                     ref={leftRef}
                     className="flex justify-center cursor-pointer"
-                    onClick={window.innerWidth > 1045 ? () => handleHighlighting(normalDays[0]) : undefined}>
-                    <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day} />
-                </div>
-            </CSSTransition>
-    
-            {/* Center Highlighted Day */}
-    
-                <div
-                    ref={rightRef}
-                    className=" flex justify-center cursor-pointer "
-                   >
-                    <NormalDayRight inday={highlighted}/>
+                    >
+                    <NormalDayLeft inday={normalDays[0]} />
                 </div>
             
-    
-            {/* Right Normal Day */}
-            <CSSTransition
-                in={!isDayChanging}
-                timeout={400}
-                classNames="slide-left"
-                unmountOnExit
-                nodeRef={rightRef} // Add this line
+
+       
+
+            <div
+                ref={rightRef}
+                className=" flex justify-center cursor-pointer "
             >
-                <div
-                    ref={rightRef}
-                    className="flex justify-center cursor-pointer"
-                    onClick={window.innerWidth > 1045 ? () => handleHighlighting(normalDays[1]) : undefined}>
-                    <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />
-                </div>
-            </CSSTransition>
-    
+                <NormalDayRight inday={normalDays[1]} />
+            </div>
+
+
+            
+            
+                {normalDays.length === 3 && (
+                    <div ref={rightRef} className="flex justify-center cursor-pointer">
+                        <NormalDayLeft inday={normalDays[2]} />
+                    </div>
+                )}
+            
+
         </div>
     </div>) : (
-        
+
         <div className="relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
             {/* Title Section */}
             <h2 className="text-white sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
@@ -179,24 +177,24 @@ const EventList = () => {
                     timeout={400}
                     classNames="slide-right"
                     unmountOnExit
-                    nodeRef={leftRef} // Add this line
+                    nodeRef={leftRef} 
                 >
                     <div
                         ref={leftRef}
                         className="col-span-3 flex justify-center cursor-pointer xl:ml-0"
-                        onClick={window.innerWidth > 1045 ? () => handleHighlighting(normalDays[0]) : undefined}>
+                        onClick={() => handleHighlighting(normalDays[0])}>
                         <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day} />
                     </div>
                 </CSSTransition>
 
                 {/* Center Highlighted Day */}
 
-                {window.innerWidth > 1024 ? <CSSTransition
+                <CSSTransition
                     in={!isDayChanging}
                     timeout={400}
                     classNames="slide-center"
                     unmountOnExit
-                    nodeRef={centerRef} // Add this line
+                    nodeRef={centerRef} 
                 >
                     <div
                         ref={centerRef}
@@ -205,13 +203,8 @@ const EventList = () => {
                         <div className="absolute inset-0 bg-red-500 rounded-lg blur-xl"></div>
                         <HighlightedDay inday={highlighted} />
                     </div>
-                </CSSTransition>: <div
-                        ref={rightRef}
-                        className="col-span-3 flex justify-center cursor-pointer xl:ml-0 lg:ml-[50px] "
-                       >
-                        <NormalDayRight inday={highlighted}/>
-                    </div>}
-                
+                </CSSTransition>
+
 
                 {/* Right Normal Day */}
                 <CSSTransition
@@ -219,12 +212,12 @@ const EventList = () => {
                     timeout={400}
                     classNames="slide-left"
                     unmountOnExit
-                    nodeRef={rightRef} // Add this line
+                    nodeRef={rightRef}
                 >
                     <div
                         ref={rightRef}
                         className="col-span-3 flex justify-center cursor-pointer xl:ml-0 lg:ml-[50px] "
-                        onClick={window.innerWidth > 1045 ? () => handleHighlighting(normalDays[1]) : undefined}>
+                        onClick={() => handleHighlighting(normalDays[1])}>
                         <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />
                     </div>
                 </CSSTransition>
