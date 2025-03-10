@@ -8,8 +8,7 @@ function App() {
     <div>
       <Routes>
         <Route path= "/eventpage" element = {<EventPage />} />
-      </Routes>
-      
+      </Routes>  
     </div>
   )
 }
