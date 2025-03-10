@@ -97,7 +97,7 @@ const EventList = () => {
             setHighlighted(selectedDay);
             setNormalDays(eventSchedule.filter(d => d !== selectedDay));
             setIsDayChanging(false);
-        }, 400); 
+        }, 300); 
     };
 
     return isPhoneSize ? (<div className="relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
@@ -174,7 +174,7 @@ const EventList = () => {
                 {/* Left Normal Day */}
                 <CSSTransition
                     in={!isDayChanging}
-                    timeout={400}
+                    timeout={300}
                     classNames="slide-right"
                     unmountOnExit
                     nodeRef={leftRef} 
@@ -191,7 +191,7 @@ const EventList = () => {
 
                 <CSSTransition
                     in={!isDayChanging}
-                    timeout={400}
+                    timeout={300}
                     classNames="slide-center"
                     unmountOnExit
                     nodeRef={centerRef} 
@@ -209,7 +209,7 @@ const EventList = () => {
                 {/* Right Normal Day */}
                 <CSSTransition
                     in={!isDayChanging}
-                    timeout={400}
+                    timeout={300}
                     classNames="slide-left"
                     unmountOnExit
                     nodeRef={rightRef}
