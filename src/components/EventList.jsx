@@ -13,27 +13,27 @@ const eventSchedule = [
         day: "DAY-1",
         date: "March 21, 2025",
         events: [
-            { name: "Inauguration", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
-            { name: "Ganitam", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
-            { name: "Hackathon", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" }
+            { name: "Inauguration", startTime: "09:00", endTime: "11:00",isLive: false, gif: "vite.svg" },
+            { name: "Ganitam", startTime: "09:00", endTime: "11:00",isLive: false, gif: "vite.svg" },
+            { name: "Hackathon", startTime: "09:00", endTime: "11:00",isLive: false, gif: "vite.svg" },
         ]
     },
     {
         day: "DAY-2",
         date: "March 22, 2025",
         events: [
-            { name: "Root Access", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
-            { name: "BLOOD DONATION CAMP", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
-            { name: "BrainDead", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" }
+            { name: "Root Access", startTime: "09:00", endTime: "11:00",isLive: false, gif: "vite.svg" },
+            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00",isLive: false, gif: "vite.svg" },
+            { name: "BrainDead", startTime: "09:00", endTime: "11:00",isLive: false, gif: "vite.svg" }, 
         ]
     },
     {
         day: "DAY-3",
         date: "March 6, 2025",
         events: [
-            { name: "BLOOD DONATION CAMP", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" },
-            { name: "Murder Mystery", time: "09:00 AM - 10:00 AM", isLive: true, gif: "vite.svg" },
-            { name: "Codestorm", time: "09:00 AM - 10:00 AM", isLive: false, gif: "vite.svg" }
+            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg" },
+            { name: "Murder Mystery", startTime: "00:00", endTime: "02:18",isLive: false, gif: "vite.svg" },
+            { name: "Codestorm", startTime: "09:00", endTime: "11:00",isLive: false, gif: "vite.svg" },
         ]
     }
 ];
@@ -52,6 +52,7 @@ const EventList = () => {
     }, [highlighted, normalDays]);
 
 
+    
     useEffect(() => {
         const handleResize = () => {
             setIsPhoneSize(window.innerWidth < 1045);
@@ -62,6 +63,8 @@ const EventList = () => {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
+    
 
     useEffect(() => {
 
@@ -122,7 +125,7 @@ const EventList = () => {
 
             
                 <div
-                    ref={leftRef}
+                    
                     className="flex justify-center cursor-pointer"
                     >
                     <NormalDayLeft inday={normalDays[0]} />
@@ -132,7 +135,7 @@ const EventList = () => {
        
 
             <div
-                ref={rightRef}
+                
                 className=" flex justify-center cursor-pointer "
             >
                 <NormalDayRight inday={normalDays[1]} />
@@ -142,7 +145,7 @@ const EventList = () => {
             
             
                 {normalDays.length === 3 && (
-                    <div ref={rightRef} className="flex justify-center cursor-pointer">
+                    <div className="flex justify-center cursor-pointer">
                         <NormalDayLeft inday={normalDays[2]} />
                     </div>
                 )}
