@@ -1,13 +1,20 @@
-
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import './App.css'
+import Sponsorship from './components/Sponsors/Sponsorship'
+import Gallery from './components/Gallery/Gallery'
+
+
 
 function App() {
-  
 
   return (
-    <>
-     <h2 className='text-xl font-bold text-purple-500'>Hello This is React Vite+Tailwind</h2>
-    </>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Sponsorship/>}/>
+      <Route path='/gallery' element={<Gallery/>}/>
+    </Routes>
+    </BrowserRouter>
+     
   )
 }
 
