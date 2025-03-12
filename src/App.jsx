@@ -1,21 +1,19 @@
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import React from "react";
+import {BrowserRouter as Router,Route,Routes} from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
 import './App.css'
-import Sponsorship from './components/Sponsors/Sponsorship'
-import Gallery from './components/Gallery/Gallery'
 
 
 
-function App() {
 
+const App = () => {
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Sponsorship/>}/>
-      <Route path='/gallery' element={<Gallery/>}/>
-    </Routes>
-    </BrowserRouter>
-     
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
