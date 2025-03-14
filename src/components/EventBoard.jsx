@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import React Router
 import DashboardButton from "./DashboardButton.jsx";
 import EventCard from "./EventCard.jsx";
+import { HashLink } from "react-router-hash-link";
 
 const EventBoard = ({ eventData }) => {
   return (
@@ -69,7 +70,9 @@ const EventBoard = ({ eventData }) => {
 
               {/* Dashboard Button */}
               <div className="absolute top-[45px] right-10">
-                <DashboardButton link={eventData.dashboardLink} content="Dashboard" />
+              <Link to="/dashboard">
+                <DashboardButton link="#" content="Dashboard" />
+                </Link>
               </div>
 
               {/* Register via Dashboard Button (Uses Link for Navigation) */}
@@ -77,7 +80,8 @@ const EventBoard = ({ eventData }) => {
                 <Link to="/dashboard">
                   <DashboardButton link="#" content="Register via Dashboard" />
                 </Link>
-                <DashboardButton link="#" content="Rules" />
+                <HashLink smooth to="#ruless">
+                <DashboardButton link="#" content="Rules" /></HashLink>
               </div>
             </div>
           </div>
