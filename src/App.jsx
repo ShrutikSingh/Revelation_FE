@@ -42,7 +42,7 @@ function App() {
           }
         />
         <Route path="/dashboard" element={<UserDashboard eventData={eventDetails} />} />
-        <Route path="/teams" element={<TeamLeadsPage />} />
+        {/* <Route path="/teams" element={<TeamLeadsPage />} /> */}
       </Routes>
     </div>
   );
