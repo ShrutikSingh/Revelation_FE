@@ -1,0 +1,109 @@
+[
+    {
+      "title": "Committee Convenors",
+      "members": [
+        {
+          "name": "John Doe",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/johndoe",
+          "instagram": "https://instagram.com/johndoe"
+        },
+        {
+          "name": "Jane Smith",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/janesmith",
+          "instagram": "https://instagram.com/janesmith"
+        }
+        ,
+        {
+          "name": "Jane Smith",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/janesmith",
+          "instagram": "https://instagram.com/janesmith"
+        },
+        {
+          "name": "Jane Smith",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/janesmith",
+          "instagram": "https://instagram.com/janesmith"
+        },
+        {
+          "name": "Jane Smith",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/janesmith",
+          "instagram": "https://instagram.com/janesmith"
+        }
+        
+      ]
+    },
+    {
+      "title": "Technical Team",
+      "members": [
+        {
+          "name": "Alice Brown",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/alicebrown",
+          "instagram": "https://instagram.com/alicebrown"
+        },
+        {
+          "name": "Bob Johnson",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/bobjohnson",
+          "instagram": "https://instagram.com/bobjohnson"
+        },
+        {
+          "name": "Jane Smith",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/janesmith",
+          "instagram": "https://instagram.com/janesmith"
+        },
+        {
+          "name": "Jane Smith",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/janesmith",
+          "instagram": "https://instagram.com/janesmith"
+        }
+      ]
+    },
+    {
+      "title": "Technical Team",
+      "members": [
+        {
+          "name": "Alice Brown",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/alicebrown",
+          "instagram": "https://instagram.com/alicebrown"
+        },
+        {
+          "name": "Bob Johnson",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/bobjohnson",
+          "instagram": "https://instagram.com/bobjohnson"
+        },
+        {
+          "name": "Jane Smith",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/janesmith",
+          "instagram": "https://instagram.com/janesmith"
+        }
+      ]
+    },
+    {
+      "title": "Technical Team",
+      "members": [
+        {
+          "name": "Alice Brown",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/alicebrown",
+          "instagram": "https://instagram.com/alicebrown"
+        },
+        {
+          "name": "Bob Johnson",
+          "image": "/assets/spiderman.png",
+          "linkedin": "https://linkedin.com/in/bobjohnson",
+          "instagram": "https://instagram.com/bobjohnson"
+        }
+      ]
+    }
+  ]
+  
