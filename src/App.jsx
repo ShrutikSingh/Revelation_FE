@@ -29,7 +29,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path= "/eventpage" element = {<EventPage />} />
+        <Route path= "/events" element = {<EventPage />} />
         <Route path="/individualeventpage" element={<><EventBoard eventData={eventData} /> <Rules /> </>} />
         <Route path="/dashboard" element={<DashboardPage eventData={eventData}/>} />
         <Route path="/teams" element={<TeamPage />} />
