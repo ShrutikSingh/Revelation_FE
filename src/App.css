@@ -50,8 +50,7 @@ body, html {
 }
 
 .read-the-docs {
-  color: #888;
-<<<<<<< HEAD
+  color: #888; 
 }
 .fade-up-enter {
   opacity: 0;
@@ -148,6 +147,3 @@ body, html {
 .transform-style-3d {
   transform-style: preserve-3d;
 }
-=======
-} */
->>>>>>> origin/TeamPage
