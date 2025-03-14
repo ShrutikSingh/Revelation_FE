@@ -11,6 +11,9 @@ export default {
       }
     },
   },
+  corePlugins: {
+    preflight: false, // Disable Tailwind's default CSS reset
+  },
   plugins: [],
 }
 
