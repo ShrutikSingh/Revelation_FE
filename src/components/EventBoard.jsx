@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import React Router
 import DashboardButton from "./DashboardButton.jsx";
 import EventCard from "./EventCard.jsx";
+import { HashLink } from "react-router-hash-link";
 
 const EventBoard = ({ eventData }) => {
+  const eventName = "/dashboard/" + eventData.title.replace(/\s+/g,"-").toLowerCase();
   return (
     <div className="bg-transparent text-white p-6 relative w-full max-w-[900px] h-[500px] max-md:h-[800px] max-md:mt-[400px] mx-auto max-md:ml-[-30px]">
 
@@ -69,15 +71,18 @@ const EventBoard = ({ eventData }) => {
 
               {/* Dashboard Button */}
               <div className="absolute top-[45px] right-10">
-                <DashboardButton link={eventData.dashboardLink} content="Dashboard" />
+              <Link to={eventName}>
+                <DashboardButton  content="Dashboard" />
+                </Link>
               </div>
 
               {/* Register via Dashboard Button (Uses Link for Navigation) */}
               <div className="absolute bottom-10 mt-10 flex gap-20 max-md:flex-col max-md:gap-10">
-                <Link to="/dashboard">
-                  <DashboardButton link="#" content="Register via Dashboard" />
+                <Link to={eventName}>
+                  <DashboardButton content="Register via Dashboard" />
                 </Link>
-                <DashboardButton link="#" content="Rules" />
+                <HashLink smooth to="#ruless">
+                <DashboardButton link="#" content="Rules" /></HashLink>
               </div>
             </div>
           </div>
