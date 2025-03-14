@@ -6,12 +6,12 @@ import './App.css'
 
 const App = () => {
   return (
-    <Router>
+    <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path= "/eventpage" element = {<EventPage />} />
       </Routes>
-    </Router>
+    </div>
   );
 };
 

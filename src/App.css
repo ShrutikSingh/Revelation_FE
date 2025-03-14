@@ -118,6 +118,7 @@
   opacity: 0.5;
   transform: scale(0.9);
   transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
 
 @keyframes spin {
   from {
