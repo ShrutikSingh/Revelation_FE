@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap');
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
    padding: 2rem;
+=======
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+>>>>>>> origin/TeamPage
   text-align: center;
 } */
 body, html {
@@ -44,6 +51,7 @@ body, html {
 
 .read-the-docs {
   color: #888;
+<<<<<<< HEAD
 }
 .fade-up-enter {
   opacity: 0;
@@ -140,3 +148,6 @@ body, html {
 .transform-style-3d {
   transform-style: preserve-3d;
 }
+=======
+} */
+>>>>>>> origin/TeamPage
