@@ -3,24 +3,10 @@ import EventPage from './pages/EventPage/EventPage'
 import React from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import './App.css'
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Rules from './components/Rules.jsx'
 import EventBoard from './components/EventBoard.jsx'
 import DashboardPage from "./components/DashboardPage.jsx";
 
-<<<<<<< HEAD
-const App = () => {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path= "/eventpage" element = {<EventPage />} />
-      </Routes>
-    </div>
-  );
-};
-=======
 function App() {
   const eventData = {
     title: "CODESTORM",
@@ -39,14 +25,15 @@ function App() {
   };
 
   return (
-    <Router>
+    <div>
       <Routes>
-        <Route path="/" element={<><EventBoard eventData={eventData} /> <Rules /> </>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path= "/eventpage" element = {<EventPage />} />
+        <Route path="/individualeventpage" element={<><EventBoard eventData={eventData} /> <Rules /> </>} />
         <Route path="/dashboard" element={<DashboardPage eventData={eventData}/>} />
       </Routes>
-    </Router>
+    </div>
   )
 }
->>>>>>> e4ee44e0a5838935424fbfef6e8a7d05b814dac0
 
 export default App;
