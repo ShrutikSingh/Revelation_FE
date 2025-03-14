@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import EventPage from './pages/EventPage/EventPage'
 import React from "react";
@@ -37,3 +38,5 @@ function App() {
 }
 
 export default App;
+=======
+>>>>>>> origin/ProfilePage

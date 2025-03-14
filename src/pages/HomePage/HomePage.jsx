@@ -3,7 +3,7 @@ import Participants from "../../components/Participants/Participants";
 import EventSlider from "../../components/EventSlider/EventSlider";
 import Footer from "../../components/Footer/Footer"
 import bgImage from "../../assets/grid.webp"; 
-
+import Navbar from "../../components/Navbar/Navbar";
 const HomePage = () => {
     return (
     <div
@@ -11,6 +11,7 @@ const HomePage = () => {
 
       style={{ backgroundImage: `url(${bgImage})` }}
     >
+            { <Navbar /> }
             {/* <Participants/> */}
 
             {/* <EventSlider /> */}
@@ -21,3 +22,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+ 

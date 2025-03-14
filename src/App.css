@@ -1,10 +1,23 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap');
 /* #root {
   max-width: 1280px;
+=======
+#root {
+  /* max-width: 1280px; */
+>>>>>>> origin/ProfilePage
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
+<<<<<<< HEAD
 } */
+=======
+}
+body, html {
+  background-color: black;
+  color: white;
+}
+>>>>>>> origin/ProfilePage
 
 .logo {
   height: 6em;
