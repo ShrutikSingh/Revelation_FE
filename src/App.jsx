@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import EventsPage from "./pages/EventPage/EventPage.jsx";
-import TeamRegistrationPage from "./pages/TeamPage/TeamPage.jsx";
+import TeamLeadsPage from "./pages/TeamPage/TeamPage.jsx";
 import UserDashboard from "./components/DashboardPage.jsx";
 import EventDetailsPage from "./components/EventBoard.jsx";
 import EventRules from "./components/Rules.jsx";
@@ -42,7 +42,7 @@ function App() {
           }
         />
         <Route path="/dashboard" element={<UserDashboard eventData={eventDetails} />} />
-        <Route path="/teams" element={<TeamRegistrationPage />} />
+        <Route path="/teams" element={<TeamLeadsPage />} />
       </Routes>
     </div>
   );

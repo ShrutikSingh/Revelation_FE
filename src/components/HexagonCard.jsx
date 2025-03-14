@@ -6,16 +6,16 @@ const HexagonCard = ({ name, image, linkedin, instagram }) => {
 
   return (
     <div
-      className={`hexagon-border ${hovered ? "hovered" : ""}`}
+      className={`TeamsPage-hexagon-border ${hovered ? "TeamsPage-hovered" : ""}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="hexagon">
-        <img src={image} alt={name} className="hexagon-image" />
+      <div className="TeamsPage-hexagon">
+        <img src={image} alt={name} className="TeamsPage-hexagon-image" />
         {hovered && (
-          <div className="hexagon-overlay">
-            <p className="member-name">{name}</p>
-            <div className="social-links">
+          <div className="TeamsPage-hexagon-overlay">
+            <p className="TeamsPage-member-name">{name}</p>
+            <div className="TeamsPage-social-links">
               <a href={linkedin} target="_blank" rel="noopener noreferrer">
                 <img src={"/assets/linkedin.png"} alt="LinkedIn" />
               </a>
