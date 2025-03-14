@@ -7,6 +7,7 @@ import UserDashboard from "./components/DashboardPage.jsx";
 import EventDetailsPage from "./components/EventBoard.jsx";
 import EventRules from "./components/Rules.jsx";
 import "./App.css";
+import ProfilePage from "./pages/ProfilePage/profilepage.jsx";
 
 const eventDetails = {
   title: "CODESTORM",
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route
           path="/event-details"
           element={
