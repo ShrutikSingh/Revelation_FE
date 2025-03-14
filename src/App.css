@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap');
-#root {
-  max-width: auto;
-  margin: 0;
-  padding: 0;
-=======
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
->>>>>>> 41c02c7bb194447b03deecb32885e8d075ffeea1
   text-align: center;
 } */
 
@@ -48,7 +41,6 @@
 .read-the-docs {
   color: #888;
 }
-<<<<<<< HEAD
 .fade-up-enter {
   opacity: 0;
   transform: translateY(20px) scale(0.95);
@@ -126,7 +118,6 @@
   opacity: 0.5;
   transform: scale(0.9);
   transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
-=======
 
 @keyframes spin {
   from {
@@ -143,5 +134,4 @@
 
 .transform-style-3d {
   transform-style: preserve-3d;
->>>>>>> 41c02c7bb194447b03deecb32885e8d075ffeea1
 }
