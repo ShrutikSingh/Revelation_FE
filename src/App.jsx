@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import EventPage from './pages/EventPage/EventPage'
@@ -8,17 +7,12 @@ import './App.css'
 import Rules from './components/Rules.jsx'
 import EventBoard from './components/EventBoard.jsx'
 import DashboardPage from "./components/DashboardPage.jsx";
-
-=======
-import './App.css'
-import { Routes, Route, Navigate } from 'react-router-dom'
 import TeamPage from './pages/TeamPage/TeamPage.jsx'
->>>>>>> origin/TeamPage
 function App() {
   const eventData = {
     title: "CODESTORM",
     venue: "CSD-205 Seminar Hall",
-    prize: "INR 4K",
+    prize: "INR 4K", 
     time: "05:00 PM - 07:00 PM",
     date: "10th March, 2025",
     description:
@@ -31,21 +25,15 @@ function App() {
     dayText: "DAY 1",
   };
 
-  return (
+  return ( 
     <div>
-<<<<<<< HEAD
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path= "/eventpage" element = {<EventPage />} />
         <Route path="/individualeventpage" element={<><EventBoard eventData={eventData} /> <Rules /> </>} />
         <Route path="/dashboard" element={<DashboardPage eventData={eventData}/>} />
+        <Route path="/teams" element={<TeamPage />} />
       </Routes>
-=======
-      {/* <Routes> */}
-        {/* <Route path= "/teampage" element = {<TeamPage />} /> */}
-      {/* </Routes>   */}
-      <TeamPage></TeamPage>
->>>>>>> origin/TeamPage
     </div>
   )
 }
