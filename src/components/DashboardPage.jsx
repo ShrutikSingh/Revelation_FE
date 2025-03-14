@@ -4,10 +4,13 @@ import { FaUserFriends} from "react-icons/fa";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import {motion} from "framer-motion";
 import { Link } from "react-router-dom";
+import EventData from "../data/EventData.jsx";
+import { useParams } from "react-router-dom";
 
 
+const DashboardPage = () => {
 
-const DashboardPage = ({eventData}) => {
+
   const [showForm, setShowForm] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [isNonIIESTian, setIsNonIIESTian] = useState(false);
@@ -18,7 +21,19 @@ const DashboardPage = ({eventData}) => {
   const [expandedTeam, setExpandedTeam] = useState(null);
   const [userTeam, setUserTeam] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
+  const {eventName} = useParams();
+    if (!eventName) {
+        return <h1>Loading...</h1>;  // or redirect to a proper page
+    }
+    
 
+    
+    const eventData = EventData.find(event => event.title.replace(/\s+/g,"-").toLowerCase() === eventName.toLowerCase())
+    // Need to fetch the complete data of event from the backend or we can just give it here 
+    if (!eventData) {
+        return <h1>Event Not Found</h1>;
+    }
+  
   const teams = [
     { 
       name: "Alpha", 
@@ -78,6 +93,7 @@ const DashboardPage = ({eventData}) => {
   const toggleDropdown = (teamName) => {
     setExpandedTeam(expandedTeam === teamName ? null : teamName);
   };
+  const dashName = "/event/"+eventData.title.replace(/\s+/g,"-").toLowerCase();
 
   return (
     <motion.div initial={{ opacity: 0, y: 20, scale: 0.9 }} // Start slightly below and scaled down
@@ -133,8 +149,8 @@ const DashboardPage = ({eventData}) => {
         
         <div className="relative z-10 p-6 h-full flex flex-col items-center">
           <div className="bg-red-800 px-4 py-2 inline-block border-2 border-red-600 mb-10 ml-20 mt-10 rounded-lg"><h1 className="text-2xl font-bold mb-0 text-white">Dashboard</h1></div>
-          <div className="absolute mt-10 right-0"><Link to="/">
-                  <DashboardButton link="#" content="Event " />
+          <div className="absolute mt-10 right-0"><Link to={dashName}>
+                  <DashboardButton  content="Event " />
                 </Link></div>
 
 
