@@ -10,7 +10,6 @@ import AboutUs from "../../components/HeroPage/AboutUs";
 import HeroSection from "../../components/HeroPage/HeroSection";
 import HeroFinal from "../../components/HeroPage/HeroFinal";
 import Faqs from "../FAQs/Faqs";
-
 const HomePage = ({ Token, setToken }) => {
     return (
         <div

@@ -7,7 +7,6 @@ import UserDashboard from "./components/DashboardPage.jsx";
 import EventDetailsPage from "./components/EventBoard.jsx";
 import EventRules from "./components/Rules.jsx";
 import "./App.css";
-import { useState,useEffect } from "react";
 import ProfilePage from "./pages/ProfilePage/profilepage.jsx";
 
 // import IndividualEvent from "./pages/IndividualEvent/IndividualEvent.jsx";
@@ -32,30 +31,20 @@ const eventDetails = {
 };
 
 function App() {
-
-  const [token, setToken] = useState(localStorage.getItem("token"));
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) setToken(storedToken);
-  }, []);
-
-  console.log(token);
-
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage Token={token} setToken={setToken} />} />
-        <Route path="/events" element={<EventsPage Token={token} setToken={setToken}/>} />
-        <Route path="/profile" element={<ProfilePage setToken={setToken} />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/event/:id" element={
-          <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
+          <>
             <EventDetailsPage />
             <EventRules />
-          </div>
+          </>
         } />
-        <Route path="/dashboard/:id" element={<UserDashboard  Token={token} setToken={setToken}/>} />
-        <Route path="/teams" element={<TeamLeadsPage Token={token} setToken={setToken} />} />
+        <Route path="/dashboard/:id" element={<UserDashboard />} />
+        <Route path="/teams" element={<TeamLeadsPage />} />
         <Route path="/faqs" element={<Faqs />} />
       </Routes>
     </div>
