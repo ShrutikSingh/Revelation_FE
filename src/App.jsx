@@ -17,7 +17,7 @@ function App() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/event/:id" element={
-          <div className="bg-[url('public/grid.png')] bg-cover bg-center">
+          <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
             <EventDetailsPage />
             <EventRules />
           </div>
