@@ -1,0 +1,37 @@
+[
+    {
+      "title": "Core Committee",
+      "members": [
+        { "position":"Professor-in-charge",
+          "name": "Prof. Malay Kule",
+          "image": "/assets/Anubhab_Sinha.jpg",
+          "linkedin": "https://www.linkedin.com/in/anubhab-sinha-16as/?originalSubdomain=in",
+          "instagram": "https://www.instagram.com/jacks_medulla_obl0ngata?igsh=MXFkMXdoOXk4bWU1Yw=="
+        },
+        { "position":"General Secretary",
+          "name": "Roushan Das",
+          "image": "/assets/Anubhab_Sinha.jpg",
+          "linkedin": "https://www.linkedin.com/in/anubhab-sinha-16as/?originalSubdomain=in",
+          "instagram": "https://www.instagram.com/jacks_medulla_obl0ngata?igsh=MXFkMXdoOXk4bWU1Yw=="
+        },
+        { "position":"Treasurer",
+          "name": "Subinoy Sikdar",
+          "image": "/assets/Anubhab_Sinha.jpg",
+          "linkedin": "https://www.linkedin.com/in/anubhab-sinha-16as/?originalSubdomain=in",
+          "instagram": "https://www.instagram.com/jacks_medulla_obl0ngata?igsh=MXFkMXdoOXk4bWU1Yw=="
+        },
+        { "position":"Assistant Secretary",
+          "name": "Sarthi Singh",
+          "image": "/assets/Anubhab_Sinha.jpg",
+          "linkedin": "https://www.linkedin.com/in/anubhab-sinha-16as/?originalSubdomain=in",
+          "instagram": "https://www.instagram.com/jacks_medulla_obl0ngata?igsh=MXFkMXdoOXk4bWU1Yw=="
+        },
+        { "position":"Auditor",
+          "name": "Saugata Choudhary",
+          "image": "/assets/Anubhab_Sinha.jpg",
+          "linkedin": "https://www.linkedin.com/in/anubhab-sinha-16as/?originalSubdomain=in",
+          "instagram": "https://www.instagram.com/jacks_medulla_obl0ngata?igsh=MXFkMXdoOXk4bWU1Yw=="
+        }
+      ]
+    }
+]
