@@ -9,11 +9,11 @@ import Navbar from "../../components/Navbar/Navbar";
 import TopBox from "../../components/HeroPage/HeroSection";
 import AboutUs from "../../components/HeroPage/AboutUs";
 import HeroSection from "../../components/HeroPage/HeroSection";
-
-const HomePage = () => {
+import Faqs from "../FAQs/Faqs";
+const HomePage = ({Token,setToken}) => {
     return (
         <div
-            className="w-full min-h-screen flex flex-col items-center gap-y-40"
+            className="w-full min-h-screen flex flex-col items-center gap-y-[200px]"
             style={{ 
                 backgroundImage: `url(${bgImage})`,
                 backgroundSize: "cover",
@@ -24,13 +24,16 @@ const HomePage = () => {
                 width: "100%",
             }}
         >
-            <Navbar />
+            <Navbar Token={Token} setToken={setToken} />
             <HeroSection />
             <AboutUs />
-            <Participants />
+            <Participants  />
             <EventSlider />
             <Gallery />
+            <div id="sponsors-section">
             <Sponsorship />
+            </div>
+            <Faqs />
             <Footer />
         </div>
     );
