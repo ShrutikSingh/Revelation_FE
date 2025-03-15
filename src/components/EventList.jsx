@@ -213,7 +213,7 @@ const EventList = () => {
                     >
                         <div
                             ref={leftRef}
-                            className="col-span-3 flex justify-center cursor-pointer xl:ml-0"
+                            className="col-span-3 flex justify-center cursor-pointer xl:ml-40 lg:ml-20"
                             onClick={() => handleHighlighting(normalDays[0])}>
                             <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day} />
                         </div>
@@ -248,7 +248,7 @@ const EventList = () => {
                     >
                         <div
                             ref={rightRef}
-                            className="col-span-3 flex justify-center cursor-pointer xl:ml-0 lg:ml-[50px] "
+                            className="col-span-3 flex justify-center cursor-pointer xl:ml-0 lg:ml-[50px] lg:mr-[130px]"
                             onClick={() => handleHighlighting(normalDays[1])}>
                             <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />
                         </div>
