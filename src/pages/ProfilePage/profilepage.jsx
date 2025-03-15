@@ -116,7 +116,7 @@ const ProfilePage = ({setToken}) => {
     <div className="registered-events">
       <div className="events-list">
          {userData.eventsRegistered.map((event) => (
-              <div key={event.id._id} className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex justify-between items-center w-full" onClick={() => navigate(`/event/${reg.id._id}`)}>
+              <div key={event.id._id} className="cursor-pointer bg-gray-800 border border-red-500 text-white p-3 rounded-md flex justify-between items-center w-full" onClick={() => navigate(`/event/${event.id._id}`)}>
                 <span className="font-medium">{event.id.name}</span>
                 <span className="text-sm text-gray-300">{event.team === true ? (
                   <>
@@ -260,34 +260,41 @@ const ProfilePage = ({setToken}) => {
         <div className="w-full">
           <h2 className="text-lg font-bold text-red-500">My Registrations</h2>
           <div className="mt-3 space-y-2">
+          {userData.eventsRegistered.length === 0 && <div className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex justify-center items-center w-full">
+          <span className="font-medium">No Registrations</span>
+            </div>}
           {userData.eventsRegistered.length > 0 && renderRegisteredEvents()}
           </div>
         </div>
         <div className="mt-6 w-full">
           <h2 className="text-lg font-bold text-red-500">Your Requests</h2>
           <div className="mt-3 space-y-2">
-          <div className="events-list">
+            {request.yourRequests.length>0 ? <div className="events-list">
               <div className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex items-center w-full">
                 <span className="font-medium mr-5">Event Name</span>
                 <span className="text-sm mr-5 text-gray-300">Team Name</span>
                 <span className="text-sm mr-20 text-gray-300">Requsted Person Name</span>
                 <span className="text-sm mr-5 text-gray-300">Status</span>
               </div>
-          </div>
+          </div>:<div className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex justify-center items-center w-full">
+          <span className="font-medium">No Data</span>
+            </div>}
             {request.yourRequests.length>0 && renderYourRequests()}
           </div>
         </div>
         <div className="mt-6 w-full">
           <h2 className="text-lg font-bold text-red-500">Requests for you</h2>
           <div className="mt-3 space-y-2">
-          <div className="events-list">
+            {request.requestsForYou.length>0?<div className="events-list">
               <div key={request.id} className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex items-center w-full">
                 <span className="font-medium mr-5">Event Name</span>
                 <span className="text-sm mr-5 text-gray-300">Team Name</span>
                 <span className="text-sm mr-5 text-gray-300">Requsters Name</span>
                 <span className="text-sm mr-5 text-gray-300">Accept/Decline</span>
               </div>
-          </div>
+          </div>:<div className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex justify-center items-center w-full">
+          <span className="font-medium">No Data</span>
+            </div>}
             {request.requestsForYou.length>0 && rendermyRequests()}
           </div>
         </div>
