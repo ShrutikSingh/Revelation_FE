@@ -96,11 +96,12 @@ const DashboardPage = () => {
   const dashName = "/event/"+eventData.title.replace(/\s+/g,"-").toLowerCase();
 
   return (
+    <div className="bg-[url('public/grid.png')] bg-cover bg-center" >
     <motion.div initial={{ opacity: 0, y: 20, scale: 0.9 }} // Start slightly below and scaled down
     animate={{ opacity: 1, y: 0, scale: 1 }} // Bring to normal position
     exit={{ opacity: 0, y: -20, scale: 0.9 }} // Animate out upwards
     transition={{ duration: 0.6, ease: "easeInOut" }} // Smooth transition
-    className="bg-transparent text-white p-6 relative w-[900px] h-[1500px] mx-auto">
+    className="bg-transparent text-white p-6 relative w-[900px] h-[1500px] mx-auto ">
       <div className="relative w-full max-w-4xl h-full mx-auto">
         <svg
           className="absolute top-5 left-0 w-full h-full z-0"
@@ -304,6 +305,7 @@ const DashboardPage = () => {
         </div>
       </div>
     </motion.div>
+    </div>
   );
 };
 
