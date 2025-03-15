@@ -41,15 +41,16 @@ const Gallery = () => {
   grabCursor={true}
   centeredSlides={true}
   loop={true}
-  autoplay={{ delay: 1500, disableOnInteraction: false }}
-  speed={1000}
-  slidesPerView={3}  // Reduce number of slides visible at once
-  spaceBetween={50}  // Increase spacing between slides
+  autoplay={{ delay: 2000, disableOnInteraction: false, pauseOnMouseEnter: false }}
+  speed={2000}
+  slidesPerView={3}
+  spaceBetween={50}
+  cssMode={true}
   coverflowEffect={{
-    rotate: 40,
+    rotate: 30,
     stretch: 0,
-    depth: 400,
-    modifier: 1.2,
+    depth: 500,
+    modifier: 1.5,
     slideShadows: true,
   }}
   pagination={{ clickable: true }}

@@ -46,11 +46,10 @@ const EventSlider = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       {/* Title */}
-      <div className="px-6 py-2 rounded-xl bg-black text-white font-bold text-lg uppercase shadow-lg mb-8 shadow-[0_0_20px_6px_rgba(150,0,0,0.4),0_0_10px_4px_rgba(0,0,0,0.8)]">
-        <span className="bg-gradient-to-b from-gray-200 to-gray-500 text-transparent bg-clip-text">
-          Tech Fest Events
-        </span>
-      </div>
+      <div className="font-serif text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-4 mb-10
+  bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text">
+  TECH FEST EVENTS
+</div>
 
       {/* 3D Rotating Carousel */}
       <div className="w-[250px] h-[250px] perspective-1000 mt-[100px]">
