@@ -8,8 +8,7 @@ const Event = ({ event, type }) => {
   const handleEventClick = (e) => {
     e.stopPropagation();
     console.log("Button Click");
-    alert(`Wait for version Web2.0....`);
-    // navigate(`/event/${event.id}`);
+    navigate(`/event/${event.id}`);
   }
   const timeToMinutes = (time) => {
     const [hours, minute] = time.split(":").map(Number);
@@ -36,14 +35,13 @@ const Event = ({ event, type }) => {
 
     return () => clearInterval(interval);
 }, [event]);
-  const gifname = "/" +event.name + ".png";
 
   return (
     <div
       className={`flex items-center rounded-full bg-gray-800 text-white p-2 transition duration-300 ease-in-out hover:bg-[#2E0000] hover:border-2 hover:border-red-600 ${event.isLive ? "border-2 border-red-500" : ""
         }`} onClick={(event) => { handleEventClick(event); }}
     >
-      <img src={gifname} alt={event.name} className="h-8 w-8 mr-2" />
+      <img src={event.gif} alt={event.name} className="h-8 w-8 mr-2" />
       <div>
         <p className={`${type.t === "1" ? "text-[11px]" : "text-[15px]"} font-semibold ${live ? "text-red-500" : ""}`}>
           {event.name}

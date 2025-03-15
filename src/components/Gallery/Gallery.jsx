@@ -1,80 +1,41 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "./Gallery.css"; // Keep your styling
+import { motion } from "framer-motion";
+import img1 from "../../assets/career.png";
+import img2 from "../../assets/gfg.png";
+import img3 from "../../assets/unstop.jpeg";
+import img4 from "../../assets/winzo.jpeg";
 
-// Replace these with your actual images
-import img1 from "../../assets/img1.jpg";
-import img2 from "../../assets/img2.jpg";
-import img3 from "../../assets/img3.jpg";
-import img4 from "../../assets/img4.jpg";
-import img5 from "../../assets/img5.jpg";
-import img6 from "../../assets/img6.jpg";
-import img7 from "../../assets/img7.jpg";
-import img8 from "../../assets/img8.jpg";
-import img9 from "../../assets/img9.jpg";
-import img10 from "../../assets/img10.jpg";
-import img11 from "../../assets/img11.jpg";
-import img12 from "../../assets/img12.jpg";
-import img13 from "../../assets/img13.jpg";
-import img14 from "../../assets/img14.jpg";
-import img15 from "../../assets/img15.jpg";
-import img16 from "../../assets/img16.jpg";
-import img17 from "../../assets/img17.jpg";
-import img18 from "../../assets/img18.jpg";
-import img19 from "../../assets/img19.jpg";
-import img20 from "../../assets/img20.jpg";
-
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17,img18,img19,img20];
+const images = [img1, img2, img3, img4];
 
 const Gallery = () => {
   return (
-    <div className="homepage-gallery-section mt-20 mb-20">
-      {/* Header for the Gallery */}
-      <h2 className="homepage-gallery-header">GALLERY</h2>
+    <div className="min-h-screen flex flex-col items-center justify-center text-white px-4 ">
+      <h1 className="text-6xl font-bold mb-12">gallery</h1>
 
-      <Swiper
-  effect="coverflow"
-  grabCursor={true}
-  centeredSlides={true}
-  loop={true}
-  autoplay={{ delay: 1500, disableOnInteraction: false }}
-  speed={1000}
-  slidesPerView={3}  // Reduce number of slides visible at once
-  spaceBetween={50}  // Increase spacing between slides
-  coverflowEffect={{
-    rotate: 40,
-    stretch: 0,
-    depth: 400,
-    modifier: 1.2,
-    slideShadows: true,
-  }}
-  pagination={{ clickable: true }}
-  modules={[EffectCoverflow, Autoplay, Pagination]}
-  className="homepage-mySwiper"
->
-        {images.map((src, index) => (
-          <SwiperSlide key={index} className="homepage-gallery-box">
-            {/* Blurred Background */}
-            <div
-              className="homepage-gallery-bg"
-              style={{ backgroundImage: `url(${src})` }}
-            ></div>
-
-            {/* Foreground Image */}
-            <div className="homepage-gallery-content">
-              <img
-                src={src}
-                alt={`Gallery ${index + 1}`}
-                className="homepage-gallery-img"
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {/* Full-width 3D Carousel Container */}
+      <div className="relative w-full overflow-hidden bg-black flex justify-center items-center">
+        <motion.div
+          className="flex gap-8 px-6 w-full items-center mt-10 mb-10"
+          initial={{ x: "100%" }}
+          animate={{ x: "-100%" }}
+          transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+          style={{ perspective: "1200px", display: "flex", width: "100%" }} // Ensures full width
+        >
+          {images.concat(images).map((src, index) => (
+            <motion.div
+              key={index}
+              className="relative w-30 h-60 flex-shrink-0 rounded-lg overflow-hidden"
+              style={{
+                transform: `rotateY(${index % 2 === 0 ? "10deg" : "-10deg"}) translateY(10px)`,
+                boxShadow: "0px 10px 40px rgba(255, 0, 0, 0.2)",
+              }}
+              whileHover={{ scale: 1.15 }}
+            >
+              <img src={src} alt="Gallery" className="w-full h-full object-cover" />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 };

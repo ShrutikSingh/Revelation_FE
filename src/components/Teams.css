@@ -5,7 +5,8 @@
   gap: 20px; 
   width: 100%;
   margin-top: -100px;
-  margin-bottom: 40px;
+  overflow-x: hidden;
+  /* margin:0px ; */
 }
 ::-webkit-scrollbar {
     display: none;

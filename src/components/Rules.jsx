@@ -25,9 +25,9 @@ const Rules = () => {
   }, []);
 
   return (
-    <div id="ruless" className="bg-black  text-white p-6 rounded-lg border border-[#8D8D8D]-500 max-w-2xl mx-auto mt-20 max-md:mt-[30px]  text-center max-md:w-[360px] max-sm:w-[320px] max-md:text-sm">
+    <div id="ruless" className="bg-black text-white p-6 rounded-lg border border-[#8D8D8D]-500 max-w-2xl mx-auto mt-20 max-md:mt-[30px] max-md:mb-[600px]">
 
-      <div className="border border-red-500 p-2 inline-block text-sm uppercase font-semibold mb-4 ">
+      <div className="border border-red-500 p-2 inline-block text-sm uppercase font-semibold mb-4">
         Event Rules :
       </div>
       {/* Rules List */}
