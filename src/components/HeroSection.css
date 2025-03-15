@@ -1,6 +1,6 @@
 .TeamsPage-hero-section {
   font-family: 'Goldman', sans-serif;
-  height: 90vh;
+  height: 110vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,12 +35,15 @@
 
 /* Main Heading (TEAM REVELATION) */
 .TeamsPage-hero-title {
+  padding-bottom: 20px;
   font-size: 72px;
   font-weight: bold;
   text-transform: uppercase;
   color: white;
   display: flex;
   background-color: transparent;
+  display: flex;
+  align-items: center;
 }
 
 .TeamsPage-bracket {
@@ -60,7 +63,7 @@
   background: #111;
   color: #aaa;
   border-radius: 15px;
-  box-shadow: 0px 0px 30px rgba(255,255,255, 1);
+  box-shadow: 0px 0px 40px rgba(255,255,255, 1);
 }
 
 .TeamsPage-hero-description p {
@@ -142,5 +145,12 @@
 
   .TeamsPage-hero-description p {
       font-size: 16px; 
+  }
+  .TeamsPage-hero-description {
+    box-shadow: 0px 0px 30px rgba(255,255,255, 1);
+  }
+  .TeamsPage-hero-section {
+    height: 90vh;
+   
   }
 }
