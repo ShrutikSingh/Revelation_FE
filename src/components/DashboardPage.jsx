@@ -95,6 +95,11 @@ const DashboardPage = () => {
     team.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  useEffect(() => {
+    setCurrentPage(1);  // Reset to first page on search
+  }, [searchQuery]);
+  
+
 
   const indexOfLastTeam = currentPage*teamsPerPage;
   const indexOffirstTeam = indexOfLastTeam - teamsPerPage;
@@ -274,19 +279,19 @@ const DashboardPage = () => {
           </div>
 
           {/* Search Bar */}
-          <div className="mt-6 w-full">
+          <div className="mt-6 w-full flex flex-col justify-center">
             <input
               type="text"
               placeholder="Search for a team..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-50 p-2 border rounded-md text-black"
+              className="w-50 p-2 border rounded-md text-black self-center"
             />
             <ul className="mt-2 text-white">
                 {currentTeams.map((team, index) => (
                     <li key={index} className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2">
                         <div className="flex items-center justify-between">
-                        <span className="">{indexOfLastTeam+index + 1}. {team.name}</span>
+                        <span className="">{indexOffirstTeam+index + 1}. {team.name}</span>
                         <span className="flex absolute left-80">
                             <FaUserFriends className="text-red-500 mr-1" /> {team.members.length + 1} Members
                         </span>

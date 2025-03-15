@@ -12,7 +12,7 @@ export default {
     },
   },
   corePlugins: {
-    preflight: false, // Disable Tailwind's default CSS reset
+    preflight: true, // Disable Tailwind's default CSS reset
   },
   plugins: [],
 }
