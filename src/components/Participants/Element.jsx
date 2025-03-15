@@ -40,7 +40,7 @@ const Element = ({ number, label }) => {
   return (
     <div
       ref={elementRef}
-      className="relative mt-10 mb-10 w-[300px] h-[155px] flex flex-col items-center justify-center 
+      className="relative mt-10 mb-10 w-[300px] h-[155px] flex flex-col items-center justify-center mb-[100px]
       bg-gradient-to-b from-gray-900 to-black text-red-500 
       rounded-lg border border-red-700 
       shadow-[0_4px_15px_rgba(255,0,0,0.7),0_0_40px_10px_rgba(255,0,0,0.3)] 

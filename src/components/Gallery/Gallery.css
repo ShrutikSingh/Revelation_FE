@@ -20,6 +20,18 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.swiper-pagination-bullet {
+  background-color: white ;
+  opacity: 0.6; /* Slight transparency */
+}
+
+/* Change active bullet to blue */
+.swiper-pagination-bullet-active {
+  background-color: blue;
+  opacity: 1;
+}
+
   
   /* Swiper Container */
   .homepage-mySwiper {

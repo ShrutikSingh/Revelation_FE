@@ -48,7 +48,10 @@ const Faqs = () => {
   return (
     <div className="flex justify-center items-center  px-4">
   <div className="w-full max-w-4xl text-white rounded-lg shadow-lg py-10 px-6 sm:px-10">
-    <h1 className="text-3xl  font-bold text-start mb-6">FAQs</h1>
+  <h1 className="font-serif text-2xl sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-bold mt-4 
+  bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text">
+  FAQs
+</h1>
 
     {/* Mapping over JSON data */}
     {faqData.map((faq, index) => (
