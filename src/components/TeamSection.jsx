@@ -7,6 +7,12 @@ const TeamSection = ({ team, isRightAligned }) => {
   const gridClass = `TeamsPage-team-${memberCount}`; // Dynamic class based on member count
 
   return (
+    <>
+    <div>
+
+      {/* here goes you new code for displaying the core members as we desired */}
+    </div>
+    
     <div className={`TeamsPage-team-section ${isRightAligned ? "TeamsPage-right" : "TeamsPage-left"}`}>
       {!isRightAligned && <div className="TeamsPage-team-title">{team.title}</div>}
       
@@ -27,6 +33,7 @@ const TeamSection = ({ team, isRightAligned }) => {
 
       {isRightAligned && <div className="TeamsPage-team-title">{team.title}</div>}
     </div>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 .TeamsPage-hexagon-border {
-  width: 171px;
-  height: 157px;
+  width: 217px;
+  height: 222px;
   background-color: #F82121;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   display: flex;
@@ -11,8 +11,8 @@
 }
 
 .TeamsPage-hexagon {
-  width: 165px;
-  height: 151px;
+  width: 208px;
+  height: 214px;
   background-color: white;
   clip-path: inherit;
   overflow: hidden;
@@ -64,7 +64,7 @@
 
 .TeamsPage-social-links {
   display: flex;
-  gap: 10px;
+  gap: 17px;
   background-color: transparent;
 }
 
@@ -73,14 +73,14 @@
 }
 
 .TeamsPage-social-links img {
-  width: 25px;
-  height: 25px;
-  transition: transform 0.2s;
+  width: 33px;
+  height: 33px;
+  transition: transform 0.1s;
   background-color: transparent;
 }
 
 .TeamsPage-social-links img:hover {
-  transform: scale(1.5);
+  transform: scale(1.15);
 }
 
 @media (max-width: 420px) {
@@ -108,7 +108,22 @@
     height: 18px;
   }
 
+  /* Disable scaling on mobile */
   .TeamsPage-social-links img:hover {
-    transform: scale(1.5);
+    transform: none;
+  }
+
+  /* Ensure overlay appears when class is added via JS */
+  .TeamsPage-hexagon-border.TeamsPage-hovered .TeamsPage-hexagon-overlay {
+    opacity: 1;
+  }
+
+  /* Reduce image opacity when touched */
+  .TeamsPage-hexagon-border.TeamsPage-hovered img {
+    opacity: 0.7;
+  }
+
+  .TeamsPage-hexagon-border.TeamsPage-hovered {
+    background-color: white;
   }
 }

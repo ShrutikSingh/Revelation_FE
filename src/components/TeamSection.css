@@ -32,11 +32,11 @@
 }
 
 .TeamsPage-team-title {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: bold;
   background: linear-gradient(to bottom, #964848, #301717); /* Top-down gradient */
   color: white;
-  border: 1.5px solid red;
+  border: 2.5px solid red;
   text-transform: uppercase;
   border-radius: 20px;
   display: flex;
@@ -75,18 +75,18 @@
 }
 
 .TeamsPage-team-3 .TeamsPage-second-row {
-  margin-top: -30px; 
+  margin-top: -45px; 
 }
 
 .TeamsPage-team-4 .TeamsPage-hexagon-row {
   display: flex;
-  width: 350px;
+  width: 470px;
   background-color: #202020;
 }
 
 .TeamsPage-team-4 .TeamsPage-second-row {
-  margin-left: 85px;
-  margin-top: -30px; 
+  margin-left: 107px;
+  margin-top: -40px; 
 }
 
 .TeamsPage-team-5 .TeamsPage-hexagon-row {
@@ -96,11 +96,11 @@
 }
 
 .TeamsPage-team-5 .TeamsPage-second-row {
-  margin-top: -30px; 
+  margin-top: -40px; 
 }
 
 .TeamsPage-team-2 {
-  width: 40%;
+  width: 50%;
 }
 
 .TeamsPage-team-3 {
