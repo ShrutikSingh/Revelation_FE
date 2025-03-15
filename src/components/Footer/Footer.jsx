@@ -1,17 +1,16 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import topArrow from "../../assets/top-arrow.webp"; 
+import topArrow from "../../assets/top-arrow.webp";
 
 const Footer = () => {
- 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", 
+      behavior: "smooth",
     });
   };
 
   return (
-    <footer className="bg-black text-gray-300 py-4 px-6 w-full">
+    <footer className="bg-black text-gray-300 py-4 px-6 w-full relative">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-start">
         
         {/* Left Section - Logo & Description */}
@@ -47,22 +46,22 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Social Media Icons - Stacked on the Right */}
+      <div className="absolute right-16 bottom-10 flex flex-col space-y-3">
+        <a href="https://www.facebook.com/revelationiiest?sfnsn=wiwspwa&mibextid=RUbZ1f" className="bg-gray-800 p-3 rounded-full shadow-lg hover:bg-red-500 transition duration-300" target="_blank" rel="noopener noreferrer">
+          <FaFacebookF className="text-white text-xl" />
+        </a>
+        <a href="https://www.instagram.com/asce.iiests?igsh=MW95YmJmdzk4cG85Nw==" className="bg-gray-800 p-3 rounded-full shadow-lg hover:bg-red-500 transition duration-300" target="_blank" rel="noopener noreferrer">
+          <FaInstagram className="text-white text-xl" />
+        </a>
+        <a href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all" className="bg-gray-800 p-3 rounded-full shadow-lg hover:bg-red-500 transition duration-300" target="_blank" rel="noopener noreferrer">
+          <FaLinkedinIn className="text-white text-xl" />
+        </a>
+      </div>
+
       {/* Copyright Section */}
       <div className="text-center text-sm mt-6 border-t border-gray-700 pt-4">
         © 2025 Revelation. All rights reserved.
-      </div>
-
-      {/* Social Media Icons - Positioned at Rightmost Side */}
-      <div className="fixed bottom-[80px] right-14 flex flex-col space-y-3">
-        <a href="#" className="bg-gray-800 p-4 rounded-full shadow-lg hover:bg-red-500 transition duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-          <FaFacebookF className="text-white text-xl" />
-        </a>
-        <a href="https://www.instagram.com/asce.iiests?igsh=MW95YmJmdzk4cG85Nw==" className="bg-gray-800 p-4 rounded-full shadow-lg hover:bg-red-500 transition duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className="text-white text-xl" />
-        </a>
-        <a href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all" className="bg-gray-800 p-4 rounded-full shadow-lg hover:bg-red-500 transition duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-          <FaLinkedinIn className="text-white text-xl" />
-        </a>
       </div>
 
       {/* Back to Top Button */}

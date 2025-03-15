@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const Event = ({ event, type }) => {
-  const [live, setLive] = useState(event.isLive);
   const navigate = useNavigate();
+  const [live, setLive] = useState(event.isLive);
 
   const handleEventClick = (e) => {
     e.stopPropagation();
-    // console.log("Button Click");
-    // alert(event.name);
-    navigate(`/event/${event.name.replace(/\s+/g,"-").toLowerCase()}`);
+    console.log("Button Click");
+    navigate(`/event/${event.id}`);
   }
   const timeToMinutes = (time) => {
     const [hours, minute] = time.split(":").map(Number);

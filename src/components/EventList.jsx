@@ -6,35 +6,32 @@ import NormalDayRight from "./NormalDayRight";
 import HighlightedDay from "./HighlightedDay";
 import { useRef } from "react"; // Import useRef
 
-
-
-
 const eventSchedule = [
     {
         day: "DAY-1",
         date: "March 21, 2025",
         events: [
-            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg" },
-            { name: "Ganitam", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg" },
-            { name: "Hackathon", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg" },
+            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Ganitam", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27'},
+            { name: "Hackathon", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
         ]
     },
     {
         day: "DAY-2",
         date: "March 22, 2025",
         events: [
-            { name: "Root Access", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg" },
-            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg" },
-            { name: "BrainDead", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg" },
+            { name: "Root Access", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27'},
+            { name: "BrainDead", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
         ]
     },
     {
         day: "DAY-3",
         date: "March 6, 2025",
         events: [
-            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg" },
-            { name: "Murder Mystery", startTime: "00:00", endTime: "02:18", isLive: false, gif: "vite.svg" },
-            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg" },
+            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Murder Mystery", startTime: "00:00", endTime: "02:18", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
         ]
     }
 ];
