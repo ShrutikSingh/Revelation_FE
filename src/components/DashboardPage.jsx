@@ -21,6 +21,7 @@ const DashboardPage = () => {
   const [expandedTeam, setExpandedTeam] = useState(null);
   const [userTeam, setUserTeam] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState(null);
   const {id} = useParams();
     if (!id) {
         return <h1>Loading...</h1>;  // or redirect to a proper page
@@ -32,35 +33,31 @@ const DashboardPage = () => {
     //     return <h1>Event Not Found</h1>;
     // }
   
-  const teams = [
-    { 
-      name: "Alpha", 
-      members: ["Foobar1", "Foobar2", "Foobar3"], 
-      leader: "Random xyz" 
-    },
-    { 
-      name: "Beta", 
-      members: ["MemberA", "MemberB", "MemberC", "MemberD"], 
-      leader: "Leader Beta" 
-    },
-    { 
-      name: "Gamma", 
-      members: ["X1", "X2"], 
-      leader: "Gamma Leader" 
-    }
-  ];
+    const [currentPage, setCurrentPage] = useState(1);
+    const teamsPerPage = 5; // Number of teams per page
+  
+    const teams = [
+      { name: "Alpha", members: ["Foobar1", "Foobar2", "Foobar3"], leader: "Random xyz" },
+      { name: "Beta", members: ["MemberA", "MemberB", "MemberC", "MemberD"], leader: "Leader Beta" },
+      { name: "Gamma", members: ["X1", "X2"], leader: "Gamma Leader" },
+      { name: "Delta", members: ["D1", "D2", "D3", "D4"], leader: "Delta Leader" },
+      { name: "Epsilon", members: ["E1", "E2", "E3"], leader: "Epsilon Leader" },
+      { name: "Zeta", members: ["Z1", "Z2", "Z3"], leader: "Zeta Leader" },
+      { name: "Eta", members: ["Eta1", "Eta2"], leader: "Eta Leader" },
+      { name: "Theta", members: ["Theta1", "Theta2"], leader: "Theta Leader" },
+    ];
 
   useEffect(() => {
     // Using demo data instead of fetching from backend
     const demoData = {
-      isNonIIESTian: false, // Change to false to test
+      isNonIIESTian: true, // Change to false to test
       paymentAmount: 200,
       qrCode: "qr.png",
     };
 
     setIsNonIIESTian(demoData.isNonIIESTian);
     setPaymentAmount(demoData.paymentAmount);
-    setQrCode(demoData.qrCode);
+    setQrCode("/qr.png");
   }, []);
 
   const handleCreateClick = () => {
@@ -92,6 +89,20 @@ const DashboardPage = () => {
     setExpandedTeam(expandedTeam === teamName ? null : teamName);
   };
   const dashName = `/event/${id}`;
+
+
+  const filteredTeams = teams.filter((team) =>
+    team.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
+  const indexOfLastTeam = currentPage*teamsPerPage;
+  const indexOffirstTeam = indexOfLastTeam - teamsPerPage;
+  const currentTeams = filteredTeams.slice(indexOffirstTeam, indexOfLastTeam);
+
+  const paginate = (pageNumber)=> {
+      setCurrentPage(pageNumber)
+  }
 
   return (
     <motion.div initial={{ opacity: 0, y: 20, scale: 0.9 }} // Start slightly below and scaled down
@@ -218,8 +229,17 @@ const DashboardPage = () => {
                 value={teamName}
                 onChange={(e) => setTeamName(e.target.value)}
                 required
-                className="w-full p-2 border rounded-md text-black"
+                className="w-full p-2 border rounded-md text-black mb-2"
                 placeholder="Team Name"
+              />
+              <label className="block text-lg mb-2 font-semibold">Enter your phone number:</label>
+              <input
+                type="phone"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+                className="w-full p-2 border rounded-md text-black"
+                placeholder="Phone Number"
               />
 
               {/* Payment Section for Non-IIESTians */}
@@ -263,12 +283,10 @@ const DashboardPage = () => {
               className="w-50 p-2 border rounded-md text-black"
             />
             <ul className="mt-2 text-white">
-                {teams
-                    .filter((team) => team.name.toLowerCase().includes(searchQuery.toLowerCase()))
-                    .map((team, index) => (
+                {currentTeams.map((team, index) => (
                     <li key={index} className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2">
                         <div className="flex items-center justify-between">
-                        <span className="">{index + 1}. {team.name}</span>
+                        <span className="">{indexOfLastTeam+index + 1}. {team.name}</span>
                         <span className="flex absolute left-80">
                             <FaUserFriends className="text-red-500 mr-1" /> {team.members.length + 1} Members
                         </span>
@@ -298,6 +316,34 @@ const DashboardPage = () => {
                     </li>
                     ))}
                 </ul>
+                                {/* Pagination Controls */}
+          <div className="flex justify-center mt-4 space-x-2">
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-3 py-1 border-2 rounded-lg ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : "border-red-600 hover:bg-red-600"}`}
+            >
+              Prev
+            </button>
+            
+            {Array.from({ length: Math.ceil(filteredTeams.length / teamsPerPage) }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => paginate(i + 1)}
+                className={`px-3 py-1 border-2 rounded-lg ${currentPage === i + 1 ? "bg-red-600" : "border-red-600 hover:bg-red-600"}`}
+              >
+                {i + 1}
+              </button>
+            ))}
+            
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={indexOfLastTeam >= filteredTeams.length}
+              className={`px-3 py-1 border-2 rounded-lg ${indexOfLastTeam >= filteredTeams.length ? "opacity-50 cursor-not-allowed" : "border-red-600 hover:bg-red-600"}`}
+            >
+              Next
+            </button>
+          </div>
           </div>
         </div>
       </div>
