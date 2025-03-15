@@ -9,11 +9,11 @@ import Navbar from "../../components/Navbar/Navbar";
 import TopBox from "../../components/HeroPage/HeroSection";
 import AboutUs from "../../components/HeroPage/AboutUs";
 import HeroSection from "../../components/HeroPage/HeroSection";
-
+import Faqs from "../FAQs/Faqs";
 const HomePage = () => {
     return (
         <div
-            className="w-full min-h-screen flex flex-col items-center gap-y-40"
+            className="w-full min-h-screen flex flex-col items-center gap-y-[200px]"
             style={{ 
                 backgroundImage: `url(${bgImage})`,
                 backgroundSize: "cover",
@@ -25,12 +25,13 @@ const HomePage = () => {
             }}
         >
             <Navbar />
-            <HeroSection />
+            <HeroSection  />
             <AboutUs />
-            <Participants />
+            <Participants  />
             <EventSlider />
             <Gallery />
             <Sponsorship />
+            <Faqs />
             <Footer />
         </div>
     );
