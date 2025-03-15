@@ -184,8 +184,8 @@ const EventList = () => {
                     <button className="px-6 py-2 border-2 border-[#810000] text-white text-lg font-bold rounded-md hover:bg-[#810000] transition">
                         DOWNLOAD SCHEDULE
                     </button>
-                    <div className="text-[#FF0000] text-sm font-bold px-4 py-2 rounded-md">
-                        LIVE <span className="text-white">Blood Donation Camp is live now!</span>
+                    <div className="text-[#FF0000] text-[12px] font-semibold px-4 py-2 rounded-md">
+                        LIVE. <span className="text-white text-[12px]"> Revelation4.0 is live now!!!</span>
                     </div>
                 </div>
 
