@@ -13,12 +13,15 @@ const Sponsorship = () => {
   return (
     <div className="min-h-screen text-white text-center flex flex-col justify-center items-center px-4">
       {/* Title Section */}
-      <p className="font-mono text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">
-        Have a Look at our Past
-      </p>
-      <h1 className="font-serif text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-4">
-        SPONSORS
-      </h1>
+      <p className="font-mono text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold 
+  bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text">
+  Have a Look at our Past
+</p>
+
+<h1 className="font-serif text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-4 
+  bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text">
+  SPONSORS
+</h1>
 
       {/* Sponsor Grid Container */}
       <div className="container mx-auto flex flex-col justify-center items-center gap-16 mt-16">
