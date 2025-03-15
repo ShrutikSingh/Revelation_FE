@@ -4,20 +4,26 @@ import "./TeamSection.css";
 
 const TeamSection = ({ team, isRightAligned }) => {
   const memberCount = team.members.length;
-  const gridClass = `team-${memberCount}`; // Dynamic class based on member count
+  const gridClass = `TeamsPage-team-${memberCount}`; // Dynamic class based on member count
 
   return (
-    <div className={`team-section ${isRightAligned ? "right" : "left"}`}>
-      {!isRightAligned && <div className="team-title">{team.title}</div>}
+    <>
+    <div>
+
+      {/* here goes you new code for displaying the core members as we desired */}
+    </div>
+    
+    <div className={`TeamsPage-team-section ${isRightAligned ? "TeamsPage-right" : "TeamsPage-left"}`}>
+      {!isRightAligned && <div className="TeamsPage-team-title">{team.title}</div>}
       
-      <div className={`hexagon-grid ${gridClass}`}>
-        <div className="hexagon-row">
+      <div className={`TeamsPage-hexagon-grid ${gridClass}`}>
+        <div className="TeamsPage-hexagon-row">
           {team.members.slice(0, 2).map((member, index) => (
             <HexagonCard key={index} {...member} />
           ))}
         </div>
         {memberCount > 2 && (
-          <div className="hexagon-row second-row">
+          <div className="TeamsPage-hexagon-row TeamsPage-second-row">
             {team.members.slice(2).map((member, index) => (
               <HexagonCard key={index + 2} {...member} />
             ))}
@@ -25,8 +31,9 @@ const TeamSection = ({ team, isRightAligned }) => {
         )}
       </div>
 
-      {isRightAligned && <div className="team-title">{team.title}</div>}
+      {isRightAligned && <div className="TeamsPage-team-title">{team.title}</div>}
     </div>
+    </>
   );
 };
 

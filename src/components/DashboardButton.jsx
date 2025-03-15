@@ -19,10 +19,7 @@ const DashboardButton = ({ link, content, onClick }) => {
       </span>
     </button>
   ) : (
-    <a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
+    <div 
       className="relative ml-2 inline-flex items-center px-6 py-2 text-white text-sm font-bold border-2 border-red-600 uppercase tracking-widest transition-all duration-300 group"
     >
       {/* Outer border effect */}
@@ -35,7 +32,7 @@ const DashboardButton = ({ link, content, onClick }) => {
         {content}
         <span className="text-xl">→</span>
       </span>
-    </a>
+    </div>
   );
 };
 

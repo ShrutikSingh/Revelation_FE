@@ -1,10 +1,13 @@
-.teams-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; 
-    width: 100%;
-    margin-top: -100px;
-  }
-  
-
-  
+.TeamsPage-teams-container {
+  font-family: 'Goldman', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+  width: 100%;
+  margin-top: -100px;
+  overflow-x: hidden;
+  /* margin:0px ; */
+}
+::-webkit-scrollbar {
+    display: none;
+  }  

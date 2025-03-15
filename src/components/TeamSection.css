@@ -1,4 +1,4 @@
-.team-section {
+.TeamsPage-team-section {
   width: 75%;
   display: flex;
   align-items: center;
@@ -10,11 +10,12 @@
   border-radius: 30px;
   background-color: #202020;
 }
-.hexagon-grid{
+
+.TeamsPage-hexagon-grid {
   background-color: #202020;
 }
 
-.team-section.right {
+.TeamsPage-team-section.TeamsPage-right {
   margin-left: 25%;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -22,7 +23,7 @@
   border-right: none;
 }
 
-.team-section.left {
+.TeamsPage-team-section.TeamsPage-left {
   margin-right: 25%;
   padding-left: 0px;
   border-top-left-radius: 0px;
@@ -30,14 +31,12 @@
   border-left: none;
 }
 
-.team-title {
-  /* height: 80px; */
-  /* width: 35%; */
-  font-size: 20px;
+.TeamsPage-team-title {
+  font-size: 26px;
   font-weight: bold;
   background: linear-gradient(to bottom, #964848, #301717); /* Top-down gradient */
   color: white;
-  border: 1.5px solid red;
+  border: 2.5px solid red;
   text-transform: uppercase;
   border-radius: 20px;
   display: flex;
@@ -46,16 +45,15 @@
   padding: 20px 20px;
 }
 
-.right .team-title {
+.TeamsPage-right .TeamsPage-team-title {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   border-right: none;
   justify-content: start;
-  /* padding-left: 10px; */
   padding-right: 50px;
 }
 
-.left .team-title {
+.TeamsPage-left .TeamsPage-team-title {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   border-left: none;
@@ -63,120 +61,131 @@
   padding-left: 50px;
 }
 
-
-/* alignment of different hexagons */
-.team-2 .hexagon-row {
+/* Alignment of different hexagons */
+.TeamsPage-team-2 .TeamsPage-hexagon-row {
   display: flex;
   flex-wrap: wrap;
   background-color: #202020;
 }
-.team-3 .hexagon-row {
+
+.TeamsPage-team-3 .TeamsPage-hexagon-row {
   display: flex;
   justify-content: center;
   background-color: #202020;
 }
-.team-3 .second-row {
-  margin-top: -30px; 
+
+.TeamsPage-team-3 .TeamsPage-second-row {
+  margin-top: -45px; 
 }
 
-.team-4 .hexagon-row{
+.TeamsPage-team-4 .TeamsPage-hexagon-row {
   display: flex;
-  width: 350px;
+  width: 470px;
   background-color: #202020;
 }
 
-.team-4 .second-row{
-  margin-left: 85px;
-  margin-top: -30px; 
+.TeamsPage-team-4 .TeamsPage-second-row {
+  margin-left: 107px;
+  margin-top: -40px; 
 }
 
-.team-5 .hexagon-row {
+.TeamsPage-team-5 .TeamsPage-hexagon-row {
   display: flex;
   justify-content: center;
   background-color: #202020;
 }
-.team-5 .second-row {
-  margin-top: -30px; 
+
+.TeamsPage-team-5 .TeamsPage-second-row {
+  margin-top: -40px; 
 }
 
-.team-2{
-  width: 40%;
-}
-.team-3{
+.TeamsPage-team-2 {
   width: 50%;
 }
-.team-4{
+
+.TeamsPage-team-3 {
+  width: 50%;
+}
+
+.TeamsPage-team-4 {
   width: 55%;
 }
 
-@media (max-width:420px){
-  .team-section {
+@media (max-width: 420px) {
+  .TeamsPage-team-section {
     width: 95%;
     flex-direction: column;
     gap: 20px;
     padding: 20px 5px;
     margin-top: 0px;
   }
-  .team-section.right {
+
+  .TeamsPage-team-section.TeamsPage-right {
     margin-left: 5%;
   }
-  .team-title {
+
+  .TeamsPage-team-title {
     font-size: 10px;
     font-weight: normal;
   }
-  
-  .right .team-title {
+
+  .TeamsPage-right .TeamsPage-team-title {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    border-right:  1.5px solid red;
-    justify-content: center;
-    padding: 10px;
-  }
-  
-  .left .team-title {
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-left:  1.5px solid red;
+    border-right: 1.5px solid red;
     justify-content: center;
     padding: 10px;
   }
 
-  .team-2 .hexagon-row {
+  .TeamsPage-left .TeamsPage-team-title {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-left: 1.5px solid red;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .TeamsPage-team-2 .TeamsPage-hexagon-row {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
   }
-  .team-3 .second-row {
+
+  .TeamsPage-team-3 .TeamsPage-second-row {
     margin-top: -20px; 
   }
-  .team-4 .hexagon-row{
+
+  .TeamsPage-team-4 .TeamsPage-hexagon-row {
     display: flex;
     width: 250px;
     background-color: #202020;
   }
-  
-  .team-4 .second-row{
+
+  .TeamsPage-team-4 .TeamsPage-second-row {
     margin-left: 60px;
     margin-top: -20px; 
   }
-  
-  .team-5 .hexagon-row {
+
+  .TeamsPage-team-5 .TeamsPage-hexagon-row {
     display: flex;
     justify-content: center;
     background-color: #202020;
   }
-  .team-5 .second-row {
+
+  .TeamsPage-team-5 .TeamsPage-second-row {
     margin-top: -20px; 
   }
-  
-  .team-2{
+
+  .TeamsPage-team-2 {
     width: 70%;
   }
-  .team-3{
+
+  .TeamsPage-team-3 {
     width: 70%;
   }
-  .team-4{
+
+  .TeamsPage-team-4 {
     width: 70%;
   }
 }

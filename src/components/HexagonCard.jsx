@@ -1,26 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HexagonCard.css";
 
 const HexagonCard = ({ name, image, linkedin, instagram }) => {
   const [hovered, setHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 420);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 420);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleInteraction = () => {
+    if (isMobile) {
+      setHovered(!hovered);
+    }
+  };
 
   return (
     <div
-      className={`hexagon-border ${hovered ? "hovered" : ""}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      className={`TeamsPage-hexagon-border ${hovered ? "TeamsPage-hovered" : ""}`}
+      onMouseEnter={!isMobile ? () => setHovered(true) : undefined}
+      onMouseLeave={!isMobile ? () => setHovered(false) : undefined}
+      onClick={isMobile ? handleInteraction : undefined}
     >
-      <div className="hexagon">
-        <img src={image} alt={name} className="hexagon-image" />
+      <div className="TeamsPage-hexagon">
+        <img src={image} alt={name} className="TeamsPage-hexagon-image" />
         {hovered && (
-          <div className="hexagon-overlay">
-            <p className="member-name">{name}</p>
-            <div className="social-links">
+          <div className="TeamsPage-hexagon-overlay">
+            <p className="TeamsPage-member-name">{name}</p>
+            <div className="TeamsPage-social-links">
               <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                <img src={"/assets/linkedin.png"} alt="LinkedIn" />
+                <img
+                  src={"/assets/linkedin.png"}
+                  alt="LinkedIn"
+                  onClick={(e) => isMobile && e.stopPropagation()}
+                />
               </a>
               <a href={instagram} target="_blank" rel="noopener noreferrer">
-                <img src={"/assets/instagram.png"} alt="Instagram" />
+                <img
+                  src={"/assets/instagram.png"}
+                  alt="Instagram"
+                  onClick={(e) => isMobile && e.stopPropagation()}
+                />
               </a>
             </div>
           </div>

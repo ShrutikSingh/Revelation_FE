@@ -4,10 +4,13 @@ import { FaUserFriends} from "react-icons/fa";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import {motion} from "framer-motion";
 import { Link } from "react-router-dom";
+import EventData from "../data/EventData.jsx";
+import { useParams } from "react-router-dom";
 
 
+const DashboardPage = () => {
 
-const DashboardPage = ({eventData}) => {
+
   const [showForm, setShowForm] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [isNonIIESTian, setIsNonIIESTian] = useState(false);
@@ -18,7 +21,17 @@ const DashboardPage = ({eventData}) => {
   const [expandedTeam, setExpandedTeam] = useState(null);
   const [userTeam, setUserTeam] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
-
+  const {id} = useParams();
+    if (!id) {
+        return <h1>Loading...</h1>;  // or redirect to a proper page
+    }
+    
+    // const eventData = EventData.find(event => event.title.replace(/\s+/g,"-").toLowerCase() === eventName.toLowerCase())
+    // Need to fetch the complete data of event from the backend or we can just give it here 
+    // if (!eventData) {
+    //     return <h1>Event Not Found</h1>;
+    // }
+  
   const teams = [
     { 
       name: "Alpha", 
@@ -78,6 +91,7 @@ const DashboardPage = ({eventData}) => {
   const toggleDropdown = (teamName) => {
     setExpandedTeam(expandedTeam === teamName ? null : teamName);
   };
+  const dashName = `/event/${id}`;
 
   return (
     <motion.div initial={{ opacity: 0, y: 20, scale: 0.9 }} // Start slightly below and scaled down
@@ -110,7 +124,7 @@ const DashboardPage = ({eventData}) => {
           </clipPath>
           <rect width="100%" height="100%" fill="black" clipPath="url(#clipper)" />
           <image
-                        href={eventData.bgUrl}
+                        // href={eventData.bgUrl}
                         width="100%"
                         height="100%"
                         preserveAspectRatio="xMidYMid slice"
@@ -127,14 +141,14 @@ const DashboardPage = ({eventData}) => {
           />
         </svg>
         <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg z-10">
-            {eventData.title}
+            {/* {eventData.title} */}
           </div>
 
         
         <div className="relative z-10 p-6 h-full flex flex-col items-center">
           <div className="bg-red-800 px-4 py-2 inline-block border-2 border-red-600 mb-10 ml-20 mt-10 rounded-lg"><h1 className="text-2xl font-bold mb-0 text-white">Dashboard</h1></div>
-          <div className="absolute mt-10 right-0"><Link to="/">
-                  <DashboardButton link="#" content="Event " />
+          <div className="absolute mt-10 right-0"><Link to={dashName}>
+                  <DashboardButton  content="Event " />
                 </Link></div>
 
 
