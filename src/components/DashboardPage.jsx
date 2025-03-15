@@ -110,6 +110,7 @@ const DashboardPage = () => {
   }
 
   return (
+    <div className="bg-[url('public/grid.png')] bg-cover bg-center" >
     <motion.div initial={{ opacity: 0, y: 20, scale: 0.9 }} // Start slightly below and scaled down
     animate={{ opacity: 1, y: 0, scale: 1 }} // Bring to normal position
     exit={{ opacity: 0, y: -20, scale: 0.9 }} // Animate out upwards
@@ -353,6 +354,7 @@ const DashboardPage = () => {
         </div>
       </div>
     </motion.div>
+    </div>
   );
 };
 
