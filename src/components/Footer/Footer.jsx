@@ -11,7 +11,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-gray-300 py-8 px-6 w-full fixed bottom-0">
+    <footer className="bg-black text-gray-300 py-4 px-6 w-full">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-start">
         
         {/* Left Section - Logo & Description */}
@@ -54,39 +54,18 @@ const Footer = () => {
 
       {/* Social Media Icons - Positioned at Rightmost Side */}
       <div className="fixed bottom-[80px] right-14 flex flex-col space-y-3">
-    {/* Facebook Icon */}
-    <a 
-      href="#" 
-      className="bg-gray-800 p-4 rounded-full shadow-lg shadow-black relative hover:bg-red-500 transition duration-300 transform hover:scale-105 active:scale-"
-      target="_blank" rel="noopener noreferrer"
-    >
-      <FaFacebookF className="text-white text-xl relative z-10" />
-      <div className="absolute bottom-0 right-0 bg-black w-5 h-5 rounded-br-full transform rotate-45"></div>
-    </a>
+        <a href="#" className="bg-gray-800 p-4 rounded-full shadow-lg hover:bg-red-500 transition duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
+          <FaFacebookF className="text-white text-xl" />
+        </a>
+        <a href="https://www.instagram.com/asce.iiests?igsh=MW95YmJmdzk4cG85Nw==" className="bg-gray-800 p-4 rounded-full shadow-lg hover:bg-red-500 transition duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
+          <FaInstagram className="text-white text-xl" />
+        </a>
+        <a href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all" className="bg-gray-800 p-4 rounded-full shadow-lg hover:bg-red-500 transition duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
+          <FaLinkedinIn className="text-white text-xl" />
+        </a>
+      </div>
 
-    {/* Instagram Icon */}
-    <a 
-      href="https://www.instagram.com/asce.iiests?igsh=MW95YmJmdzk4cG85Nw==" 
-      className="bg-gray-800 p-4 rounded-full shadow-lg shadow-black relative hover:bg-red-500 transition duration-300 transform hover:scale-105 active:scale-95"
-      target="_blank" rel="noopener noreferrer"
-    >
-      <FaInstagram className="text-white text-xl relative z-10" />
-      <div className="absolute bottom-0 right-0 bg-black w-5 h-5 rounded-br-full transform rotate-45"></div>
-    </a>
-
-    {/* LinkedIn Icon */}
-    <a 
-      href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all" 
-      className="bg-gray-800 p-4 rounded-full shadow-lg shadow-black relative hover:bg-red-500 transition duration-300 transform hover:scale-105 active:scale-95"
-      target="_blank" rel="noopener noreferrer"
-    >
-      <FaLinkedinIn className="text-white text-xl relative z-10" />
-      <div className="absolute bottom-0 right-0 bg-black w-5 h-5 rounded-br-full transform rotate-45"></div>
-    </a>
-  </div>
-
-
-      {/* Back to Top Button - Functional */}
+      {/* Back to Top Button */}
       <div className="fixed bottom-4 right-6">
         <button 
           onClick={scrollToTop} 
