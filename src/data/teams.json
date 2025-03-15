@@ -21,7 +21,7 @@
     "members": [
       {
         "name": "Sarthi Singh",
-        "image": "/assets/spiderman.png",
+        "image": "/assets/Sarthi Singh.jpg",
         "linkedin": "https://www.linkedin.com/in/sarthisingh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         "instagram": "https://www.instagram.com/_sarthi.singh_?igsh=MWFwYXB2Z3FkNDd6aw%3D%3D&utm_source=qr"
       },
@@ -34,23 +34,59 @@
     ]
   },
   {
+    "title": "Website Team",
+    "members": [
+      {
+        "name": "Mukara Issac",
+        "image": "/assets/Mukara Issac.jpg",
+        "linkedin": "https://www.linkedin.com/in/issac-mukara-156779256/",
+        "instagram": "https://instagram.com/alicebrown"
+      },
+      {
+        "name": "Subham Ghosh",
+        "image": "/assets/Shubham Ghosh.jpg",
+        "linkedin": "https://www.linkedin.com/in/subham-ghosh-56b5511b6/?originalSubdomain=in",
+        "instagram": "https://instagram.com/bobjohnson"
+      },
+      {
+        "name": "Tejas Pawar",
+        "image": "/assets/Tejas Pawar.jpg",
+        "linkedin": "https://www.linkedin.com/in/tejaspawar429/?originalSubdomain=in",
+        "instagram": "https://www.instagram.com/tejaspawar_429/"
+      },
+      {
+        "name": "Shruti Kumari Singh",
+        "image": "/assets/Shruti Singh.jpg",
+        "linkedin": "https://www.linkedin.com/in/shruti-singh-5442532a9/",
+        "instagram": "https://www.instagram.com/__._shruti_.___?igsh=bnJocnF2YmN2dzh2"
+      }
+      ,
+      {
+        "name": "Sanjoy Garai",
+        "image": "/assets/Sanjoy Garai.jpg",
+        "linkedin": "https://www.linkedin.com/in/sanjoy-garai-a92538251/?originalSubdomain=in",
+        "instagram": "https://www.instagram.com/sanjoy.0.7/"
+      }
+    ]
+  },
+  {
     "title": "Finance Team",
     "members": [
       {
         "name": "Kota Yashwanth",
         "image": "/assets/spiderman.png",
         "linkedin": "https://www.linkedin.com/in/kota-yashwanth-62a0b7230/?originalSubdomain=in",
-        "instagram": "https://instagram.com/alicebrown"
+        "instagram": "https://www.instagram.com/yashwanthkota36/profilecard/?igsh=MWJ4bWlqZHVlNTIwNg=="
       },
       {
         "name": "K Satya Sai",
         "image": "/assets/K Satya Sai.jpg",
-        "linkedin": "https://www.linkedin.com/in/satya-sai-955ab1231/?originalSubdomain=in",
-        "instagram": "https://instagram.com/bobjohnson"
+        "linkedin": "https://www.linkedin.com/in/satya-sai-955ab1231/",
+        "instagram": "https://www.instagram.com/satya_sai_21__?igsh=MXRhcTQ5a244d3RsMA=="
       },
       {
         "name": "Mohammad Arafat Hussain",
-        "image": "/assets/spiderman.png",
+        "image": "/assets/Mohammad Arafat Hussain.jpg",
         "linkedin": "https://www.linkedin.com/in/arafat-hussain-mohammad-186829248?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         "instagram": "https://www.instagram.com/arafat_1108?igsh=MXYybWo0NHUyamhjaQ=="
       },
@@ -146,7 +182,7 @@
         "name": "Aryan D Rozario",
         "image": "/assets/Aryan D Rozario.jpg",
         "linkedin": "https://www.linkedin.com/in/aryan-d-rozario-925715277/?originalSubdomain=in",
-        "instagram": "https://instagram.com/janesmith"
+        "instagram": "https://www.instagram.com/antiblyatic?igsh=bmw3b3U4cDZ3MGtw"
       }
     ]
   },
@@ -175,7 +211,7 @@
         "name": "Vanga Sri Rohit Goud",
         "image": "/assets/spiderman.png",
         "linkedin": "https://www.linkedin.com/in/vanga-sri-rohith-goud-256a31259/?originalSubdomain=in",
-        "instagram": "https://instagram.com/janesmith"
+        "instagram": "https://www.instagram.com/srirohith_vanga/profilecard/?igsh=YTF0dGdqNmFpOWUx"
       },
       {
         "name": "Arpit Sharma",
@@ -225,42 +261,7 @@
       }
     ]
   },
-  {
-    "title": "Website Team",
-    "members": [
-      {
-        "name": "Mukara Issac",
-        "image": "/assets/Mukara Issac.jpg",
-        "linkedin": "https://www.linkedin.com/in/issac-mukara-156779256/",
-        "instagram": "https://instagram.com/alicebrown"
-      },
-      {
-        "name": "Subham Ghosh",
-        "image": "/assets/Shubham Ghosh.jpg",
-        "linkedin": "https://www.linkedin.com/in/subham-ghosh-56b5511b6/?originalSubdomain=in",
-        "instagram": "https://instagram.com/bobjohnson"
-      },
-      {
-        "name": "Tejas Pawar",
-        "image": "/assets/spiderman.png",
-        "linkedin": "https://www.linkedin.com/in/tejaspawar429/?originalSubdomain=in",
-        "instagram": "https://instagram.com/janesmith"
-      },
-      {
-        "name": "Shruti Kumari Singh",
-        "image": "/assets/Shruti Singh.jpg",
-        "linkedin": "https://www.linkedin.com/in/shruti-singh-5442532a9/",
-        "instagram": "https://www.instagram.com/__._shruti_.___?igsh=bnJocnF2YmN2dzh2"
-      }
-      ,
-      {
-        "name": "Sanjoy Garai",
-        "image": "/assets/Sanjoy Garai.jpg",
-        "linkedin": "https://www.linkedin.com/in/sanjoy-garai-a92538251/?originalSubdomain=in",
-        "instagram": "https://www.instagram.com/sanjoy.0.7/"
-      }
-    ]
-  },
+
   {
     "title": "Publicity Team",
     "members": [

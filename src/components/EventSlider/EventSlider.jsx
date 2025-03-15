@@ -32,7 +32,8 @@ const EventSlider = () => {
   useEffect(() => {
     const rotateCarousel = () => {
       if (!isPaused) {
-        setRotation((prevRotation) => prevRotation + 0.3); 
+        // Subtract instead of add to reverse the direction
+        setRotation((prevRotation) => prevRotation - 0.2);
       }
       requestRef.current = requestAnimationFrame(rotateCarousel);
     };
@@ -61,7 +62,9 @@ const EventSlider = () => {
             <div
               key={event.id}
               style={{
-                transform: `rotateY(${index * (360 / events.length)}deg) translateZ(400px) ${hoveredIndex === index ? "scale(1.2) translateZ(15px)" : ""}`,
+                transform: `rotateY(${index * (360 / events.length)}deg) translateZ(400px) ${
+                  hoveredIndex === index ? "scale(1.2) translateZ(15px)" : ""
+                }`,
                 transition: "transform 0.5s ease-out",
               }}
               className="absolute w-40 h-44 md:w-48 md:h-54 lg:w-52 lg:h-56 transition-transform duration-500 shadow-[10px_12px_30px_rgba(250,0,0,0.8)]"

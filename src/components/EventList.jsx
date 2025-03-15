@@ -6,12 +6,13 @@ import NormalDayRight from "./NormalDayRight";
 import HighlightedDay from "./HighlightedDay";
 import { useRef } from "react"; // Import useRef
 
+
 const eventSchedule = [
     {
         day: "DAY-1",
         date: "March 21, 2025",
         events: [
-            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d59ca882cf9619f8bf5122' },
             { name: "Ganitam", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27'},
             { name: "Hackathon", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
         ]
@@ -31,7 +32,7 @@ const eventSchedule = [
         events: [
             { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
             { name: "Murder Mystery", startTime: "00:00", endTime: "02:18", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d59ca882cf9619f8bf5122' },
         ]
     }
 ];
@@ -107,12 +108,14 @@ const EventList = () => {
         }, 300);
     };
 
-    return isPhoneSize ? (<div className="relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
+    return isPhoneSize ? (<div className="mt-10 relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
 
         <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
             Explore the Marvellous
         </h2>
-        <h1 className="text-[#EE0000] text-[74px] font-title">EVENTS</h1>
+        <div>
+        <h1 className="text-center text-[#EE0000] text-[74px] font-title">EVENTS</h1>
+        </div>
 
         {/* Download Button & Live Announcement */}
         <div className="flex flex-col items-center">
@@ -159,7 +162,7 @@ const EventList = () => {
 
     </div>) : (
 
-        <div ref={headRef} className="relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
+        <div ref={headRef} className="mt-[60px] relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
             {/* Title Section */}
             <motion.div variants={{
                 hidden: { opacity: 0, y: 50, scale: 0.5 },
@@ -174,15 +177,15 @@ const EventList = () => {
                 <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
                     Explore the Marvellous
                 </h2>
-                <h1 className="text-[#EE0000] text-[74px] font-title">EVENTS</h1>
+                <h1 className="text-[#EE0000] text-[74px] font-title text-center">EVENTS</h1>
 
                 {/* Download Button & Live Announcement */}
                 <div className="flex flex-col items-center">
                     <button className="px-6 py-2 border-2 border-[#810000] text-white text-lg font-bold rounded-md hover:bg-[#810000] transition">
                         DOWNLOAD SCHEDULE
                     </button>
-                    <div className="text-[#FF0000] text-sm font-bold px-4 py-2 rounded-md">
-                        LIVE <span className="text-white">Blood Donation Camp is live now!</span>
+                    <div className="text-[#FF0000] text-[12px] font-semibold px-4 py-2 rounded-md">
+                        LIVE. <span className="text-white text-[12px]"> Revelation4.0 is live now!!!</span>
                     </div>
                 </div>
 
@@ -210,7 +213,7 @@ const EventList = () => {
                     >
                         <div
                             ref={leftRef}
-                            className="col-span-3 flex justify-center cursor-pointer xl:ml-0"
+                            className="col-span-3 flex justify-center cursor-pointer xl:ml-40 lg:ml-20"
                             onClick={() => handleHighlighting(normalDays[0])}>
                             <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day} />
                         </div>
@@ -245,7 +248,7 @@ const EventList = () => {
                     >
                         <div
                             ref={rightRef}
-                            className="col-span-3 flex justify-center cursor-pointer xl:ml-0 lg:ml-[50px] "
+                            className="col-span-3 flex justify-center cursor-pointer xl:ml-0 lg:ml-[50px] lg:mr-[130px]"
                             onClick={() => handleHighlighting(normalDays[1])}>
                             <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />
                         </div>

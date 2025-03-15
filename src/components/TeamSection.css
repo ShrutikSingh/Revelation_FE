@@ -1,19 +1,67 @@
+.TeamsPage-core-members {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.TeamsPage-core-title {
+  font-size: 54px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  border: 1px solid red;
+  box-shadow: 0 0 10px 4px red;
+  border-radius: 20px;
+  width: 40%;
+  margin-left: 30vw;
+  margin-top: 30px;
+}
+
+.TeamsPage-core-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.TeamsPage-core-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: 20px;
+  padding: 20px;
+  /* transition: box-shadow 0.1s ease-in-out;  */
+  box-shadow: 0 0 10px 4px red;
+}
+
+.TeamsPage-core-position {
+  background-color: transparent;
+  border: 2px solid red;
+  color: white;
+  padding: 8px 14px;
+  margin-top: 30px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: box-shadow 0.1s ease-in-out; /* Smooth transition */
+  box-shadow: 0 0 10px 4px white; 
+  width: 200px;
+}
+
+
 .TeamsPage-team-section {
   width: 75%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 0.8px solid white;
+  /* border: 0.8px solid white; */
   padding: 20px;
   position: relative;
   margin-top: 40px;
   border-radius: 30px;
-  background-color: #202020;
+  transition: box-shadow 0.1s ease-in-out;
+  box-shadow: 0 0 10px 5px red;
 }
 
-.TeamsPage-hexagon-grid {
-  background-color: #202020;
-}
 
 .TeamsPage-team-section.TeamsPage-right {
   margin-left: 25%;
@@ -43,6 +91,7 @@
   align-items: center;
   justify-content: space-around;
   padding: 20px 20px;
+  box-shadow: 0 0 10px 7px white; 
 }
 
 .TeamsPage-right .TeamsPage-team-title {
@@ -65,13 +114,11 @@
 .TeamsPage-team-2 .TeamsPage-hexagon-row {
   display: flex;
   flex-wrap: wrap;
-  background-color: #202020;
 }
 
 .TeamsPage-team-3 .TeamsPage-hexagon-row {
   display: flex;
   justify-content: center;
-  background-color: #202020;
 }
 
 .TeamsPage-team-3 .TeamsPage-second-row {
@@ -81,7 +128,6 @@
 .TeamsPage-team-4 .TeamsPage-hexagon-row {
   display: flex;
   width: 470px;
-  background-color: #202020;
 }
 
 .TeamsPage-team-4 .TeamsPage-second-row {
@@ -92,7 +138,6 @@
 .TeamsPage-team-5 .TeamsPage-hexagon-row {
   display: flex;
   justify-content: center;
-  background-color: #202020;
 }
 
 .TeamsPage-team-5 .TeamsPage-second-row {
@@ -112,21 +157,42 @@
 }
 
 @media (max-width: 420px) {
+
+  .TeamsPage-core-members {
+    margin-bottom: 20px;
+    margin-top: -20px;
+  }
+  
+  .TeamsPage-core-title {
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .TeamsPage-core-card {
+    box-shadow: 0 0 10px 2.5px red;
+  }
+  
+  .TeamsPage-core-position {
+    box-shadow: 0 0 10px 3px white; 
+  }
+
   .TeamsPage-team-section {
-    width: 95%;
+    width: 90%;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     padding: 20px 5px;
-    margin-top: 0px;
+    margin-top: 30px;
+    box-shadow: 0 0 10px 3px red;
   }
 
   .TeamsPage-team-section.TeamsPage-right {
-    margin-left: 5%;
+    margin-left: 10%;
   }
 
   .TeamsPage-team-title {
     font-size: 10px;
     font-weight: normal;
+    box-shadow: 0 0 10px 3px white;
   }
 
   .TeamsPage-right .TeamsPage-team-title {
@@ -159,7 +225,6 @@
   .TeamsPage-team-4 .TeamsPage-hexagon-row {
     display: flex;
     width: 250px;
-    background-color: #202020;
   }
 
   .TeamsPage-team-4 .TeamsPage-second-row {
@@ -170,7 +235,6 @@
   .TeamsPage-team-5 .TeamsPage-hexagon-row {
     display: flex;
     justify-content: center;
-    background-color: #202020;
   }
 
   .TeamsPage-team-5 .TeamsPage-second-row {
