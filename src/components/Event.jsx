@@ -8,7 +8,6 @@ const Event = ({ event, type }) => {
   const handleEventClick = (e) => {
     e.stopPropagation();
     console.log("Button Click");
-    // alert(event.name);
     navigate(`/event/${event.id}`);
   }
   const timeToMinutes = (time) => {
