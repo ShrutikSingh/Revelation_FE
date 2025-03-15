@@ -10,7 +10,7 @@ import TopBox from "../../components/HeroPage/HeroSection";
 import AboutUs from "../../components/HeroPage/AboutUs";
 import HeroSection from "../../components/HeroPage/HeroSection";
 
-const HomePage = () => {
+const HomePage = ({Token,setToken}) => {
     return (
         <div
             className="w-full min-h-screen flex flex-col items-center gap-y-40"
@@ -24,7 +24,7 @@ const HomePage = () => {
                 width: "100%",
             }}
         >
-            <Navbar />
+            <Navbar Token={Token} setToken={setToken} />
             <HeroSection />
             <AboutUs />
             <Participants />
