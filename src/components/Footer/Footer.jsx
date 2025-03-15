@@ -48,7 +48,7 @@ const Footer = () => {
 
       {/* Social Media Icons - Stacked on the Right */}
       <div className="absolute right-16 bottom-10 flex flex-col space-y-3">
-        <a href="#" className="bg-gray-800 p-3 rounded-full shadow-lg hover:bg-red-500 transition duration-300" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/revelationiiest?sfnsn=wiwspwa&mibextid=RUbZ1f" className="bg-gray-800 p-3 rounded-full shadow-lg hover:bg-red-500 transition duration-300" target="_blank" rel="noopener noreferrer">
           <FaFacebookF className="text-white text-xl" />
         </a>
         <a href="https://www.instagram.com/asce.iiests?igsh=MW95YmJmdzk4cG85Nw==" className="bg-gray-800 p-3 rounded-full shadow-lg hover:bg-red-500 transition duration-300" target="_blank" rel="noopener noreferrer">
