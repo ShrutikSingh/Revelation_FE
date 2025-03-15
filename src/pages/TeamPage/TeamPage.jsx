@@ -3,7 +3,7 @@ import './TeamPage.css';
 import Teams from '../../components/Teams';
 import HeroSection from '../../components/HeroSection';
 import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer.jsx"
+import Footer from "../../components/Footer/Footer";
 
 function TeamPage({Token,setToken}) {
   return (
@@ -11,7 +11,7 @@ function TeamPage({Token,setToken}) {
       <Navbar Token={Token} setToken={setToken}/>
       <HeroSection />
       <Teams />
-      <Footer />
+      <Footer/>
     </div>
   );
 }
