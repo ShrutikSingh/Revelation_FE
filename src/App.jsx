@@ -35,16 +35,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        {/* <Route
-          path="/event-details"
-          element={
-            <>
-              <EventDetailsPage eventData={eventDetails} />
-              <EventRules />
-            </>
-          }
-        />
-        <Route path="/dashboard" element={<UserDashboard eventData={eventDetails} />} /> */}
 
         <Route path="/event/:eventName" element={<IndividualEvent />} />
         <Route path="/dashboard/:eventName" element={<DashboardPage />}></Route>
