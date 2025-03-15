@@ -12,7 +12,7 @@ import { format ,isValid, parseISO} from 'date-fns';
 const EventBoard = () => {
 
   const { id } = useParams();
-  const [eventData, setEvent] = useState([]);
+  const [eventData, setEvent] = useState({});
 
   const fetchEvents = async () => {
     try {
@@ -27,6 +27,10 @@ const EventBoard = () => {
   useEffect(() => {
     fetchEvents();
   }, []);
+
+  if(!eventData||Object.keys(eventData).length===0){
+    return <div>Loading...</div>
+  }
 
   console.log(eventData)
 
@@ -89,7 +93,7 @@ const EventBoard = () => {
           </clipPath>
           <rect width="100%" height="100%" fill="black" clipPath="url(#clipper)" />
           <image
-                        // src={eventData.posterImage.url}
+                        href={eventData.posterImage.url}
                         alt={eventData.name}
                         width="100%"
                         height="100%"
@@ -145,9 +149,9 @@ const EventBoard = () => {
           {/* EventCard for Sidebar */}
           <div className="absolute right-[-20px] bottom-[-0px] max-md:left-[30px] max-md:top-[-300px]">
             <EventCard
-              title={eventData.Name}
+              title={eventData.name}
               description="The Competitive Coding Contest"
-              // imageUrl={eventData.posterImage.url}
+              imageUrl={eventData.posterImage.url}
               dayText="Day 1"
             />
           </div>
