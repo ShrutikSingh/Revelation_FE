@@ -70,11 +70,11 @@ const EventBoard = () => {
   const dashlink=`/dashboard/${eventData._id}`;
 
   return (
-    <div className="bg-transparent text-white p-6 relative w-full max-w-[900px] h-[500px] max-md:h-[800px] max-md:mt-[400px] mx-auto max-md:ml-[-30px]">
+    <div className="bg-transparent text-white p-6 relative w-full max-w-[900px] h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden">
 
       <div className="relative w-full max-w-4xl h-full mx-auto">
         <svg
-          className="absolute top-5 left-0 w-full h-full z-0 max-md:w-[320px]"
+          className="absolute top-5 w-full h-full z-0 max-md:left-[0px] max-md:w-full"
           viewBox="0 0 900 500"
           preserveAspectRatio="none"
         >
@@ -87,7 +87,7 @@ const EventBoard = () => {
         </svg>
 
         <svg
-          className="absolute top-0 left-5 w-full h-full z-10 fill-black-600 max-md:w-[320px]"
+          className="absolute top-0 left-5 w-full h-full z-10 fill-black-600 max-md:w-full max-md:left-[5px]"
           viewBox="0 0 900 500"
           preserveAspectRatio="none"
         >
@@ -116,30 +116,30 @@ const EventBoard = () => {
 
 
         <div className="relative z-10 p-6 h-full max-md:w-full">
-          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto max-md:top-[-370px]">
+          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto ">
             {eventData.name}
           </div>
 
           {/* Event Details Section */}
-          <div className="flex justify-between items-start mt-20 h-full max-md:w-full">
+          <div className="flex justify-between items-start mt-20 h-full max-md:w-full max-md:pt-[350px] max-md:pb-[160px]">
             <div className="w-2/3 h-full max-md:w-full">
-              <div className="flex justify-between text-sm max-md:mt-4">
+              <div className="flex flex-col justify-between text-sm max-md:mt-4">
                 <span>📍 {eventData.venue}</span>
-                <span className="font-bold">Prize Pool:10,000</span>
+                <span className="font-bold max-md:mt-2">Prize Pool:10,000</span>
               </div>
-              <div className="flex justify-between mt-2 text-sm">
+              <div className="flex flex-col justify-between mt-2 text-sm max-md:mt-4">
                 <span>⏰ {formatDateTime(eventData.startTime)}</span>
                 <span>⏰ {formatDateTime(eventData.endTime)}</span>
               </div>
-              <p className="mt-4 text-gray-300 text-left">{eventData.description}</p>
+              <p className="mt-4 text-gray-300 text-left">{eventData.description}Gear up withkjbf fbf khf h feuhrfuher h refuh ruh ruhe fiurh fruh rhieruh irheuheiruh rh r hriuh  your laptops and get ready for the second edition of Fresher’s Contest presented by CodeIIEST. Whether you conquered the first edition or are just stepping into CP, this contest is for YOU! Step into the limelight, capture the beauty of coding and most importantly have fun racking your brains!</p>
 
               {/* Dashboard Button */}
-              <div className="absolute top-[45px] right-10">
+              <div className="absolute top-[65px] right-0 max-md:left-[100px]">
                 <DashboardButton link={dashlink} content="Dashboard" />
               </div>
 
               {/* Register via Dashboard Button (Uses Link for Navigation) */}
-              <div className="absolute bottom-10 mt-10 flex gap-20 max-md:flex-col max-md:gap-10">
+              <div className="absolute bottom-10 mt-10 flex gap-20 max-md:flex-col max-md:gap-5 max-md:bottom-[60px]">
 
                 <Link to={dashlink}>
                   <DashboardButton link={dashlink} content="Register via Dashboard" />
@@ -151,7 +151,7 @@ const EventBoard = () => {
           </div>
 
           {/* EventCard for Sidebar */}
-          <div className="absolute right-[-20px] bottom-[-0px] max-md:left-[30px] max-md:top-[-300px]">
+          <div className="absolute right-[-20px] bottom-[-0px] max-md:left-[-15px] max-md:top-40">
             <EventCard
               title={eventData.name}
               description="The Competitive Coding Contest"

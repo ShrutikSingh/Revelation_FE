@@ -1,0 +1,36 @@
+/* Remove extra padding and red background */
+.custom-google-login {
+    display: inline-block;
+    position: absolute;
+    top: 15%;
+    left: 96%;
+    transform: translate(-50%, -50%);
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  /* Target the actual Google button */
+  .custom-google-login div {
+    background-color: transparent !important;  /* Remove default background */
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Remove Google logo */
+  .custom-google-login div svg {
+    display: none !important;
+  }
+  /* Hide default Google text */
+.custom-google-login div span {
+    display: none !important;
+  }
+  
+  /* Add custom text */
+  .custom-google-login::after {
+    content: "Login";
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+  }
+  

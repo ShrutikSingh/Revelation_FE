@@ -11,7 +11,7 @@ const eventSchedule = [
         day: "DAY-1",
         date: "March 21, 2025",
         events: [
-            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d59ca882cf9619f8bf5122' },
             { name: "Ganitam", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27'},
             { name: "Hackathon", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
         ]
@@ -31,7 +31,7 @@ const eventSchedule = [
         events: [
             { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
             { name: "Murder Mystery", startTime: "00:00", endTime: "02:18", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d59ca882cf9619f8bf5122' },
         ]
     }
 ];
@@ -107,7 +107,7 @@ const EventList = () => {
         }, 300);
     };
 
-    return isPhoneSize ? (<div className="relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
+    return isPhoneSize ? (<div className="mt-10 relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
 
         <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
             Explore the Marvellous
@@ -159,7 +159,7 @@ const EventList = () => {
 
     </div>) : (
 
-        <div ref={headRef} className="relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
+        <div ref={headRef} className="mt-[60px] relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
             {/* Title Section */}
             <motion.div variants={{
                 hidden: { opacity: 0, y: 50, scale: 0.5 },
