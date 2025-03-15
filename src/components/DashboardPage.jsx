@@ -25,7 +25,7 @@ const DashboardPage = () => {
   }
 
   const [currentPage, setCurrentPage] = useState(1);
-  const teamsPerPage = 5; // Number of teams per page
+  const teamsPerPage = 10; // Number of teams per page
 
   const teams = [
     { name: "Alpha", members: ["Foobar1", "Foobar2", "Foobar3"], leader: "Random xyz" },
@@ -274,7 +274,7 @@ const DashboardPage = () => {
               />
               <ul className="mt-2 text-white">
                 {currentTeams.map((team, index) => (
-                  <li key={index} className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2">
+                  <li key={index} className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2 ml-2">
                     <div className="flex items-center justify-between flex-wrap">
                       <span className="">{indexOffirstTeam + index + 1}. {team.name}</span>
                       <span className="flex items-center">
@@ -310,7 +310,7 @@ const DashboardPage = () => {
                 ))}
               </ul>
               {/* Pagination Controls */}
-              <div className="flex justify-center mt-4 space-x-2">
+              <div className="flex justify-center mt-4 space-x-2 mb-4">
                 <button
                   onClick={() => paginate(currentPage - 1)}
                   disabled={currentPage === 1}
