@@ -38,10 +38,10 @@ function App() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/event/:id" element={
-          <>
+          <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
             <EventDetailsPage />
             <EventRules />
-          </>
+          </div>
         } />
         <Route path="/dashboard/:id" element={<UserDashboard />} />
         <Route path="/teams" element={<TeamLeadsPage />} />
