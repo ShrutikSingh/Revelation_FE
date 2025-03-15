@@ -2,9 +2,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
-import heroImage from "../../assets/Hero.jpeg";
-
-console.log(heroImage)
 
 // Styled components
 const LiveBadge = styled(Box)({
@@ -41,73 +38,103 @@ const LiveBadge = styled(Box)({
 
 const EventButton = styled(Button)({
   position: "relative",
-  width: 188,
-  height: 57,
+  width: "clamp(100px, 18vw, 160px)", // Smaller min size for mobile
+  height: "clamp(35px, 7vh, 50px)",  // Smaller height for mobile
   textTransform: "none",
+
   "&:hover": {
     backgroundColor: "red",
   },
+
   "& .buttonBorder": {
     position: "absolute",
-    width: "95%",
-    height: "85%",
+    width: "90%",
+    height: "70%",
     top: 0,
-    left: 10,
-    border: "2.24px solid #d01515",
+    left: "4%", // Adjusted for mobile layout
+    border: "2px solid #d01515",
   },
+
   "& .buttonShadow": {
     position: "absolute",
-    width: "93%",
-    height: "82%",
+    width: "90%",
+    height: "75%",
     top: 9,
     left: 0,
   },
+
   "& .buttonText": {
     position: "absolute",
     top: "15%",
-    left: "20%",
+    left: "18%",
     fontFamily: "'Kode Mono', monospace",
     fontWeight: 700,
     color: "white",
-    fontSize: "clamp(18px, 2vw, 24px)", // Responsive
+    fontSize: "clamp(14px, 1.8vw, 18px)", // Reduced for mobile
   },
+
   "& .buttonIcon": {
     position: "absolute",
     top: "30%",
-    right: "10%",
-    width: "clamp(20px, 2vw, 30px)", // Responsive
-    height: "clamp(15px, 1.5vw, 20px)", // Responsive
+    right: "8%",
+    width: "clamp(18px, 1.8vw, 25px)", // Smaller icon for mobile
+    height: "clamp(12px, 1.5vw, 18px)", 
     color: "white",
+  },
+
+  "@media (max-width: 480px)": {
+    width: "90px",  // Fixed width for smaller screens
+    height: "32px", 
+    "& .buttonText": {
+      fontSize: "12px", // Further reduced text size for mobile
+      left: "10%",
+    },
+    "& .buttonIcon": {
+      width: "16px",
+      height: "12px",
+    },
   },
 });
 
-const RevealText = styled(Typography)(({ theme }) => ({
+
+const RevealText = styled(Typography)({
   width: "100%",
-  textShadow: "0px 0px 4px #000000",
-  background:
-    // "linear-gradient(180deg, rgb(255,172.83,172.83) 0%, rgb(210, 0, 0) 100%)",
-    "red",
+  textShadow: "4px 4px 6px rgba(0, 0, 0, 0.4)",
+  background: "linear-gradient(180deg, #FFADAD 0%, #FFFFFF 100%)",
   backgroundClip: "text",
   WebkitBackgroundClip: "text",
-  color: "red",
+  color: "transparent",
   WebkitTextFillColor: "transparent",
   fontFamily: "'Bodoni Moda', serif",
   fontSize: "clamp(48px, 10vw, 190px)", // Responsive
   lineHeight: "normal",
-}));
-
+  filter: "drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5))",
+});
 
 const HeroSection = () => {
   return (
-    <Box sx={{ position: "relative", width: "100%", height: 638, maxWidth: 1523, marginTop: 6, marginBottom:"-215px" , paddingBottom:16  ,backgroundImage: `url(${heroImage})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-      <Box sx={{ width: "100%", height: 638, position: "relative" }}>
+    <Box
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: { xs: 480, sm: 550, md: 638 }, // Responsive height
+        maxWidth: 1523,
+        marginTop: 5,
+        marginBottom: "-215px",
+        // paddingBottom: 30,
+        // backgroundImage: `url(${heroImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <Box sx={{ width: "100%", height: "100%", position: "relative" }}>
         <Box
           sx={{
             position: "absolute",
             width: "90%",
             maxWidth: 1362,
-            top: 115,
-            left:25,
+            top: { xs: 145, sm: 100, md: 130 }, // Responsive position
+            left: 25,
           }}
         >
           <Typography
@@ -115,20 +142,20 @@ const HeroSection = () => {
               fontFamily: "'Grandstander', cursive",
               fontWeight: "normal",
               color: "#acacac",
-              fontSize: { xs: 28, sm: 36, md: 48 }, // Responsive
+              fontSize: { xs: 24, sm: 32, md: 48 }, // Responsive
               lineHeight: "normal",
             }}
           >
             Unleash the
           </Typography>
 
-          <Box sx={{ position: "relative", mt: 3.5 }}>
+          <Box sx={{ position: "relative", mt : -1 }}>
             <Typography
               sx={{
                 fontFamily: "'Grandstander', cursive",
                 fontWeight: "normal",
                 color: "#d9d9d9",
-                fontSize: { xs: 28, sm: 36, md: 48 }, // Responsive
+                fontSize: { xs: 24, sm: 32, md: 48 }, // Responsive
                 lineHeight: "normal",
               }}
             >
@@ -152,33 +179,32 @@ const HeroSection = () => {
                   fontFamily: "'Kode Mono', monospace",
                   fontWeight: "normal",
                   color: "white",
-                  fontSize: { xs: 16, sm: 18, md: 20.2 }, // Responsive
+                  fontSize: { xs: 14, sm: 16, md: 20 }, // Responsive
                 }}
               >
                 REVELATION has started!
               </Typography>
             </Stack>
 
-            <EventButton onClick={() => window.location.href = "/events"}>
-            <Box className="buttonBorder" />
-            <Box className="buttonShadow" />
-            <Typography className="buttonText">EVENTS</Typography>
-            <ArrowForwardIcon className="buttonIcon" />
+            <EventButton onClick={() => (window.location.href = "/events")}>
+              <Box className="buttonBorder" />
+              <Box className="buttonShadow" />
+              <Typography className="buttonText">EVENTS</Typography>
+              <ArrowForwardIcon className="buttonIcon" />
             </EventButton>
-
           </Stack>
         </Box>
 
         <Typography
           sx={{
             position: "absolute",
-            top: 70,
-            right: 10,
+            top: { xs: 50, sm: 70 },
+            right: "30px",
             maxWidth: 593,
             fontFamily: "'Playfair Display', serif",
             fontWeight: 700,
             color: "#dadada",
-            fontSize: { xs: 16, sm: 20, md: 25 }, // Responsive
+            fontSize: { xs: 14, sm: 18, md: 25 }, // Responsive
             textAlign: "right",
             lineHeight: "normal",
           }}

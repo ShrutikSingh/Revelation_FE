@@ -6,11 +6,11 @@ import bgImage from "../../assets/grid.webp";
 import Sponsorship from "../../components/Sponsors/Sponsorship";
 import Gallery from "../../components/Gallery/Gallery";
 import Navbar from "../../components/Navbar/Navbar";
-import TopBox from "../../components/HeroPage/HeroSection";
 import AboutUs from "../../components/HeroPage/AboutUs";
 import HeroSection from "../../components/HeroPage/HeroSection";
+import HeroFinal from "../../components/HeroPage/HeroFinal";
 import Faqs from "../FAQs/Faqs";
-const HomePage = () => {
+const HomePage = ({ Token, setToken }) => {
     return (
         <div
             className="w-full min-h-screen flex flex-col items-center gap-y-[200px]"
@@ -19,18 +19,19 @@ const HomePage = () => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-                backgroundAttachment: "fixed", // Keeps the background fixed while scrolling
+                backgroundAttachment: "fixed", 
                 minHeight: "100vh", 
                 width: "100%",
             }}
         >
-            <Navbar />
-            <HeroSection  />
-            <AboutUs />
-            <Participants  />
+            <Navbar Token={Token} setToken={setToken} />
+            <HeroFinal />
+            <Participants />
             <EventSlider />
             <Gallery />
-            <Sponsorship />
+            <div id="sponsors-section">
+                <Sponsorship />
+            </div>
             <Faqs />
             <Footer />
         </div>
