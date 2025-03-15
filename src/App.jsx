@@ -9,6 +9,9 @@ import EventRules from "./components/Rules.jsx";
 import "./App.css";
 import ProfilePage from "./pages/ProfilePage/profilepage.jsx";
 
+import IndividualEvent from './pages/IndividualEvent/IndividualEvent.jsx';
+import DashboardPage from "./components/DashboardPage.jsx"
+
 const eventDetails = {
   title: "CODESTORM",
   venue: "CSD-205 Seminar Hall",
@@ -32,19 +35,12 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route
-          path="/event/:id"
-          element={
-            <>
-              <EventDetailsPage />
-              <EventRules />
-            </>
-          }
-        />
-        <Route path="/dashboard" element={<UserDashboard eventData={eventDetails} />} />
+
+        <Route path="/event/:eventName" element={<IndividualEvent />} />
+        <Route path="/dashboard/:eventName" element={<DashboardPage />}></Route>
         <Route path="/teams" element={<TeamLeadsPage />} />
       </Routes>
-    </div>
+    </div> 
   );
 }
 

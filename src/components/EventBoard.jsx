@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import React Router
 import DashboardButton from "./DashboardButton.jsx";
 import EventCard from "./EventCard.jsx";
+import { HashLink } from "react-router-hash-link";
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -138,10 +139,12 @@ const EventBoard = () => {
 
               {/* Register via Dashboard Button (Uses Link for Navigation) */}
               <div className="absolute bottom-10 mt-10 flex gap-20 max-md:flex-col max-md:gap-10">
+
                 <Link to="/dashboard">
                   <DashboardButton link="/dashboard" content="Register via Dashboard" />
                 </Link>
-                <DashboardButton link="#" content="Rules" />
+                <HashLink smooth to="#ruless">
+                <DashboardButton link="#" content="Rules" /></HashLink>
               </div>
             </div>
           </div>
