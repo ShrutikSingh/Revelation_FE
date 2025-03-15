@@ -6,6 +6,9 @@ import bgImage from "../../assets/grid.webp";
 import Sponsorship from "../../components/Sponsors/Sponsorship";
 import Gallery from "../../components/Gallery/Gallery";
 import Navbar from "../../components/Navbar/Navbar";
+import TopBox from "../../components/HeroPage/HeroSection";
+import AboutUs from "../../components/HeroPage/AboutUs";
+import HeroSection from "../../components/HeroPage/HeroSection";
 
 const HomePage = () => {
     return (
@@ -22,6 +25,8 @@ const HomePage = () => {
             }}
         >
             <Navbar />
+            <HeroSection />
+            <AboutUs />
             <Participants />
             <EventSlider />
             <Gallery />
