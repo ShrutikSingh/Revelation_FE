@@ -21,18 +21,16 @@ const DashboardPage = () => {
   const [expandedTeam, setExpandedTeam] = useState(null);
   const [userTeam, setUserTeam] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
-  const {eventName} = useParams();
-    if (!eventName) {
+  const {id} = useParams();
+    if (!id) {
         return <h1>Loading...</h1>;  // or redirect to a proper page
     }
     
-
-    
-    const eventData = EventData.find(event => event.title.replace(/\s+/g,"-").toLowerCase() === eventName.toLowerCase())
+    // const eventData = EventData.find(event => event.title.replace(/\s+/g,"-").toLowerCase() === eventName.toLowerCase())
     // Need to fetch the complete data of event from the backend or we can just give it here 
-    if (!eventData) {
-        return <h1>Event Not Found</h1>;
-    }
+    // if (!eventData) {
+    //     return <h1>Event Not Found</h1>;
+    // }
   
   const teams = [
     { 
@@ -93,7 +91,7 @@ const DashboardPage = () => {
   const toggleDropdown = (teamName) => {
     setExpandedTeam(expandedTeam === teamName ? null : teamName);
   };
-  const dashName = "/event/"+eventData.title.replace(/\s+/g,"-").toLowerCase();
+  const dashName = `/event/${id}`;
 
   return (
     <motion.div initial={{ opacity: 0, y: 20, scale: 0.9 }} // Start slightly below and scaled down
@@ -126,7 +124,7 @@ const DashboardPage = () => {
           </clipPath>
           <rect width="100%" height="100%" fill="black" clipPath="url(#clipper)" />
           <image
-                        href={eventData.bgUrl}
+                        // href={eventData.bgUrl}
                         width="100%"
                         height="100%"
                         preserveAspectRatio="xMidYMid slice"
@@ -143,7 +141,7 @@ const DashboardPage = () => {
           />
         </svg>
         <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg z-10">
-            {eventData.title}
+            {/* {eventData.title} */}
           </div>
 
         

@@ -67,6 +67,8 @@ const EventBoard = () => {
     return `Team Size: ${eventData.teamSize.min}-${eventData.teamSize.max}`;
   };
 
+  const dashlink=`/dashboard/${eventData._id}`;
+
   return (
     <div className="bg-transparent text-white p-6 relative w-full max-w-[900px] h-[500px] max-md:h-[800px] max-md:mt-[400px] mx-auto max-md:ml-[-30px]">
 
@@ -128,20 +130,19 @@ const EventBoard = () => {
               <div className="flex justify-between mt-2 text-sm">
                 <span>⏰ {formatDateTime(eventData.startTime)}</span>
                 <span>⏰ {formatDateTime(eventData.endTime)}</span>
-                {/* <span>📅 {eventData.date}</span> */}
               </div>
               <p className="mt-4 text-gray-300 text-left">{eventData.description}</p>
 
               {/* Dashboard Button */}
               <div className="absolute top-[45px] right-10">
-                <DashboardButton link="/dashboard" content="Dashboard" />
+                <DashboardButton link={dashlink} content="Dashboard" />
               </div>
 
               {/* Register via Dashboard Button (Uses Link for Navigation) */}
               <div className="absolute bottom-10 mt-10 flex gap-20 max-md:flex-col max-md:gap-10">
 
-                <Link to="/dashboard">
-                  <DashboardButton link="/dashboard" content="Register via Dashboard" />
+                <Link to={dashlink}>
+                  <DashboardButton link={dashlink} content="Register via Dashboard" />
                 </Link>
                 <HashLink smooth to="#ruless">
                 <DashboardButton link="#" content="Rules" /></HashLink>
