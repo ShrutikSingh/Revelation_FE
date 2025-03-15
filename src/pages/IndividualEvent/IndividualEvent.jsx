@@ -23,10 +23,10 @@ const IndividualEvent = () => {
 
 
     return (
-        <>
+        <div className="bg-[url('public/grid.png')] bg-cover bg-center">
             <EventBoard eventData={eventData} />
             <Rules />
-        </>
+        </div>
     )
 }
 
