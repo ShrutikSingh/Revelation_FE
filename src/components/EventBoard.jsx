@@ -70,9 +70,9 @@ const EventBoard = () => {
   const dashlink=`/dashboard/${eventData._id}`;
 
   return (
-    <div className="bg-transparent text-white p-6 relative w-full max-w-[900px] h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden">
+    <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden">
 
-      <div className="relative w-full max-w-4xl h-full mx-auto">
+      <div className="relative w-full max-w-4xl xl:max-w-6xl  h-full mx-auto">
         <svg
           className="absolute top-5 w-full h-full z-0 max-md:left-[0px] max-md:w-full"
           viewBox="0 0 900 500"

@@ -6,6 +6,7 @@ import NormalDayRight from "./NormalDayRight";
 import HighlightedDay from "./HighlightedDay";
 import { useRef } from "react"; // Import useRef
 
+
 const eventSchedule = [
     {
         day: "DAY-1",
@@ -112,7 +113,9 @@ const EventList = () => {
         <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
             Explore the Marvellous
         </h2>
-        <h1 className="text-[#EE0000] text-[74px] font-title">EVENTS</h1>
+        <div>
+        <h1 className="text-center text-[#EE0000] text-[74px] font-title">EVENTS</h1>
+        </div>
 
         {/* Download Button & Live Announcement */}
         <div className="flex flex-col items-center">
@@ -174,15 +177,15 @@ const EventList = () => {
                 <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
                     Explore the Marvellous
                 </h2>
-                <h1 className="text-[#EE0000] text-[74px] font-title">EVENTS</h1>
+                <h1 className="text-[#EE0000] text-[74px] font-title text-center">EVENTS</h1>
 
                 {/* Download Button & Live Announcement */}
                 <div className="flex flex-col items-center">
                     <button className="px-6 py-2 border-2 border-[#810000] text-white text-lg font-bold rounded-md hover:bg-[#810000] transition">
                         DOWNLOAD SCHEDULE
                     </button>
-                    <div className="text-[#FF0000] text-sm font-bold px-4 py-2 rounded-md">
-                        LIVE <span className="text-white">Blood Donation Camp is live now!</span>
+                    <div className="text-[#FF0000] text-[12px] font-semibold px-4 py-2 rounded-md">
+                        LIVE. <span className="text-white text-[12px]"> Revelation4.0 is live now!!!</span>
                     </div>
                 </div>
 
@@ -210,7 +213,7 @@ const EventList = () => {
                     >
                         <div
                             ref={leftRef}
-                            className="col-span-3 flex justify-center cursor-pointer xl:ml-0"
+                            className="col-span-3 flex justify-center cursor-pointer xl:ml-40 lg:ml-20"
                             onClick={() => handleHighlighting(normalDays[0])}>
                             <NormalDayLeft inday={normalDays[0]} key={normalDays[0].day} />
                         </div>
@@ -245,7 +248,7 @@ const EventList = () => {
                     >
                         <div
                             ref={rightRef}
-                            className="col-span-3 flex justify-center cursor-pointer xl:ml-0 lg:ml-[50px] "
+                            className="col-span-3 flex justify-center cursor-pointer xl:ml-0 lg:ml-[50px] lg:mr-[130px]"
                             onClick={() => handleHighlighting(normalDays[1])}>
                             <NormalDayRight inday={normalDays[1]} key={normalDays[1].day} />
                         </div>
