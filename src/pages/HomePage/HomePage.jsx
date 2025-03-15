@@ -30,7 +30,9 @@ const HomePage = () => {
             <Participants  />
             <EventSlider />
             <Gallery />
+            <div id="sponsors-section">
             <Sponsorship />
+            </div>
             <Faqs />
             <Footer />
         </div>
