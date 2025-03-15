@@ -6,6 +6,7 @@ import NormalDayRight from "./NormalDayRight";
 import HighlightedDay from "./HighlightedDay";
 import { useRef } from "react"; // Import useRef
 
+
 const eventSchedule = [
     {
         day: "DAY-1",
@@ -112,7 +113,9 @@ const EventList = () => {
         <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
             Explore the Marvellous
         </h2>
-        <h1 className="text-[#EE0000] text-[74px] font-title">EVENTS</h1>
+        <div>
+        <h1 className="text-center text-[#EE0000] text-[74px] font-title">EVENTS</h1>
+        </div>
 
         {/* Download Button & Live Announcement */}
         <div className="flex flex-col items-center">
@@ -174,7 +177,7 @@ const EventList = () => {
                 <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
                     Explore the Marvellous
                 </h2>
-                <h1 className="text-[#EE0000] text-[74px] font-title">EVENTS</h1>
+                <h1 className="text-[#EE0000] text-[74px] font-title text-center">EVENTS</h1>
 
                 {/* Download Button & Live Announcement */}
                 <div className="flex flex-col items-center">

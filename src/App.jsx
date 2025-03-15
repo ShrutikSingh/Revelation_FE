@@ -34,18 +34,18 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/events" element={<EventsPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/event/:id" element={
+        {/* <Route path="/profile" element={<ProfilePage />} /> */}
+        {/* <Route path="/event/:id" element={
           <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
             <EventDetailsPage />
             <EventRules />
           </div>
-        } />
-        <Route path="/dashboard/:id" element={<UserDashboard />} />
+        } /> */}
+        {/* <Route path="/dashboard/:id" element={<UserDashboard />} />
         <Route path="/teams" element={<TeamLeadsPage />} />
-        <Route path="/faqs" element={<Faqs />} />
+        <Route path="/faqs" element={<Faqs />} /> */}
       </Routes>
     </div>
   );
