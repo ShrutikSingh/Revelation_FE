@@ -33,10 +33,10 @@ function App() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route
-          path="/event-details"
+          path="/event/:id"
           element={
             <>
-              <EventDetailsPage eventData={eventDetails} />
+              <EventDetailsPage />
               <EventRules />
             </>
           }
