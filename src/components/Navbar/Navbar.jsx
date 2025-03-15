@@ -1,19 +1,57 @@
-
-
-
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaBars, FaHome, FaCalendarAlt, FaUsers, FaHandshake, FaTimes } from "react-icons/fa";
 import revelation from "../../assets/revelation.png";
 import iiestLogo from "../../assets/iiest_logo.png";
 import ascLogo from "../../assets/asce_logo.png";
+import axios from "axios";
+import { GoogleLogin } from "@react-oauth/google";
+import { API_URL } from '../../config/config';
+import "./Navbar.css"
 
-const Navbar = ({ userData }) => {
+const Navbar = ({ Token,setToken }) => {
   const [hovered, setHovered] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const activeSection = location.pathname === "/profile" ? null : location.pathname;
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const userResponse = await axios.get(`${API_URL}/api/auth/status`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        
+        setUserData(userResponse.data.user);
+        console.log(userResponse.data.user);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+  };
+
+  const handleGoogleLoginSuccess = async (response) => {    
+    try {
+      const backendResponse = await axios.post(`${API_URL}/api/auth/google`, {
+        token: response.credential, 
+      });
+      console.log(backendResponse)
+      const token = backendResponse.data.token;
+      console.log(token)
+      localStorage.setItem("token", token);
+      setToken(token);
+      // navigate("/home");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
 
   const handleNavigation = (path) => {
     navigate(path);
@@ -59,12 +97,29 @@ const Navbar = ({ userData }) => {
         </div>
         
         <div className="hidden lg:block pr-3">
+          {Token!==null?
           <div
             onClick={() => handleNavigation("/profile")}
             className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black border-2 border-red-600 shadow-neon flex items-center justify-center text-white text-lg font-bold cursor-pointer transition-transform duration-300 hover:scale-110 hover:shadow-[0_0_15px_#ff0000]"
           >
-            {userData?.name ? userData.name.charAt(0).toUpperCase() : "?"}
+            {userData.picture && (
+              <img className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black border-2 border-red-600 shadow-neon flex items-center justify-center text-white text-lg font-bold cursor-pointer transition-transform duration-300 hover:scale-110 hover:shadow-[0_0_15px_#ff0000]"
+                src={userData.picture} 
+                alt="Profile" 
+              />
+            )}
+          </div>:
+          <div 
+            // className="w-8 h-8 md:w-10 md:h-10 mr-20 rounded-full bg-black border-2 border-red-600 shadow-neon flex items-center justify-center text-white text-lg font-bold cursor-pointer transition-transform duration-300 hover:scale-110 hover:shadow-[0_0_15px_#ff0000] custom-google-login"
+            className="custom-google-login"
+          >
+            <GoogleLogin 
+                onSuccess={handleGoogleLoginSuccess} 
+                onError={() => console.error("Login Failed")}
+                useOneTap={false}
+            />
           </div>
+        }
         </div>
 
         <div className="lg:hidden flex items-center">
