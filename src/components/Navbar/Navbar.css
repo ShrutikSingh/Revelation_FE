@@ -2,35 +2,77 @@
 .custom-google-login {
     display: inline-block;
     position: absolute;
-    top: 15%;
-    left: 96%;
+    /* top: 15%; */
+    left: 97%;
     transform: translate(-50%, -50%);
     padding: 0 !important;
     background: transparent !important;
     border: none !important;
   }
   
-  /* Target the actual Google button */
   .custom-google-login div {
-    background-color: transparent !important;  /* Remove default background */
+    background-color: transparent !important; 
     border: none !important;
     box-shadow: none !important;
   }
   
   /* Remove Google logo */
   .custom-google-login div svg {
-    display: none !important;
+    display: none;
   }
   /* Hide default Google text */
-.custom-google-login div span {
-    display: none !important;
-  }
+  .custom-google-login div span {
+      display: none !important;
+    }
   
   /* Add custom text */
   .custom-google-login::after {
+    position: absolute;
+    top: 8px;
     content: "Login";
     font-size: 16px;
     font-weight: bold;
     color: white;
+    z-index: -1;
   }
   
+
+  @media (max-width: 1200px){
+    .custom-google-login::after {
+      top: -20px;
+      left: -200%;
+      content: "Login";
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      z-index: -1;
+    }
+
+    .custom-google-login {
+      display: inline-block;
+      position: absolute;
+      left: 97%;
+      transform: translate(-50%, -50%);
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+    }
+    
+    .custom-google-login div {
+      /* background-color: transparent !important;  */
+      /* border: none !important; */
+      /* background-color: black !important; */
+      position: relative !important;
+      left: -50% !important;
+      top: -50%;
+      box-shadow: none !important;
+    }
+    
+    .custom-google-login div svg {
+      display: visible !important;
+    }
+    .custom-google-login div span {
+        /* display: none !important; */
+        display: visible !important;
+      }
+  }

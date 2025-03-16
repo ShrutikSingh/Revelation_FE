@@ -138,7 +138,7 @@ const Navbar = ({ Token,setToken }) => {
             {userData.picture && (
               <img className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black border-2 border-red-600 shadow-neon flex items-center justify-center text-white text-lg font-bold cursor-pointer transition-transform duration-300 hover:scale-110 hover:shadow-[0_0_15px_#ff0000]"
                 src={userData.picture} 
-                alt="Profile" 
+                alt="Profile"  
               />
             )}
           </div>:
@@ -175,12 +175,29 @@ const Navbar = ({ Token,setToken }) => {
         </div>
 
         <div className="flex flex-col items-center gap-5 mt-8">
+        {Token!==null?
           <div
             onClick={() => handleNavigation("/profile")}
-            className="w-10 h-10 rounded-full bg-black border-2 border-red-600 shadow-neon flex items-center justify-center text-white text-lg font-bold cursor-pointer hover:shadow-[0_0_15px_#ff0000]"
+            className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black border-2 border-red-600 shadow-neon flex items-center justify-center text-white text-lg font-bold cursor-pointer transition-transform duration-300 hover:scale-110 hover:shadow-[0_0_15px_#ff0000]"
           >
-            {userData?.name ? userData.name.charAt(0).toUpperCase() : "?"}
+            {userData.picture && (
+              <img className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black border-2 border-red-600 shadow-neon flex items-center justify-center text-white text-lg font-bold cursor-pointer transition-transform duration-300 hover:scale-110 hover:shadow-[0_0_15px_#ff0000]"
+                src={userData.picture} 
+                alt="Profile"  
+              />
+            )}
+          </div>:
+          <div 
+            // className="w-8 h-8 md:w-10 md:h-10 mr-20 rounded-full bg-black border-2 border-red-600 shadow-neon flex items-center justify-center text-white text-lg font-bold cursor-pointer transition-transform duration-300 hover:scale-110 hover:shadow-[0_0_15px_#ff0000] custom-google-login"
+            className="custom-google-login"
+          >
+            <GoogleLogin 
+                onSuccess={handleGoogleLoginSuccess} 
+                onError={() => console.error("Login Failed")}
+                useOneTap={false}
+            />
           </div>
+        }
           {[
             // { id: "/", icon: <FaHome />, label: "Home" },
             // { id: "/events", icon: <FaCalendarAlt />, label: "Events" },
