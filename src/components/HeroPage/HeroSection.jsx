@@ -139,23 +139,23 @@ const HeroSection = () => {
         >
           <Typography
             sx={{
-              fontFamily: "'Grandstander', cursive",
+              fontFamily: "Abhaya Libre, serif",
               fontWeight: "normal",
               color: "#acacac",
-              fontSize: { xs: 24, sm: 32, md: 48 }, // Responsive
+              fontSize: { xs: 24, sm: 32, md: 48 },
               lineHeight: "normal",
             }}
           >
             Unleash the
           </Typography>
 
-          <Box sx={{ position: "relative", mt : -1 }}>
+          <Box sx={{ position: "relative", mt: -1 }}>
             <Typography
               sx={{
-                fontFamily: "'Grandstander', cursive",
+                fontFamily: "Abhaya Libre, serif",
                 fontWeight: "normal",
                 color: "#d9d9d9",
-                fontSize: { xs: 24, sm: 32, md: 48 }, // Responsive
+                fontSize: { xs: 24, sm: 32, md: 48 },
                 lineHeight: "normal",
               }}
             >
@@ -164,6 +164,7 @@ const HeroSection = () => {
 
             <RevealText>REVELATION</RevealText>
           </Box>
+
         </Box>
 
         <Box sx={{ position: "absolute", bottom: 1, left: 25 }}>
