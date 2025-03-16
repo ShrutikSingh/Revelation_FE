@@ -1,30 +1,28 @@
 /* Gallery container */
 .gallery-container {
-  height: 55vh; /* Slightly increased height */
+  height: 50vh;
   background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 50px;
-  border: 3px solid rgba(169, 169, 169, 0.5); /* Subtle gray border */
-  border-radius: 25px; /* Softer rounded edges */
+  padding: 40px;
+  /* border: 3px solid rgba(169, 169, 169, 0.5);*/
+  border-radius: 25px; 
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-   /* Elegant shadow */
-   margin-top: 200px;
+  /* margin-top: 100px; */
+  width: 100%;
 }
 
 /* Title */
 .gallery-title {
   font-family: "Playfair Display", serif;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-top: 1rem;
-  margin-bottom: 5rem;
+  
+  margin-bottom: 3rem;
   text-align: center;
-
-  /* Gradient Text Effect */
   background: linear-gradient(to right, white, gray, #4b5563);
   -webkit-background-clip: text;
   background-clip: text;
@@ -32,58 +30,53 @@
 }
 
 /* Responsive Font Sizes */
-@media (min-width: 640px) {
-  .gallery-title {
-    font-size: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
+@media (max-width: 1024px) {
   .gallery-title {
     font-size: 2rem;
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 768px) {
   .gallery-title {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 }
 
-@media (min-width: 1280px) {
+@media (max-width: 640px) {
   .gallery-title {
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
 }
 
 /* Wrapper with increased width */
 .gallery-wrapper {
-  width: 85vw; /* Slightly increased width */
+  width: 90vw; /* Adjusted for responsiveness */
+  max-width: 1500px;
   overflow: hidden;
   position: relative;
   display: flex;
   justify-content: center;
-  border: 2px solid rgba(200, 200, 200, 0.4); /* Light gray border */
+  border: 2px solid rgba(200, 200, 200, 0.4);
   border-radius: 20px;
-  padding: 15px;
-  background-color: #1a1a1a; /* Darker background for contrast */
-  box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.1); /* Soft glow effect */
+  background-color: #1a1a1a;
+  box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.1);
 }
 
-/* Scrolling container */
+/* Scrolling container with fixed width based on the number of images */
 .gallery-scroll {
   display: flex;
   gap: 30px;
-  width: calc(260px * 10); /* Increased width */
+  min-width: max-content; /* Ensures the container is only as wide as its content */
   animation: scroll 25s linear infinite;
 }
 
 /* Individual image boxes */
 .gallery-item {
-  width: 260px; /* Increased size */
-  height: 300px;
+  width: 260px; /* Default width */
+  height: 250px;
   background-size: cover;
   background-position: center;
+
   border-radius: 20px;
   flex-shrink: 0;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
@@ -95,12 +88,34 @@
   transform: scale(1.1);
 }
 
+/* Adjust image sizes for smaller screens */
+@media (max-width: 1024px) {
+  .gallery-item {
+    width: 220px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-item {
+    width: 180px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-item {
+    width: 150px;
+    height: 180px;
+  }
+}
+
 /* Infinite scrolling animation */
 @keyframes scroll {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% + 90vw)); /* Stops excess scrolling */
   }
 }
