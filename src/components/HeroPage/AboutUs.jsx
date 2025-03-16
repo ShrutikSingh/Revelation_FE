@@ -18,7 +18,7 @@ const AboutUs = () => {
         style={{
           position: "relative",
           width: "100%",
-          maxWidth: "1202px",
+          maxWidth: "1400px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -34,6 +34,8 @@ const AboutUs = () => {
             left: 0,
             zIndex: 1,
             opacity: 0.7,
+            maxHeight: "113%",
+            maxWidth:"96%"
           }}
           alt="Background"
           src={Img}
@@ -46,6 +48,8 @@ const AboutUs = () => {
             top: 10,
             left: 10,
             zIndex: 2,
+            maxHeight: "113%",
+            maxWidth:"96%"
           }}
           alt="Foreground"
           src={Img}
@@ -54,9 +58,10 @@ const AboutUs = () => {
           style={{
             position: "absolute",
             top: 0,
-            left: "2.3rem",
+            left: "2.5rem",
             zIndex: 3,
-            fontSize: "clamp(.9rem, 2.3vw, 2rem)",
+            fontSize: "clamp(1rem, 2.5vw, 2rem)",
+
             fontWeight: "bold",
             color: "white",
             backgroundColor: "rgba(220, 3, 3, 1)",
@@ -70,7 +75,7 @@ const AboutUs = () => {
           style={{
             position: "relative",
             zIndex: 3,
-            fontSize: "clamp(.5rem, 1.7vw, 2rem)",
+            fontSize: "clamp(.45rem, 1.7vw, 2rem)",
             color: "white",
             maxWidth: "90%",
             wordWrap: "break-word",
