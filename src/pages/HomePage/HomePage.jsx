@@ -1,6 +1,7 @@
 import React from "react";
-import Participants from "../../components/Participants/Participants";
-import EventSlider from "../../components/EventSlider/EventSlider";
+import Participants from "../../components/Participants/Participants2";
+// import EventSlider from "../../components/EventSlider/EventSlider";
+import EventSlider2 from "../../components/EventSlider/EventSlider2";
 import Footer from "../../components/Footer/Footer";
 import bgImage from "../../assets/grid.webp"; 
 import Sponsorship from "../../components/Sponsors/Sponsorship";
@@ -33,7 +34,7 @@ const HomePage = ({ Token, setToken }) => {
             <Participants />
             </div>
 
-            <EventSlider />
+            <EventSlider2 />
             {/* <Gallery /> */}
 
             <div id="sponsors-section">
