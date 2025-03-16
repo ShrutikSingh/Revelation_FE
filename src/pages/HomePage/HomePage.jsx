@@ -11,7 +11,7 @@ import AboutUs from "../../components/HeroPage/AboutUs";
 import HeroSection from "../../components/HeroPage/HeroSection";
 import HeroFinal from "../../components/HeroPage/HeroFinal";
 import Faqs from "../FAQs/Faqs";
-
+import EventSlider from "../../components/EventSlider/EventSlider2";
 const HomePage = ({ Token, setToken }) => {
     return (
         <div
@@ -36,7 +36,7 @@ const HomePage = ({ Token, setToken }) => {
 
             <EventSlider2 />
             {/* <Gallery /> */}
-            <EventSlider />
+            {/* <EventSlider /> */}
             <Gallery />
 
             <div id="sponsors-section">
