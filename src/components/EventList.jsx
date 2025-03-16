@@ -110,7 +110,7 @@ const EventList = () => {
 
     return isPhoneSize ? (<div className="mt-10 relative w-full min-h-screen bg-[url('public/grid.png')] bg-cover bg-center flex flex-col items-center justify-center overflow-y-auto">
 
-        <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
+        <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-10">
             Explore the Marvellous
         </h2>
         <div>
@@ -174,7 +174,7 @@ const EventList = () => {
                 transition={{ duration: 0.5, delay: 0.25, ease: "easeIn" }}
             >
 
-                <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-2">
+                <h2 className="text-[#E7E7E7] sm:text-[31.5px] text-[22px] font-bold tracking-wide uppercase text-center font-title mt-10">
                     Explore the Marvellous
                 </h2>
                 <h1 className="text-[#EE0000] text-[74px] font-title text-center">EVENTS</h1>

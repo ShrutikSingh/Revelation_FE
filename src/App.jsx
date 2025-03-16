@@ -13,6 +13,7 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound.jsx";
 // import IndividualEvent from "./pages/IndividualEvent/IndividualEvent.jsx";
 import DashboardPage from "./components/DashboardPage.jsx";
 import Faqs from "./pages/FAQs/Faqs.jsx";
+import Login from "./components/Login/Login.jsx"
 
 
 // const eventDetails = {
@@ -47,6 +48,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage Token={token} setToken={setToken} />} />
         <Route path="/events" element={<EventsPage Token={token} setToken={setToken}/>} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/profile" element={<ProfilePage setToken={setToken} />} />
         <Route path="/event/:id" element={
           <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">

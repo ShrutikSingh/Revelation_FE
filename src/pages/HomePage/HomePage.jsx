@@ -35,8 +35,6 @@ const HomePage = ({ Token, setToken }) => {
             </div>
 
             <EventSlider2 />
-            {/* <Gallery /> */}
-            {/* <EventSlider /> */}
             <Gallery />
 
             <div id="sponsors-section">
