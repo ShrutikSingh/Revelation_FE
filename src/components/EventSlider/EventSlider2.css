@@ -68,9 +68,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 25px;
+    border-radius: 20px;
     object-fit: cover;
     transition: 2s;
+    box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.6);
 }
 .slider span {
     display: flex;
@@ -84,6 +85,14 @@ body {
 }
 .slider span:hover img{
     transform: translateY(-40px) scale(1.2);
+}
+
+.slider:hover {
+    animation-play-state: running; /* Ensure the whole slider keeps rotating */
+}
+
+.slider span:hover {
+    animation: none; /* Stops rotation when hovering over a card */
 }
 
 @media screen and (max-width: 992px){
