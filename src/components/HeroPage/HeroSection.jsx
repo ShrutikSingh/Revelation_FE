@@ -139,23 +139,23 @@ const HeroSection = () => {
         >
           <Typography
             sx={{
-              fontFamily: "'Grandstander', cursive",
+              fontFamily: "Abhaya Libre, serif",
               fontWeight: "normal",
               color: "#acacac",
-              fontSize: { xs: 24, sm: 32, md: 48 }, // Responsive
+              fontSize: { xs: 24, sm: 32, md: 48 },
               lineHeight: "normal",
             }}
           >
             Unleash the
           </Typography>
 
-          <Box sx={{ position: "relative", mt : -1 }}>
+          <Box sx={{ position: "relative", mt: -1 }}>
             <Typography
               sx={{
-                fontFamily: "'Grandstander', cursive",
+                fontFamily: "Abhaya Libre, serif",
                 fontWeight: "normal",
                 color: "#d9d9d9",
-                fontSize: { xs: 24, sm: 32, md: 48 }, // Responsive
+                fontSize: { xs: 24, sm: 32, md: 48 },
                 lineHeight: "normal",
               }}
             >
@@ -164,6 +164,7 @@ const HeroSection = () => {
 
             <RevealText>REVELATION</RevealText>
           </Box>
+
         </Box>
 
         <Box sx={{ position: "absolute", bottom: 1, left: 25 }}>
@@ -196,22 +197,22 @@ const HeroSection = () => {
         </Box>
 
         <Typography
-          sx={{
-            position: "absolute",
-            top: { xs: 50, sm: 70 },
-            right: "30px",
-            maxWidth: 593,
-            fontFamily: "'Playfair Display', serif",
-            fontWeight: 700,
-            color: "#dadada",
-            fontSize: { xs: 14, sm: 18, md: 25 }, // Responsive
-            textAlign: "right",
-            lineHeight: "normal",
-          }}
-        >
-          The annual tech-fest of the department of computer science and
-          technology, IIEST Shibpur
-        </Typography>
+  sx={{
+    position: "absolute",
+    top: { xs: 50, sm: 70, lg: 90 }, // Adjusted for large screens
+    right: { xs: "30px", lg: "50px" }, // More spacing on large screens
+    maxWidth: { xs: 593, lg: 750 }, // Increased max width
+    fontFamily: "'Playfair Display', serif",
+    fontWeight: 700,
+    color: "#dadada",
+    fontSize: { xs: 14, sm: 18, md: 25, lg: 32 }, // Increased size for large screens
+    textAlign: "right",
+    lineHeight: "normal",
+  }}
+>
+  The annual tech-fest of the department of computer science and technology, IIEST Shibpur
+</Typography>
+
       </Box>
     </Box>
   );
