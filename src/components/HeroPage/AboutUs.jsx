@@ -18,7 +18,7 @@ const AboutUs = () => {
         style={{
           position: "relative",
           width: "100%",
-          maxWidth: "1002px",
+          maxWidth: "1202px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
