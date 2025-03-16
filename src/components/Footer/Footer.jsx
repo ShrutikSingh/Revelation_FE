@@ -12,7 +12,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-gray-300 py-6 px-4 w-full">
+    <footer className="bg-black text-gray-300 py-6 px-4 w-full mt-100px">
       <div className="container mx-auto flex flex-col md:flex-row flex-wrap justify-between items-start gap-6">
         
         {/* Left Section - Logo & Description */}
@@ -52,32 +52,35 @@ const Footer = () => {
           </div>
 
           {/* Social Media Icons */}
-          <div className="flex flex-col space-y-4 mt-6 md:mt-0 md:ml-10 md:pl-6">
-  {[
-    { icon: facebookIcon, link: "https://www.facebook.com/revelationiiest?sfnsn=wiwspwa&mibextid=RUbZ1f", alt: "Facebook" },
-    { icon: instagramIcon, link: "https://www.instagram.com/asce.iiests?igsh=MW95YmJmdzk4cG85Nw==", alt: "Instagram" },
-    { icon: linkedinIcon, link: "https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all", alt: "LinkedIn" }
-  ].map((item, index) => (
-    <a
-      key={index}
-      href={item.link}
-      className="relative bg-gray-700 p-1 rounded-full transition duration-300 flex items-center justify-center shadow-none 
-                hover:bg-red-600 hover:-translate-y-1"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img src={item.icon} alt={item.alt} className="w-10 h-10 drop-shadow-md hover:drop-shadow-lg" />
-    </a>
-  ))}
-</div>
-
+          <div className="flex flex-col space-y-4 mt-6 md:mt-0 md:ml-16 md:pl-2">
+            {[
+              { img: facebookIcon, link: "https://www.facebook.com/revelationiiest?sfnsn=wiwspwa&mibextid=RUbZ1f", alt: "Facebook" },
+              { img: instagramIcon, link: "https://www.instagram.com/asce.iiests?igsh=MW95YmJmdzk4cG85Nw==", alt: "Instagram" },
+              { img: linkedinIcon, link: "https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all", alt: "LinkedIn" }
+            ].map((item, index) => (
+              <a
+              key={index}
+              href={item.link}
+              className="relative bg-gray-700 w-12 h-12 flex-shrink-0 rounded-full transition duration-300 flex items-center justify-center shadow-none 
+                        hover:bg-red-600 hover:-translate-y-1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img 
+                src={item.img} 
+                alt={item.alt} 
+                className="w-10 h-10 hover:drop-shadow-[8px_8px_2px_black]" 
+              />
+            </a>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Red Line & Copyright */}
       <div className="mt-6">
-        <div className="w-full h-[0.5px] bg-red-500 opacity-75 mb-4"></div> {/* Thin Red Line */}
-        <div className="text-center text-sm border-t border-gray-700 pt-4">
+        <div className="w-full h-[1px] bg-red-500 opacity-75"></div> {/* Single Red Line */}
+        <div className="text-center text-sm pt-4">
           © 2025 Revelation. All rights reserved.
         </div>
       </div>

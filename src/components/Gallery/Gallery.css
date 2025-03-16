@@ -1,109 +1,121 @@
-/* Main Gallery Section */
-.homepage-gallery-section {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    padding: 50px 0;
-    width: 100%;
-    background: transparent;
-  }
-  
-  /* Header for the Gallery */
-  .homepage-gallery-header {
-    text-align: center;
-    font-size: 3rem; /* Increase font size */
-    font-weight: bold;
-    font:serif;
-    margin-bottom: 20px;
-    background: linear-gradient(to right, #FFD700, #FF8C00, #FF4500); /* Gold to Orange to Deep Red */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Gallery container */
+.gallery-container {
+  height: 50vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 40px;
+  /* border: 3px solid rgba(169, 169, 169, 0.5);*/
+  border-radius: 25px; 
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  /* margin-top: 100px; */
+  width: 100%;
 }
 
-.swiper-pagination-bullet {
-  background-color: white ;
-  opacity: 0.6; /* Slight transparency */
+/* Title */
+.gallery-title {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  font-weight: 700;
+  
+  margin-bottom: 3rem;
+  text-align: center;
+  background: linear-gradient(to right, white, gray, #4b5563);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Change active bullet to blue */
-.swiper-pagination-bullet-active {
-  background-color: blue;
-  opacity: 1;
+/* Responsive Font Sizes */
+@media (max-width: 1024px) {
+  .gallery-title {
+    font-size: 2rem;
+  }
 }
 
-  
-  /* Swiper Container */
-  .homepage-mySwiper {
-    width: 85%;
-    height: 70vh;
-    padding: 20px;
+@media (max-width: 768px) {
+  .gallery-title {
+    font-size: 1.8rem;
   }
-  
-  /* Swiper Slide Container */
-  .homepage-gallery-box {
-    position: relative;
-    width: 260px;  /* Slightly increase width for better spacing */
-    height: 370px; /* Adjust height as needed */
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    margin: 0 25px; /* Adds space around each card */
-    border: 4px solid rgba(139, 0, 0, 0.6); /* Deep red border */
-    transition: box-shadow 0.3s ease-in-out;
 }
 
-.homepage-gallery-box:hover {
-  box-shadow: 0 0 20px 10px rgba(139, 0, 0, 0.8); /* Deep red glow with blur */
+@media (max-width: 640px) {
+  .gallery-title {
+    font-size: 1.5rem;
+  }
 }
 
-  /* Blurred Background */
-  .homepage-gallery-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px); 
-    transform: scale(1.2); 
-    z-index: 0;
+/* Wrapper with increased width */
+.gallery-wrapper {
+  width: 90vw; /* Adjusted for responsiveness */
+  max-width: 1500px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border: 2px solid rgba(200, 200, 200, 0.4);
+  border-radius: 20px;
+  background-color: #1a1a1a;
+  box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* Scrolling container with fixed width based on the number of images */
+.gallery-scroll {
+  display: flex;
+  gap: 30px;
+  min-width: max-content; /* Ensures the container is only as wide as its content */
+  animation: scroll 25s linear infinite;
+}
+
+/* Individual image boxes */
+.gallery-item {
+  width: 260px; /* Default width */
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+
+  border-radius: 20px;
+  flex-shrink: 0;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Lift effect on hover */
+.gallery-item:hover {
+  transform: scale(1.1);
+}
+
+/* Adjust image sizes for smaller screens */
+@media (max-width: 1024px) {
+  .gallery-item {
+    width: 220px;
+    height: 260px;
   }
-  
-  /* Foreground Container */
-  .homepage-gallery-content {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .gallery-item {
+    width: 180px;
+    height: 220px;
   }
-  
-  /* Foreground Image */
-  .homepage-gallery-img {
-    width: 80%;        /* Adjust for your preferred size */
-    height: auto;
-    border-radius: 10px; 
-    object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .gallery-item {
+    width: 150px;
+    height: 180px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .homepage-mySwiper {
-      width: 100%;
-      height: 40vh;
-    }
-  
-    .homepage-gallery-box {
-      width: 180px;  /* Adjust for smaller screens */
-      height: 300px;
-    }
-  
-    .homepage-gallery-img {
-      width: 70%;
-    }
+}
+
+/* Infinite scrolling animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
   }
-  
+  to {
+    transform: translateX(calc(-100% + 90vw)); /* Stops excess scrolling */
+  }
+}
