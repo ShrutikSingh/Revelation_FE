@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        title: ["Kiwi-Maru", "serif"]
+        title: ["Kiwi-Maru", "serif"],
+        playfair: ["Playfair Display", "serif"],
+    
       }
     },
   },

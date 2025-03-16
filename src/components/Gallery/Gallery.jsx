@@ -1,10 +1,11 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Autoplay, Pagination } from "swiper/modules";
+import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import "./Gallery.css"; // Keep your styling
+import "swiper/css/navigation"; // Import Navigation CSS
+import "./Gallery.css";
 
 // Replace these with your actual images
 import img1 from "../../assets/img1.jpg";
@@ -35,40 +36,35 @@ const images = [
 
 const Gallery = () => {
   return (
-    <div className="homepage-gallery-section mt-20 mb-20">
-      {/* Header for the Gallery */}
+    <div className="homepage-gallery-section mt-20">
       <h2 className="homepage-gallery-header">GALLERY</h2>
 
       <Swiper
-  effect="coverflow"
-  grabCursor={true}
-  centeredSlides={true}
-  loop={true}
-  autoplay={{ delay: 500, disableOnInteraction: false, pauseOnMouseEnter: false }}
-  speed={3000}
-  slidesPerView={3}
-  spaceBetween={50}
-  cssMode={true}
-  coverflowEffect={{
-    rotate: 30,
-    stretch: 0,
-    depth: 500,
-    modifier: 1.5,
-    slideShadows: true,
-  }}
-  pagination={{ clickable: true }}
-  modules={[EffectCoverflow, Autoplay, Pagination]}
-  className="homepage-mySwiper"
->
+        effect="coverflow"
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={3}
+        spaceBetween={50}
+        slideToClickedSlide={true} // Ensures selected slide stays in focus
+        coverflowEffect={{
+          rotate: 30,
+          stretch: 0,
+          depth: 500,
+          modifier: 1.5,
+          slideShadows: true,
+        }}
+        pagination={{ clickable: true }}
+        navigation={true} // Enables manual navigation buttons
+        modules={[EffectCoverflow, Pagination, Navigation]}
+        className="homepage-mySwiper"
+      >
         {images.map((src, index) => (
           <SwiperSlide key={index} className="homepage-gallery-box">
-            {/* Blurred Background */}
             <div
               className="homepage-gallery-bg"
               style={{ backgroundImage: `url(${src})` }}
             ></div>
 
-            {/* Foreground Image */}
             <div className="homepage-gallery-content">
               <img
                 src={src}

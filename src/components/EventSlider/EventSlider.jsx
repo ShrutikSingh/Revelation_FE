@@ -46,8 +46,8 @@ const EventSlider = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       {/* Title */}
-      <div className="font-serif text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-4 mb-10
-  bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text">
+      <div className="font-playfair text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-[700] mt-4 mb-20
+  bg-gradient-to-r from-white via-gray-400 to-gray-600 text-transparent bg-clip-text">
   TECH FEST EVENTS
 </div>
 
@@ -61,7 +61,7 @@ const EventSlider = () => {
             <div
               key={event.id}
               style={{
-                transform: `rotateY(${index * (360 / events.length)}deg) translateZ(400px) ${
+                transform: `rotateY(${index * (360 / events.length)}deg) translateZ(400px)  ${
                   hoveredIndex === index ? "scale(1.2) translateZ(15px)" : ""
                 }`,
                 transition: "transform 0.5s ease-out",
