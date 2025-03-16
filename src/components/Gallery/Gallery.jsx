@@ -28,7 +28,10 @@ import img18 from "../../assets/img18.jpg";
 import img19 from "../../assets/img19.jpg";
 import img20 from "../../assets/img20.jpg";
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17,img18,img19,img20];
+const images = [
+  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, 
+  img11, img12, img13, img14, img15, img16, img17, img18, img19, img20
+];
 
 const Gallery = () => {
   return (
@@ -41,8 +44,8 @@ const Gallery = () => {
   grabCursor={true}
   centeredSlides={true}
   loop={true}
-  autoplay={{ delay: 2000, disableOnInteraction: false, pauseOnMouseEnter: false }}
-  speed={2000}
+  autoplay={{ delay: 500, disableOnInteraction: false, pauseOnMouseEnter: false }}
+  speed={3000}
   slidesPerView={3}
   spaceBetween={50}
   cssMode={true}
