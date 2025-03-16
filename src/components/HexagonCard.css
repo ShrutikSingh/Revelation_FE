@@ -83,7 +83,88 @@
   transform: scale(1.15);
 }
 
-@media (max-width: 420px) {
+
+
+@media (max-width: 1280px) {
+  .TeamsPage-hexagon-border {
+    width: 187px;
+    height: 192px;
+  }
+
+  .TeamsPage-hexagon {
+    width: 178px;
+    height: 184px;
+  }
+
+  .TeamsPage-member-name {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .TeamsPage-social-links {
+    gap: 15px;
+  }
+
+  .TeamsPage-social-links img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 1025px) {
+  .TeamsPage-hexagon-border {
+    width: 157px;
+    height: 162px;
+  }
+
+  .TeamsPage-hexagon {
+    width: 148px;
+    height: 154px;
+  }
+
+  .TeamsPage-member-name {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .TeamsPage-social-links {
+    gap: 10px;
+  }
+  
+  .TeamsPage-social-links img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 920px) {
+  .TeamsPage-hexagon-border {
+    width: 137px;
+    height: 142px;
+  }
+
+  .TeamsPage-hexagon {
+    width: 128px;
+    height: 134px;
+  }
+
+  .TeamsPage-member-name {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .TeamsPage-social-links {
+    gap: 10px;
+  }
+  
+  .TeamsPage-social-links img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+
+@media (max-width: 440px) {
   .TeamsPage-hexagon-border {
     width: 121px;
     height: 107px;
