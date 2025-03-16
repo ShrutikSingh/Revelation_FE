@@ -31,11 +31,11 @@ const images = [
 const Gallery = () => {
   return (
     <div className="gallery-container">
-      <h1 className="gallery-title">Gallery</h1>
+      <h1 className="gallery-title">GALLERY</h1>
       <div className="gallery-wrapper">
         <div className="gallery-scroll">
-          {/* Duplicate images for seamless scrolling */}
-          {[...images, ...images].map((imageUrl, index) => (
+          {/* Duplicate images for infinite looping */}
+          {images.concat(images).map((imageUrl, index) => (
             <div
               key={index}
               className="gallery-item"
