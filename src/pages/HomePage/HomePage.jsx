@@ -14,7 +14,7 @@ import Faqs from "../FAQs/Faqs";
 const HomePage = ({ Token, setToken }) => {
     return (
         <div
-            className="w-full min-h-screen flex flex-col items-center gap-y-[200px]"
+            className="w-full min-h-screen flex flex-col items-center gap-y-[120px]"
             style={{ 
                 backgroundImage: `url(${bgImage})`,
                 backgroundSize: "cover",
@@ -26,13 +26,20 @@ const HomePage = ({ Token, setToken }) => {
             }}
         >
             <Navbar Token={Token} setToken={setToken} />
+
+            {/* Apply a smaller gap between HeroFinal and Participants */}
+            <div className="w-full flex flex-col items-center"> 
             <HeroFinal />
             <Participants />
+            </div>
+
             <EventSlider />
-            <Gallery />
+            {/* <Gallery /> */}
+
             <div id="sponsors-section">
                 <Sponsorship />
             </div>
+            
             <Faqs />
             <Footer />
         </div>

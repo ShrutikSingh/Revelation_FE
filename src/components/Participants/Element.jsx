@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import "./Participants.css";
 
 const Element = ({ number, label }) => {
   const [currentNumber, setCurrentNumber] = useState(0);
@@ -23,7 +24,7 @@ const Element = ({ number, label }) => {
           }, stepTime);
         }
       },
-      { threshold: 0.5 } // Trigger when 50% of the element is visible
+      { threshold: 0.5 }
     );
 
     if (elementRef.current) {
@@ -38,19 +39,9 @@ const Element = ({ number, label }) => {
   }, [number]);
 
   return (
-    <div
-      ref={elementRef}
-      className="relative mt-10 mb-10 w-[300px] h-[155px] flex flex-col items-center justify-center 
-      bg-gradient-to-b from-gray-900 to-black text-red-500 
-      rounded-lg border border-red-700 
-      shadow-[0_4px_15px_rgba(255,0,0,0.7),0_0_40px_10px_rgba(255,0,0,0.3)] 
-      before:absolute before:inset-0 before:rounded-lg 
-      before:shadow-[inset_0_4px_6px_rgba(255,0,0,0.4)]"
-    >
-      <div className="text-4xl font-bold text-red-500">
-        {currentNumber}
-      </div>
-      <div className="text-xl font-medium text-gray-200">{label}</div>
+    <div ref={elementRef} className="parti-card">
+      <div className="parti-number">{currentNumber}</div>
+      <div className="parti-label">{label}</div>
     </div>
   );
 };

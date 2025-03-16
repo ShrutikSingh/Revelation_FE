@@ -13,32 +13,31 @@ const Sponsorship = () => {
   return (
     <div className="min-h-screen text-white text-center flex flex-col justify-center items-center px-4">
       {/* Title Section */}
-      <p className="font-mono text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold 
-  bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text">
+      <p className="font-playfair text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-2xl font-bold 
+  bg-gradient-to-r from-white via-gray-400 to-gray-600 text-transparent bg-clip-text">
   Have a Look at our Past
 </p>
 
-<h1 className="font-serif text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-4 
-  bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text">
+<h1 className="font-playfair text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-6 
+  bg-gradient-to-r from-white via-gray-400 to-gray-600 text-transparent bg-clip-text">
   SPONSORS
 </h1>
+{/* Sponsor Grid Container */}
+<div className="container mx-auto flex flex-col justify-center items-center gap-16 mt-16">
+  {/* Row 1 - 3 Sponsors */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-[80px] lg:gap-[120px] place-items-center">
+    {sponsorsRow1.map((image, index) => (
+      <SponsorCard key={index} image={image} index={index} />
+    ))}
+  </div>
 
-      {/* Sponsor Grid Container */}
-      <div className="container mx-auto flex flex-col justify-center items-center gap-16 mt-16">
-        {/* Row 1 - 3 Sponsors */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[120px] place-items-center">
-          {sponsorsRow1.map((image, index) => (
-            <SponsorCard key={index} image={image} index={index} />
-          ))}
-        </div>
-
-        {/* Row 2 - 2 Sponsors */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[120px] place-items-center">
-          {sponsorsRow2.map((image, index) => (
-            <SponsorCard key={index} image={image} index={index + sponsorsRow1.length} />
-          ))}
-        </div>
-      </div>
+  {/* Row 2 - 2 Sponsors */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-[80px] lg:gap-[120px] place-items-center">
+    {sponsorsRow2.map((image, index) => (
+      <SponsorCard key={index} image={image} index={index + sponsorsRow1.length} />
+    ))}
+  </div>
+</div>
     </div>
   );
 };

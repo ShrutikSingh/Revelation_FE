@@ -1,4 +1,5 @@
 /* Main Gallery Section */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 .homepage-gallery-section {
     display: flex;
     flex-direction: column; 
@@ -14,9 +15,9 @@
     text-align: center;
     font-size: 3rem; /* Increase font size */
     font-weight: bold;
-    font:serif;
+    font-family: 'Playfair Display', serif; /* Apply Playfair Display */
     margin-bottom: 20px;
-    background: linear-gradient(to right, #FFD700, #FF8C00, #FF4500); /* Gold to Orange to Deep Red */
+    background: linear-gradient(to right, #ffffff, #d1d5db, #6b7280); /* White to Light Gray to Gray */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
