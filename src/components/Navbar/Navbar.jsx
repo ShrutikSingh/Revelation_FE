@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import revelation from "../../assets/revelation.png";
+import revelation from "../../assets/revelationlogo1.png";
 import iiestLogo from "../../assets/iiest_logo.png";
 import ascLogo from "../../assets/asce_logo.png";
 import axios from "axios";
@@ -18,7 +18,8 @@ const Navbar = ({ Token }) => {
   const location = useLocation();
   const activeSection = location.pathname === "/profile" ? null : location.pathname;
   const [userData, setUserData] = useState({});
-
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -36,6 +37,20 @@ const Navbar = ({ Token }) => {
       }
     }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const handleNavigation = (path) => {
     if (path === "/sponsors") {
@@ -55,18 +70,27 @@ const Navbar = ({ Token }) => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg">
-
+      {/* <nav className="fixed top-1 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg "> */}
+      <nav
+        className={`fixed top-1 left-2 right-2 w-[calc(100%-1rem)] bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg transition-transform duration-300 ${
+          visible ? "translate-y-0" : "-translate-y-full"
+        }`}>
         {/* Logos Section */}
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="flex items-center justify-center flex-grow">
-            <img src={revelation} alt="Revelation Logo" className="w-28 sm:w-36 md:w-44 h-auto" />
+          <a href="https://revelation2k25.tech" target="_blank" rel="noopener noreferrer">
+
+            <img src={revelation} alt="Revelation Logo" className="w-28 sm:w-36 md:w-44 h-auto cursor-pointer hover:scale-110 transition-transform" />
+         
+
+
+            </a>
           </div>
           <a href="https://www.iiests.ac.in" target="_blank" rel="noopener noreferrer">
-            <img src={iiestLogo} alt="IIEST Logo" className="w-6 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform" />
+            <img src={iiestLogo} alt="IIEST Logo" className="w-7 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform" />
           </a>
           <a href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
-            <img src={ascLogo} alt="ASC Logo" className="w-6 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform" />
+            <img src={ascLogo} alt="ASC Logo" className="w-7 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform" />
           </a>
         </div>
 
@@ -100,7 +124,9 @@ const Navbar = ({ Token }) => {
               {userData.picture && <img src={userData.picture} alt="Profile" className="w-full h-full rounded-full" />}
             </div>
           ) : (
-            <button onClick={() => handleNavigation("/login")}>Login</button>
+            // <button onClick={() => handleNavigation("/login")}>Login</button>
+            <button className=" mr-4 bg-black-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
+
           )}
         </div>
 
@@ -127,7 +153,9 @@ const Navbar = ({ Token }) => {
               {userData.picture && <img src={userData.picture} alt="Profile" className="w-full h-full rounded-full" />}
             </div>
           ) : (
-            <button onClick={() => handleNavigation("/login")}>Login</button>
+            // <button onClick={() => handleNavigation("/login")}>Login</button>
+            <button className=" mr-4 bg-black-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
+
           )}
           {[
             { id: "/", icon: homeIcon, label: "Home" },
