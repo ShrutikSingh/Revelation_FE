@@ -39,7 +39,7 @@ const Element = ({ number, label }) => {
   }, [number]);
 
   return (
-    <div ref={elementRef} className="parti-card">
+    <div ref={elementRef} className="parti-card"> 
       <div className="parti-number">{currentNumber}</div>
       <div className="parti-label">{label}</div>
     </div>

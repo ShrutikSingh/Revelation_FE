@@ -39,7 +39,7 @@ const LiveBadge = styled(Box)({
 const EventButton = styled(Button)({
   position: "relative",
   width: "clamp(100px, 18vw, 160px)", // Smaller min size for mobile
-  height: "clamp(35px, 7vh, 50px)",  // Smaller height for mobile
+  height: "clamp(35px, 7vh, 50px)", // Smaller height for mobile
   textTransform: "none",
 
   "&:hover": {
@@ -78,13 +78,13 @@ const EventButton = styled(Button)({
     top: "30%",
     right: "8%",
     width: "clamp(18px, 1.8vw, 25px)", // Smaller icon for mobile
-    height: "clamp(12px, 1.5vw, 18px)", 
+    height: "clamp(12px, 1.5vw, 18px)",
     color: "white",
   },
 
   "@media (max-width: 480px)": {
-    width: "90px",  // Fixed width for smaller screens
-    height: "32px", 
+    width: "90px", // Fixed width for smaller screens
+    height: "32px",
     "& .buttonText": {
       fontSize: "12px", // Further reduced text size for mobile
       left: "10%",
@@ -95,7 +95,6 @@ const EventButton = styled(Button)({
     },
   },
 });
-
 
 const RevealText = styled(Typography)({
   width: "100%",
@@ -109,6 +108,7 @@ const RevealText = styled(Typography)({
   fontSize: "clamp(48px, 10vw, 190px)", // Responsive
   lineHeight: "normal",
   filter: "drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5))",
+  fontWeight:900
 });
 
 const HeroSection = () => {
@@ -164,7 +164,6 @@ const HeroSection = () => {
 
             <RevealText>REVELATION</RevealText>
           </Box>
-
         </Box>
 
         <Box sx={{ position: "absolute", bottom: 1, left: 25 }}>
@@ -197,22 +196,22 @@ const HeroSection = () => {
         </Box>
 
         <Typography
-  sx={{
-    position: "absolute",
-    top: { xs: 50, sm: 70, lg: 90 }, // Adjusted for large screens
-    right: { xs: "30px", lg: "50px" }, // More spacing on large screens
-    maxWidth: { xs: 593, lg: 750 }, // Increased max width
-    fontFamily: "'Playfair Display', serif",
-    fontWeight: 700,
-    color: "#dadada",
-    fontSize: { xs: 14, sm: 18, md: 25, lg: 32 }, // Increased size for large screens
-    textAlign: "right",
-    lineHeight: "normal",
-  }}
->
-  The annual tech-fest of the department of computer science and technology, IIEST Shibpur
-</Typography>
-
+          sx={{
+            position: "absolute",
+            top: { xs: 50, sm: 70, lg: 90 }, // Adjusted for large screens
+            right: { xs: "30px", lg: "50px" }, // More spacing on large screens
+            maxWidth: { xs: 593, lg: 750 }, // Increased max width
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 700,
+            color: "#dadada",
+            fontSize: { xs: 14, sm: 18, md: 25, lg: 32 }, // Increased size for large screens
+            textAlign: "right",
+            lineHeight: "normal",
+          }}
+        >
+          The annual tech-fest of the department of computer science and
+          technology, IIEST Shibpur
+        </Typography>
       </Box>
     </Box>
   );

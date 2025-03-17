@@ -35,7 +35,7 @@ const AboutUs = () => {
             zIndex: 1,
             opacity: 0.7,
             maxHeight: "113%",
-            maxWidth:"96%"
+            maxWidth: "96%",
           }}
           alt="Background"
           src={Img}
@@ -49,7 +49,7 @@ const AboutUs = () => {
             left: 10,
             zIndex: 2,
             maxHeight: "113%",
-            maxWidth:"96%"
+            maxWidth: "96%",
           }}
           alt="Foreground"
           src={Img}
@@ -83,7 +83,16 @@ const AboutUs = () => {
             marginTop: "clamp(30px, 8vw, 60px)",
           }}
         >
-          Welcome to the grand return of REVELATION, the premier tech fest by the Academic Society of Computer Engineers, Department of Computer Science and Technology, IIEST Shibpur. With an electric atmosphere pulsing with innovation, REVELATION 2k25 is set to captivate over 5,000 attendees. Join us on this exhilarating journey of intellect, creativity, and technology! We transcend traditional learning, offering a melting pot of ideas and a celebration of brilliance. From fostering technical interests to showcasing innovation, REVELATION is a beacon of inspiration. Brace yourself for an unforgettable experience where every moment sparks creativity.
+          Welcome to the grand return of REVELATION, the premier tech fest by
+          the Academic Society of Computer Engineers, Department of Computer
+          Science and Technology, IIEST Shibpur. With an electric atmosphere
+          pulsing with innovation, REVELATION 2k25 is set to captivate over
+          5,000 attendees. Join us on this exhilarating journey of intellect,
+          creativity, and technology! We transcend traditional learning,
+          offering a melting pot of ideas and a celebration of brilliance. From
+          fostering technical interests to showcasing innovation, REVELATION is
+          a beacon of inspiration. Brace yourself for an unforgettable
+          experience where every moment sparks creativity.
         </p>
       </div>
     </MUIBox>
