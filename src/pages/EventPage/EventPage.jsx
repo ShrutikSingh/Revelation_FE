@@ -8,7 +8,7 @@ const EventPage = ({Token,setToken}) =>{
   return (
     <div>
       <Navbar Token={Token} setToken={setToken} />
-      <EventList />
+      <EventList setToken={setToken} />
       <Footer />
     </div>
   )
