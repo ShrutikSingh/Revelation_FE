@@ -9,3 +9,7 @@
         height: 800px; /* Fix height for tablets */
     }
   }
+
+  .heropage{
+    overflow: hidden;
+  }

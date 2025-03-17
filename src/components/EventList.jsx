@@ -28,7 +28,7 @@ const eventSchedule = [
     },
     {
         day: "DAY-3",
-        date: "March 6, 2025",
+        date: "March 23, 2025",
         events: [
             { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
             { name: "Murder Mystery", startTime: "00:00", endTime: "02:18", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
