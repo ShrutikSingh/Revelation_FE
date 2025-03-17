@@ -4,8 +4,10 @@ import { FaUser  } from "react-icons/fa";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import EventData from "../data/EventData.jsx";
+// import EventData from "../data/EventData.jsx";
 import { useParams } from "react-router-dom";
+import axios from 'axios';
+import { API_URL } from '../config/config';
 
 const DashboardPage = () => {
   const [showForm, setShowForm] = useState(false);
@@ -18,11 +20,83 @@ const DashboardPage = () => {
   const [expandedTeam, setExpandedTeam] = useState(null);
   const [userTeam, setUserTeam] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState("");
   const { id } = useParams();
   if (!id) {
     return <h1>Loading...</h1>; // or redirect to a proper page
   }
+
+  // const { id } = useParams();
+  const [eventData, setEvent] = useState({backgroundImage: { url: '' }});
+
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/events/${id}`);
+      setEvent(response.data.body);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
+  const [userData, setUserData] = useState(null);
+  
+  
+  const token = localStorage.getItem("token");
+  const fetchUserData = async () => {
+    if (token) {
+      try {
+        const userResponse = await axios.get(`${API_URL}/api/auth/status`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        
+        setUserData(userResponse.data.user);
+        console.log(userResponse.data.user);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+  };
+  
+  const [teamParticipants, setTeamParticipants] = useState(null);
+  const [participantsData, setParticipantsData] = useState(null);
+
+  const fetchParticipantsData = async () => {
+    if (token) {
+      try {
+        const userResponse = await axios.get(`${API_URL}/api/events/${id}/participants`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });        
+        setParticipantsData(userResponse.data.body);
+
+        if (eventData.type === "Team" && userTeam) {
+          const matchingTeam = userResponse.data.body.teams.find(
+            team => team._id === userTeam.id
+          );
+          if (matchingTeam) {
+            setTeamParticipants(matchingTeam);
+            console.log("Found team participants:", matchingTeam);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+    fetchParticipantsData();
+  }, [id, userTeam, eventData.type]);
+
+  useEffect(() => {
+      fetchUserData();
+    }, []);
+
+  console.log(eventData)
+  console.log(userData)
+  console.log(participantsData)
+  console.log(userTeam)
 
   const [currentPage, setCurrentPage] = useState(1);
   const teamsPerPage = 10; // Number of teams per page
@@ -39,16 +113,34 @@ const DashboardPage = () => {
   ];
 
   useEffect(() => {
-    const demoData = {
-      isNonIIESTian: true, // Change to false to test
-      paymentAmount: 200,
-      qrCode: "qr.png",
-    };
+    if (userData) { // Add check for userData
+      setIsNonIIESTian(!userData.isIIESTian);
+      setPaymentAmount(eventData.registrationAmount);
+      setQrCode("/qr.png");
+      if(userData.phoneNumber){
+        setPhoneNumber(userData.phoneNumber);
+      }
+    }
+  }, [userData, eventData]); // Add dependencies
 
-    setIsNonIIESTian(demoData.isNonIIESTian);
-    setPaymentAmount(demoData.paymentAmount);
-    setQrCode("/qr.png");
-  }, []);
+  useEffect(() => {
+    if (userData && userData.eventsRegistered) {
+      const registration = userData.eventsRegistered.find(
+        reg => reg.id._id === id
+      );
+      
+      if (registration && registration.teamId) {
+        setUserTeam({
+          name: registration.teamId.name,
+          members: registration.teamId.teamMembers,
+          // Add 1 to account for team leader
+          size: registration.teamId.teamMembers.length + 1,
+          id: registration.teamId._id
+        });
+      }
+    }
+  }, [userData, id]);
+  
 
   const handleCreateClick = () => {
     setShowForm((prev) => !prev);
@@ -62,13 +154,42 @@ const DashboardPage = () => {
     setPaymentScreenshot(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    if (isNonIIESTian && !paymentScreenshot) {
+    if (isNonIIESTian&&eventData.registrationAmount!==0 && !paymentScreenshot) {
       alert("Please upload a payment screenshot!");
       return;
     }
-    alert(`Team "${teamName}" created successfully!`);
+    if (!token) {
+      alert("Please login first!");
+      return;
+    }
+    let formData = new FormData();
+    if(eventData.type==="Team"){
+      const teamData={
+        name: teamName,
+        phoneNumber
+      }
+      formData.append("teamData", JSON.stringify(teamData));
+    }
+    else{
+      const participantData="true";
+    }
+    formData.append("paymentProof", paymentScreenshot);
+
+    const response = await axios.post(
+      `${API_URL}/api/events/${id}/register`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    );
+
+    console.log(response.data);
+    // alert(`Team "${teamName}" created successfully!`);
     setShowForm(false);
     setUserTeam({ name: teamName, members: ["You", "sf"] });
     setTeamName("");
@@ -129,7 +250,7 @@ const DashboardPage = () => {
             </clipPath>
             <rect width="100%" height="100%" fill="black" clipPath="url(#clipper)" />
             <image
-              // href={eventData.bgUrl}
+              href={eventData?.backgroundImage?.url || ''} // Add optional chaining and fallback
               width="100%"
               height="100%"
               preserveAspectRatio="xMidYMid slice"
@@ -147,7 +268,7 @@ const DashboardPage = () => {
             />
           </svg>
           <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg z-10">
-            {/* {eventData.title} */}
+            {eventData.name}
           </div>
 
           <div className="relative z-10 p-6 h-full flex flex-col items-center">
@@ -170,7 +291,7 @@ const DashboardPage = () => {
                   <span className="ml-3 text-sm md:text-base">{userTeam.name}</span>
                   <span className="flex items-center">
                     <FaUser  className="text-red-500 mr-1" />
-                    <span className="text-sm md:text-base">{userTeam.members.length} Member{userTeam.members.length === 1 ? "" : "s"}</span>
+                    <span className="text-sm md:text-base">{userTeam.members.length +1 } Member{userTeam.members.length === 0 ? "" : "s"}</span>
                   </span>
                   <div className="flex items-center">
                     <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm" onClick={() => setShowSearch(!showSearch)}>
@@ -196,14 +317,14 @@ const DashboardPage = () => {
                 {expandedTeam === userTeam.name && (
                   <div className="mt-2 bg-black p-3 rounded-lg flex flex-col items-start">
                     <div>
-                      <p><strong>Team Leader:</strong> {userTeam.members[0]}</p>
+                      <p><strong>Team Leader:</strong> {teamParticipants.teamLeader.name}</p>
                     </div>
                     <div>
                       <p><strong>Members:</strong></p>
                       <ul className="ml-4 list-disc">
-                        {userTeam.members.map((member, i) => (
-                          <li key={i}>{member}</li>
-                        ))}
+                        {teamParticipants.teamMembers.length>0 ? teamParticipants.teamMembers.map((member, i) => (
+                          <li key={i}>{member.name}</li>
+                        )):"No Members"}
                       </ul>
                     </div>
                   </div>
@@ -233,7 +354,7 @@ const DashboardPage = () => {
                 />
 
                 {/* Payment Section for Non-IIESTians */}
-                {isNonIIESTian && (
+                {isNonIIESTian &&( eventData.registrationAmount!==0 && (
                   <div className="mt-4">
                     <p className="text-yellow-400 text-sm mb-2">
                       Pay <strong>₹{paymentAmount}</strong> using the QR code below and upload the payment screenshot.
@@ -247,7 +368,7 @@ const DashboardPage = () => {
                       className="w-full p-2 border rounded-md text-black"
                     />
                   </div>
-                )}
+                ))}
 
                 <button
                   type="submit"
