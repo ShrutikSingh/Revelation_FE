@@ -5,13 +5,13 @@ import Duet from "../../assets/duet_logo.jpg";
 import Career from "../../assets/career.png";
 import Lawfarm from "../../assets/lawfarm_logo.jpeg";
 import GFG from "../../assets/gfg.png";
-
+import "./Sponsorship.css"
 const sponsorsRow1 = [Unstop, Duet, Lawfarm];
 const sponsorsRow2 = [Career, GFG];
 
 const Sponsorship = () => {
   return (
-    <div className="min-h-screen text-white text-center flex flex-col justify-center items-center px-4">
+    <div className="min-h-screen text-white text-center flex flex-col justify-center items-center px-4 sponsors-container">
       {/* Title Section */}
       <p className="font-playfair text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-2xl font-bold 
   bg-gradient-to-r from-white via-gray-400 to-gray-600 text-transparent bg-clip-text">

@@ -17,7 +17,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* background-color: black; */
+    /* background-color: black; */ 
+    width: 100%;
+    overflow: hidden;
 }
 .eventSlideHeader{
     margin-top: 0;

@@ -9,6 +9,7 @@
   padding: 150px 5px; /* Adjusted padding */
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .parti-card {
