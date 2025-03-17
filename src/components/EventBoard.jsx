@@ -70,7 +70,7 @@ const EventBoard = () => {
   const dashlink=`/dashboard/${eventData._id}`;
 
   return (
-    <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden">
+    <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden mt-20">
 
       <div className="relative w-full max-w-4xl xl:max-w-6xl  h-full mx-auto">
         <svg
@@ -96,7 +96,7 @@ const EventBoard = () => {
           </clipPath>
           <rect width="100%" height="100%" fill="black" clipPath="url(#clipper)" />
           <image
-                        href={eventData.posterImage.url}
+                        href={eventData.backgroundImage.url}
                         alt={eventData.name}
                         width="100%"
                         height="100%"
@@ -125,17 +125,28 @@ const EventBoard = () => {
             <div className="w-2/3 h-full max-md:w-full">
               <div className="flex flex-col justify-between text-sm max-md:mt-4">
                 <span>📍 {eventData.venue}</span>
-                <span className="font-bold max-md:mt-2">Prize Pool:10,000</span>
+                <div className="flex flex-row justify-between">
+                <span className="font-bold max-md:mt-2">Prize Pool : ₹{eventData.prizePool}</span>
+                {
+                  (eventData.registrationAmount !== 0)?  <span className="font-bold max-md:mt-2">Registration Fee (for non IIESTian) : ₹{eventData.registrationAmount}</span>:<span className="font-bold max-md:mt-2">No Registration Fee!</span>
+                }</div>
+                <div className="flex flex-row justify-between"><span className="max-md:mt2">Event Type : {eventData.type==="Team"?"Team":"Individual"}</span>
+                {
+                  eventData.type==="Team"&&((eventData.teamSize.max===eventData.teamSize.min)?<span className="max-md:mt2">Team Size : Strictly {eventData.teamSize.min} members</span>:<span className="max-md:mt2">Team Size : {eventData.teamSize.min}-{eventData.teamSize.max} members</span>)
+                }
+                </div>
               </div>
-              <div className="flex flex-col justify-between mt-2 text-sm max-md:mt-4">
-                <span>⏰ {formatDateTime(eventData.startTime)}</span>
-                <span>⏰ {formatDateTime(eventData.endTime)}</span>
+              <div className="flex flex-row justify-between mt-2 text-sm max-md:flex-col max-md:mt-4">
+                <span>⏰ Start Time : {formatDateTime(eventData.startTime)}</span>
+                <span>⏰ End Time : {formatDateTime(eventData.endTime)}</span>
               </div>
-              <p className="mt-4 text-gray-300 text-left">{eventData.description}Gear up withkjbf fbf khf h feuhrfuher h refuh ruh ruhe fiurh fruh rhieruh irheuheiruh rh r hriuh  your laptops and get ready for the second edition of Fresher’s Contest presented by CodeIIEST. Whether you conquered the first edition or are just stepping into CP, this contest is for YOU! Step into the limelight, capture the beauty of coding and most importantly have fun racking your brains!</p>
+              <p className="mt-4 text-gray-300 text-left">{eventData.description}</p>
 
               {/* Dashboard Button */}
               <div className="absolute top-[65px] right-0 max-md:left-[100px]">
-                <DashboardButton link={dashlink} content="Dashboard" />
+                <Link to={dashlink}>
+                  <DashboardButton link={dashlink} content="Dashboard" />
+                </Link>
               </div>
 
               {/* Register via Dashboard Button (Uses Link for Navigation) */}
@@ -153,12 +164,11 @@ const EventBoard = () => {
           {/* EventCard for Sidebar */}
           <div className="absolute right-[-20px] bottom-[-0px] max-md:left-[-15px] max-md:top-40">
             <EventCard
-              title={eventData.name}
-              description="The Competitive Coding Contest"
               imageUrl={eventData.posterImage.url}
-              dayText="Day 1"
+              dayText={eventData.day}
             />
           </div>
+      {/* <EventRules /> */}
         </div>
       </div>
     </div>

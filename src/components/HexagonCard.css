@@ -1,5 +1,5 @@
 .TeamsPage-hexagon-border {
-  width: 217px;
+  width: 222px;
   height: 222px;
   background-color: red;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -11,8 +11,8 @@
 }
 
 .TeamsPage-hexagon {
-  width: 208px;
-  height: 214px;
+  width: 215px;
+  height: 215px;
   background-color: white;
   clip-path: inherit;
   overflow: hidden;
@@ -87,13 +87,13 @@
 
 @media (max-width: 1280px) {
   .TeamsPage-hexagon-border {
-    width: 187px;
+    width: 192px;
     height: 192px;
   }
 
   .TeamsPage-hexagon {
-    width: 178px;
-    height: 184px;
+    width: 185px;
+    height: 185px;
   }
 
   .TeamsPage-member-name {
@@ -111,15 +111,15 @@
   }
 }
 
-@media (max-width: 1025px) {
+@media (max-width: 1045px) {
   .TeamsPage-hexagon-border {
-    width: 157px;
+    width: 162px;
     height: 162px;
   }
 
   .TeamsPage-hexagon {
-    width: 148px;
-    height: 154px;
+    width: 155px;
+    height: 155px;
   }
 
   .TeamsPage-member-name {
@@ -139,13 +139,13 @@
 
 @media (max-width: 920px) {
   .TeamsPage-hexagon-border {
-    width: 137px;
+    width: 142px;
     height: 142px;
   }
 
   .TeamsPage-hexagon {
-    width: 128px;
-    height: 134px;
+    width: 135px;
+    height: 135px;
   }
 
   .TeamsPage-member-name {
@@ -162,17 +162,41 @@
     height: 22px;
   }
 }
-
-
-@media (max-width: 440px) {
+@media (max-width: 760px) {
   .TeamsPage-hexagon-border {
-    width: 121px;
-    height: 107px;
+    width: 132px;
+    height: 132px;
   }
 
   .TeamsPage-hexagon {
-    width: 115px;
-    height: 101px;
+    width: 125px;
+    height: 125px;
+  }
+
+  .TeamsPage-member-name {
+    font-size: 15px;
+    margin-bottom: 7px;
+  }
+
+  .TeamsPage-social-links {
+    gap: 10px;
+  }
+  
+  .TeamsPage-social-links img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 440px) {
+  .TeamsPage-hexagon-border {
+    width: 120px;
+    height: 120px;
+  }
+
+  .TeamsPage-hexagon {
+    width: 113px;
+    height: 113px;
   }
 
   .TeamsPage-member-name {
@@ -212,12 +236,12 @@
 @media (max-width: 380px) {
   .TeamsPage-hexagon-border {
     width: 111px;
-    height: 97px;
+    height: 111px;
   }
 
   .TeamsPage-hexagon {
     width: 105px;
-    height: 91px;
+    height: 105px;
   }
 
   .TeamsPage-member-name {
@@ -232,6 +256,42 @@
   .TeamsPage-social-links img {
     width: 15px;
     height: 15px;
+  }
+
+}
+
+@media (max-width: 350px) {
+  .TeamsPage-hexagon-border {
+    width: 104px;
+    height: 104px;
+  }
+
+  .TeamsPage-hexagon {
+    width: 97px;
+    height: 97px;
+  }
+
+  .TeamsPage-member-name {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+}
+
+@media (max-width: 330px) {
+  .TeamsPage-hexagon-border {
+    width: 97px;
+    height: 97px;
+  }
+
+  .TeamsPage-hexagon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .TeamsPage-member-name {
+    font-size: 10px;
+    margin-bottom: 4px;
   }
 
 }

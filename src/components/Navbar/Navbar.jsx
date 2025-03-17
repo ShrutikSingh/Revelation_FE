@@ -143,7 +143,9 @@ const Navbar = ({ Token }) => {
               )}
             </div>
           ) : (
-            <button onClick={() => handleNavigation("/login")}>Login</button>
+            //<div className="flex justify-center items-center">
+            <button className="mr-4 bg-black-600 text-white font-serif px-5 py-1 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
+           // </div>
           )}
         </div>
 
@@ -186,7 +188,8 @@ const Navbar = ({ Token }) => {
               )}
             </div>
           ) : (
-            <button onClick={() => handleNavigation("/login")}>Login</button>
+              // <button className="mt-6 mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"
+            <button className=" mr-4 bg-black-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
           )}
           {[
             { id: "/", icon: homeIcon, label: "Home" },

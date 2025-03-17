@@ -7,11 +7,11 @@ const HeroSection = () => {
       <h2 className="TeamsPage-hero-subtitle">Meet the <span>MASTERMINDS</span></h2>
       <h1 className="TeamsPage-hero-title">
         <span className="TeamsPage-bracket">
-          <img src="./assets/title-border.png" alt="border" />
+          <img src="./assets/title-border.webp" alt="border" />
         </span> 
         TEAM REVELATION 
         <span className="TeamsPage-bracket">
-          <img src="./assets/title-border.png" alt="border" />
+          <img src="./assets/title-border.webp" alt="border" />
         </span>
       </h1>
       <div className="TeamsPage-hero-description">
