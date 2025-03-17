@@ -77,10 +77,10 @@ const Navbar = ({ Token }) => {
     <>
       {/* <nav className="fixed top-1 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg "> */}
       <nav
-        className={`fixed top-1 left-2 right-2 w-[calc(100%-1rem)] bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg transition-transform duration-300 ${
-          visible ? "translate-y-0" : "-translate-y-full"
+        className={`fixed top-2 left-2 right-3 w-[calc(100%-1rem)] bg-gray-900 text-white flex items-center justify-between px-3 py-1 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg transition-transform duration-300 ${
+          visible ? "translate-y-0" : "-translate-y-[115%]"
         }`}>
-        {/* Logos Section */}
+        {/* Logos Section */} 
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="flex items-center justify-center flex-grow">
           <a href="https://revelation2k25.tech" target="_blank" rel="noopener noreferrer">
@@ -96,41 +96,43 @@ const Navbar = ({ Token }) => {
           </a>
           <a href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
             <img src={ascLogo} alt="ASC Logo" className="w-7 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform" />
-//       <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg">
-//         {/* Logos Section */}
-//         <div className="flex items-center gap-2 sm:gap-4">
-//           <div className="flex items-center justify-center flex-grow">
-//             <img
-//               src={revelation}
-//               alt="Revelation Logo"
-//               className="w-28 sm:w-36 md:w-44 h-auto"
-//             />
-//           </div>
-//           <a
-//             href="https://www.iiests.ac.in"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             <img
-//               src={iiestLogo}
-//               alt="IIEST Logo"
-//               className="w-6 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform"
-//             />
-//           </a>
-//           <a
-//             href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             <img
-//               src={ascLogo}
-//               alt="ASC Logo"
-//               className="w-6 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform"
-//             />
-          </a>
+            </a>
         </div>
+{/* //       <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg">
+
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center justify-center flex-grow"> */}
+            {/* <img
+              src={revelation}
+              alt="Revelation Logo"
+              className="w-28 sm:w-36 md:w-44 h-auto"
+            />
+          </div>
+          <a
+            href="https://www.iiests.ac.in"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={iiestLogo}
+              alt="IIEST Logo"
+              className="w-6 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={ascLogo}
+              alt="ASC Logo"
+              className="w-6 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform"
+            />
+           */}
 
         {/* Desktop Menu */}
+
         <div className="hidden lg:flex items-center gap-6">
           {[
             { id: "/", icon: homeIcon, label: "Home" },
