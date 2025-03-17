@@ -42,7 +42,7 @@
   display: flex;
   gap: 20px;
   min-width: max-content;
-  animation: scroll 15s linear infinite;
+  animation: scroll 50s linear infinite;
 }
 
 /* Individual Image Styling */

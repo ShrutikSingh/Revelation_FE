@@ -42,9 +42,9 @@ const faqData = [
 const Faqs = () => {
   return (
     <div className="flex justify-center items-center px-4">
-      <div className="w-full max-w-4xl text-white rounded-lg shadow-lg py-10 px-6 sm:px-10">
+      <div className="w-full max-w-4xl  text-white rounded-lg shadow-lg py-10 px-6 sm:px-10">
       <h1 className="font-playfair text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-[700] mb-10 -mt-20
-  bg-gradient-to-r from-white via-gray-400 to-gray-600 text-transparent bg-clip-text text-center">
+  bg-gradient-to-r text-white text-transparent bg-clip-text text-center">
   FAQs
 </h1>
         {faqData.map((faq, index) => (
