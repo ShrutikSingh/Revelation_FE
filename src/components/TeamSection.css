@@ -510,3 +510,18 @@
     width: 75%;
   }
 }
+
+@media (max-width:380px){
+  .TeamsPage-team-3 .TeamsPage-second-row {
+    margin-top: -17px; 
+  }
+
+  .TeamsPage-team-4 .TeamsPage-second-row {
+    margin-left: 55px;
+    margin-top: -17px; 
+  }
+
+  .TeamsPage-team-5 .TeamsPage-second-row {
+    margin-top: -17px; 
+  }
+}

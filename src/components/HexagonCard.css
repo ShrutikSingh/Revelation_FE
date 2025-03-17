@@ -177,7 +177,7 @@
 
   .TeamsPage-member-name {
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
   }
 
   .TeamsPage-social-links {
@@ -207,4 +207,31 @@
   .TeamsPage-hexagon-border.TeamsPage-hovered {
     background-color: white;
   }
+}
+
+@media (max-width: 380px) {
+  .TeamsPage-hexagon-border {
+    width: 111px;
+    height: 97px;
+  }
+
+  .TeamsPage-hexagon {
+    width: 105px;
+    height: 91px;
+  }
+
+  .TeamsPage-member-name {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .TeamsPage-social-links {
+    gap: 4px;
+  }
+
+  .TeamsPage-social-links img {
+    width: 15px;
+    height: 15px;
+  }
+
 }

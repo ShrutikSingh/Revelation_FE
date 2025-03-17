@@ -6,6 +6,7 @@
   width: 100%;
   margin-top: -100px;
   margin-bottom: 40px;
+  overflow: hidden;
 }
 ::-webkit-scrollbar {
     display: none;
