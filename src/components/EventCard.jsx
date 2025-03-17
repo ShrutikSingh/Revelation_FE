@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-const EventCard = () => {
+const EventCard = ({imageUrl,dayText}) => {
   // Hardcoded demo data (Replace with API call when backend is ready)
   const demoData = {
-    imageUrl: "../../public/codeStorm.jpg", // Replace with actual image URL
-    dayText: "Day 1"
+    imageUrl: imageUrl, // Replace with actual image URL
+    dayText
   };
 
   const [eventData, setEventData] = useState({ imageUrl: "", dayText: "" });
@@ -39,7 +39,7 @@ const EventCard = () => {
       </svg>
 
       <div className="absolute top-10 right-2 text-white text-xs font-bold tracking-widest rotate-[-90deg]">
-        {eventData.dayText}
+        day {eventData.dayText}
       </div>
     </div>
   );

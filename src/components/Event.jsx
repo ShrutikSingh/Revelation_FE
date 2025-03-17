@@ -8,8 +8,8 @@ const Event = ({ event, type }) => {
   const handleEventClick = (e) => {
     e.stopPropagation();
     console.log("Button Click");
-    alert(`Wait for version Web2.0....`);
-    // navigate(`/event/${event.id}`);
+    // alert(`Wait for version Web2.0....`);
+    navigate(`/event/${event.id}`);
   }
   const timeToMinutes = (time) => {
     const [hours, minute] = time.split(":").map(Number);
