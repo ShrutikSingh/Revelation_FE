@@ -29,6 +29,16 @@ const DashboardPage = () => {
   // const { id } = useParams();
   const [eventData, setEvent] = useState({backgroundImage: { url: '' }});
 
+
+  useEffect(() => {
+    fetchEvents();
+    fetchParticipantsData();
+  }, [id, userTeam, eventData.type]);
+
+  useEffect(() => {
+      fetchUserData();
+    }, []);
+    
   const fetchEvents = async () => {
     try {
       const response = await axios.get(`${API_URL}/api/events/${id}`);
@@ -60,6 +70,7 @@ const DashboardPage = () => {
   
   const [teamParticipants, setTeamParticipants] = useState(null);
   const [participantsData, setParticipantsData] = useState(null);
+  const [teamsList, setTeamsList] = useState([]);
 
   const fetchParticipantsData = async () => {
     if (token) {
@@ -67,31 +78,28 @@ const DashboardPage = () => {
         const userResponse = await axios.get(`${API_URL}/api/events/${id}/participants`, {
           headers: { Authorization: `Bearer ${token}` },
         });        
-        setParticipantsData(userResponse.data.body);
+
+        let responseData = userResponse.data.body;
+        let teamsArray = [];
 
         if (eventData.type === "Team" && userTeam) {
           const matchingTeam = userResponse.data.body.teams.find(
             team => team._id === userTeam.id
           );
+
           if (matchingTeam) {
             setTeamParticipants(matchingTeam);
-            console.log("Found team participants:", matchingTeam);
+            teamsArray = responseData.teams.filter(team => team._id !== userTeam.id); 
           }
         }
+        if(teamsArray.length === 0) teamsArray = responseData.teams;
+        setTeamsList(teamsArray);
+        setParticipantsData(responseData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     }
   };
-
-  useEffect(() => {
-    fetchEvents();
-    fetchParticipantsData();
-  }, [id, userTeam, eventData.type]);
-
-  useEffect(() => {
-      fetchUserData();
-    }, []);
 
   console.log(eventData)
   console.log(userData)
@@ -133,7 +141,6 @@ const DashboardPage = () => {
         setUserTeam({
           name: registration.teamId.name,
           members: registration.teamId.teamMembers,
-          // Add 1 to account for team leader
           size: registration.teamId.teamMembers.length + 1,
           id: registration.teamId._id
         });
@@ -174,6 +181,7 @@ const DashboardPage = () => {
     }
     else{
       const participantData="true";
+      formData.append("participantData", JSON.stringify(participantsData));
     }
     formData.append("paymentProof", paymentScreenshot);
 
@@ -194,6 +202,10 @@ const DashboardPage = () => {
     setUserTeam({ name: teamName, members: ["You", "sf"] });
     setTeamName("");
     setPaymentScreenshot(null);
+
+    fetchEvents();
+    fetchParticipantsData();
+    fetchUserData();
   };
 
   const toggleDropdown = (teamName) => {
@@ -216,6 +228,81 @@ const DashboardPage = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  const filteredTeamsList = teamsList.filter((team) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      team.name.toLowerCase().startsWith(query)
+    );
+  });
+
+  // Add these new states after other useState declarations
+  const [memberSearchQuery, setMemberSearchQuery] = useState("");
+  const [memberSearchResults, setMemberSearchResults] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+
+  // Add this new function to fetch all users once
+  const fetchAllUsers = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/users/get-all`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      console.log("Users data:", response.data);
+      // Access the body array from the response
+      const users = response.data.body || [];
+      setAllUsers(users);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
+  // Add this useEffect after other useEffect declarations
+  useEffect(() => {
+    fetchAllUsers();
+  }, []); // Run once when component mounts
+
+  // Replace the searchMembers function with this new one
+  const searchMembers = (query) => {
+    if (!query.trim()) {
+      setMemberSearchResults([]);
+      return;
+    }
+    
+    const filteredResults = allUsers.filter(user => 
+      user.email.toLowerCase().startsWith(query.toLowerCase())
+    );
+    
+    console.log("Search query:", query);
+    console.log("Filtered results:", filteredResults);
+    setMemberSearchResults(filteredResults);
+  };
+
+  // Add this new function after your other function declarations
+const handleSendRequest = async (userId) => {
+  try {
+    console.log(userId);
+    const response = await axios.post(
+      `${API_URL}/api/events/${id}/make-request`,
+      {
+        teamId: userTeam.id,
+        userId: userId
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    
+    if (response.data) {
+      alert("Request sent successfully!");
+    }
+  } catch (error) {
+    console.error("Error sending request:", error);
+    alert(error.response?.data?.message || "Failed to send request. Please try again.");
+  }
+};
 
   return (
     <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
@@ -304,12 +391,43 @@ const DashboardPage = () => {
                 </div>
                 {/* search bar for team members */}
                 {showSearch && (
-                  <div className="mt-2">
+                  <div className="mt-2 relative">
                     <input
                       type="text"
-                      placeholder="Search for members..."
+                      placeholder="Search by email..."
+                      value={memberSearchQuery}
+                      onChange={(e) => {
+                        setMemberSearchQuery(e.target.value);
+                        searchMembers(e.target.value);
+                      }}
                       className="w-full p-2 rounded-lg bg-gray-800 text-white border border-red-500"
                     />
+                    {memberSearchResults.length > 0 && (
+                      <div className="absolute w-full mt-1 max-h-48 overflow-y-auto bg-gray-800 border border-red-500 rounded-lg z-50 custom-scrollbar">
+                        {memberSearchResults.map((user, index) => (
+                          <div 
+                            key={index}
+                            className="p-2 hover:bg-gray-700 text-white border-b border-gray-700 last:border-b-0 flex justify-between items-center"
+                          >
+                            <div>
+                              <div className="font-medium">{user.name}</div>
+                              <div className="text-sm text-gray-400">{user.email}</div>
+                            </div>
+                            <button
+                              onClick={() => handleSendRequest(user._id)}
+                              className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors"
+                            >
+                              Send Request
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {memberSearchQuery && memberSearchResults.length === 0 && (
+                      <div className="absolute w-full mt-1 p-2 bg-gray-800 border border-red-500 rounded-lg z-50 text-white text-center">
+                        No results found
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -380,9 +498,12 @@ const DashboardPage = () => {
             )}
 
             {/* Join Team Button  */}
-            <div className="self-start mt-20">
-              <DashboardButton link="#" content="Join a Team" onClick={handleJoinClick} />
-            </div>
+            {
+              eventData.type === "Team" && !userTeam && 
+              <div className="self-start mt-20">
+                <DashboardButton link="#" content="Join a Team" onClick={handleJoinClick} />
+              </div>
+            }
 
             {/* Search Bar */}
             <div className="mt-6 w-full flex flex-col justify-center">
@@ -393,43 +514,59 @@ const DashboardPage = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-50 p-2 border rounded-md text-black self-center mb-5"
               />
-              <ul className="mt-2 text-white">
-                {currentTeams.map((team, index) => (
-                  <li key={index} className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2 ml-2">
-                    <div className="flex items-center justify-between flex-wrap">
-                      <span className="">{indexOffirstTeam + index + 1}. {team.name}</span>
-                      <span className="flex items-center">
-                        <FaUser  className="text-red-500 mr-1" />
-                        <span className="text-sm md:text-base">{team.members.length + 1} Members</span>
-                      </span>
-                      <div className="flex items-center">
-                        <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm">
-                          JOIN
-                        </button>
-                        <button onClick={() => toggleDropdown(team.name)} className="ml-2 text-white">
-                          {expandedTeam === team.name ? <FiChevronUp /> : <FiChevronDown />}
-                        </button>
-                      </div>
-                    </div>
-
-                    {expandedTeam === team.name && (
-                      <div className="mt-2 bg-black p-3 rounded-lg flex flex-col items-start">
-                        <div>
-                          <p><strong>Team Leader:</strong> {team.leader}</p>
-                        </div>
-                        <div>
-                          <p><strong>Members:</strong></p>
-                          <ul className="ml-4 list-disc">
-                            {team.members.map((member, i) => (
-                              <li key={i}>{member}</li>
-                            ))}
-                          </ul>
+              {filteredTeamsList.length > 0 ? (
+                <ul className="mt-2 text-white">
+                  {filteredTeamsList?.map((team, index) => (
+                    <li key={index} className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2 ml-2">
+                      <div className="flex items-center justify-between flex-wrap">
+                        <span className="">{team.name}</span>
+                        <span className="flex items-center">
+                          <FaUser className="text-red-500 mr-1" />
+                          <span className="text-sm md:text-base">
+                            {team.teamMembers.length + 1} Member{team.teamMembers.length === 0 ? "" : "s"}
+                          </span>
+                        </span>
+                        <div className="flex items-center">
+                          { !userTeam &&
+                            <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm">
+                              JOIN
+                            </button>
+                          }
+                          <button onClick={() => toggleDropdown(team.name)} className="ml-2 text-white">
+                            {expandedTeam === team.name ? <FiChevronUp /> : <FiChevronDown />}
+                          </button>
                         </div>
                       </div>
-                    )}
-                  </li>
-                ))}
-              </ul>
+                  
+                      {expandedTeam === team.name && (
+                        <div className="mt-2 bg-black p-3 rounded-lg flex flex-col items-start">
+                          <div>
+                            <p><strong>Team Leader:</strong> {team.teamLeader.name}</p>
+                          </div>
+                          <div>
+                            <p><strong>Members:</strong></p>
+                            <ul className="ml-4 list-disc">
+                              {team.teamMembers.length > 0 ? 
+                                team.teamMembers.map((member, i) => (
+                                  <li key={i}>{member.name}</li>
+                                ))
+                                : (
+                                  <div className="text-white text-center">
+                                    {participantsData ? "No Members" : "Loading teams..."}
+                                  </div>
+                                )}
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="text-white text-center">
+                  {searchQuery ? "No teams found matching your search" : "Loading teams..."}
+                </div>
+              )}
               {/* Pagination Controls */}
               <div className="flex justify-center mt-4 space-x-2 mb-4">
                 <button
