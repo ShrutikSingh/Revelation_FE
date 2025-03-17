@@ -5,15 +5,16 @@ import NormalDayLeft from "./NormalDayLeft";
 import NormalDayRight from "./NormalDayRight";
 import HighlightedDay from "./HighlightedDay";
 import { useRef } from "react"; // Import useRef
-
+import axios from "axios";
+import { API_URL } from '../config/config';
 
 const eventSchedule = [
     {
         day: "DAY-1",
         date: "March 21, 2025",
         events: [
-            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d59ca882cf9619f8bf5122' },
-            { name: "Ganitam", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27'},
+            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
+            { name: "Ganitam", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d8365d1fac73aa4df88cb1'},
             { name: "Hackathon", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
         ]
     },
@@ -32,12 +33,12 @@ const eventSchedule = [
         events: [
             { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
             { name: "Murder Mystery", startTime: "00:00", endTime: "02:18", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d59ca882cf9619f8bf5122' },
+            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
         ]
     }
 ];
 
-const EventList = () => {
+const EventList = ({setToken}) => {
     const leftRef = useRef(null);
     const centerRef = useRef(null);
     const rightRef = useRef(null);
@@ -52,7 +53,21 @@ const EventList = () => {
         console.log("Updated normalDays:", normalDays);
     }, [highlighted, normalDays]);
 
+    const [events, setEvents] = useState([]);
+    const fetchEvents = async () => {
+        try {
+          const response = await axios.get(`${API_URL}/api/events/get-all`);
+          setEvents(response.data.body);
+        } catch (error) {
+          console.error("Error fetching events:", error);
+        }
+    };
 
+    useEffect(() => {
+        fetchEvents();
+    }, []);
+
+    console.log(events);
 
     useEffect(() => {
         const handleResize = () => {

@@ -10,27 +10,10 @@ import "./App.css";
 import { useState,useEffect } from "react";
 import ProfilePage from "./pages/ProfilePage/profilepage.jsx";
 import PageNotFound from "./pages/PageNotFound/PageNotFound.jsx";
-// import IndividualEvent from "./pages/IndividualEvent/IndividualEvent.jsx";
-import DashboardPage from "./components/DashboardPage.jsx";
 import Faqs from "./pages/FAQs/Faqs.jsx";
 import Login from "./components/Login/Login.jsx"
-
-
-// const eventDetails = {
-//   title: "CODESTORM",
-//   venue: "CSD-205 Seminar Hall",
-//   prize: "INR 4K",
-//   time: "05:00 PM - 07:00 PM",
-//   date: "10th March, 2025",
-//   description:
-//     "Gear up with your laptops and get ready for the second edition of Fresher’s Contest presented by CodeIIEST. Whether you conquered the first edition or are just stepping into CP, this contest is for YOU! Step into the limelight, capture the beauty of coding and most importantly have fun racking your brains!",
-//   teamRegistrationLink: "/register-team",
-//   soloRegistrationLink: "/register-solo",
-//   dashboardLink: "/dashboard",
-//   eventImage: "/event-image.jpg",
-//   background: "/Ganitam.jpg",
-//   day: "DAY 1",
-// };
+import Navbar from "./components/Navbar/Navbar.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
 
@@ -52,8 +35,10 @@ function App() {
         <Route path="/profile" element={<ProfilePage setToken={setToken} />} />
         <Route path="/event/:id" element={
           <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
+            <Navbar Token={token} setToken={setToken} />
             <EventDetailsPage />
             <EventRules />
+            <Footer />
           </div>
         } />
         <Route path="/dashboard/:id" element={<UserDashboard  Token={token} setToken={setToken}/>} />

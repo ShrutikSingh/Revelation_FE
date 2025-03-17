@@ -32,14 +32,14 @@ const HexagonCard = ({ name, image, linkedin, instagram }) => {
             <div className="TeamsPage-social-links">
               <a href={linkedin} target="_blank" rel="noopener noreferrer">
                 <img
-                  src={"/assets/linkedin.png"}
+                  src={"/assets/linkedin.webp"}
                   alt="LinkedIn"
                   onClick={(e) => isMobile && e.stopPropagation()}
                 />
               </a>
               <a href={instagram} target="_blank" rel="noopener noreferrer">
                 <img
-                  src={"/assets/instagram.png"}
+                  src={"/assets/instagram.webp"}
                   alt="Instagram"
                   onClick={(e) => isMobile && e.stopPropagation()}
                 />
