@@ -34,6 +34,7 @@ const Login = ({ setToken }) => {
         useOneTap={false}
       />
       <button className="login-button" onClick={() => navigate("/")}>Go to Home</button>
+      <p className="text-red-400 font-serif pt-1">*IIEST students need to login through gsuit</p>
     </div>
   </div>
   );
