@@ -70,7 +70,7 @@ const EventBoard = () => {
   const dashlink=`/dashboard/${eventData._id}`;
 
   return (
-    <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden mt-[90px]">
+    <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden mt-[90px] max-md:mt-[55px]">
 
       <div className="relative w-full max-w-4xl xl:max-w-6xl  h-full mx-auto">
         <svg
@@ -122,7 +122,7 @@ const EventBoard = () => {
 
           {/* Event Details Section */}
           <div className="flex justify-between items-start mt-[50px] h-full max-md:w-full max-md:pt-[350px] max-md:pb-[160px] max-md:mt-[80px] pl-3">
-            <div className="w-2/3 h-full max-md:w-full">
+            <div className="w-[80%] h-full max-md:w-full">
             <div className="grid grid-cols-2 text-sm max-md:grid-cols-1 max-md:mt-4 gap-2">
 
               {/* Left Side */}
@@ -142,10 +142,11 @@ const EventBoard = () => {
 
               {/* right  Side */}
               <div className="text-left">
-                <span>
-                  <img src="/payment.gif" className="w-5 h-5 inline-block mr-2" /> Registration Fee : ₹{eventData.registrationAmount}
+                 <span>
+                  <img src="/payment.gif" className="w-5 h-5 inline-block mr-2" /> {eventData.registrationAmount===0? "No Registration fee":`Registration Fee (only for Non-IIESTians) : ₹${eventData.registrationAmount}`}
                 </span>
               </div>
+
 
               {/* Second Row */}
               <div>
@@ -186,7 +187,7 @@ const EventBoard = () => {
               </div>
 
               </div>
-              <p className="mt-4 text-gray-300 text-left">{eventData.description}</p>
+              <p className="mt-4 text-gray-300 text-left w-[85%]">{eventData.description}</p>
 
               {/* Dashboard Button */}
               <div className="absolute top-[65px] right-0 max-md:left-[100px]">
