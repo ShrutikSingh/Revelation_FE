@@ -80,7 +80,6 @@ const DashboardPage = () => {
         });        
 
         let responseData = userResponse.data.body;
-        let teamsArray = [];
 
         if (eventData.type === "Team" && userTeam) {
           const matchingTeam = userResponse.data.body.teams.you[0];
@@ -89,11 +88,10 @@ const DashboardPage = () => {
 
           if (matchingTeam) {
             setTeamParticipants(matchingTeam);
-            teamsArray = responseData.teams.others.filter(team => team._id !== userTeam.id); 
           }
         }
-        if(teamsArray.length === 0) teamsArray = responseData.teams.others;
-        setTeamsList(teamsArray);
+        setTeamsList(responseData.teams.others);
+        console.log(responseData.teams.others.length);
         setParticipantsData(responseData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -284,13 +282,13 @@ const DashboardPage = () => {
   };
 
   // Add this new function after your other function declarations
-const handleSendRequest = async (userId) => {
+const handleSendRequest = async (userId, teamId) => {
   try {
     console.log(userId);
     const response = await axios.post(
       `${API_URL}/api/events/${id}/make-request`,
       {
-        teamId: userTeam.id,
+        teamId: teamId===null?userTeam.id:teamId,
         userId: userId
       },
       {
@@ -420,7 +418,7 @@ const handleSendRequest = async (userId) => {
                               <div className="text-sm text-gray-400">{user.email}</div>
                             </div>
                             <button
-                              onClick={() => handleSendRequest(user._id)}
+                              onClick={() => handleSendRequest(user._id, null)}
                               className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors"
                             >
                               Send Request
@@ -512,6 +510,7 @@ const handleSendRequest = async (userId) => {
             }
 
             {/* Search Bar */}
+           { teamsList.length>0 &&
             <div className="mt-6 w-full flex flex-col justify-center">
               <input
                 type="text"
@@ -534,7 +533,7 @@ const handleSendRequest = async (userId) => {
                         </span>
                         <div className="flex items-center">
                           { !userTeam &&
-                            <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm">
+                            <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm"  onClick={() => handleSendRequest(team.teamLeader._id, team._id)}>
                               JOIN
                             </button>
                           }
@@ -558,7 +557,7 @@ const handleSendRequest = async (userId) => {
                                 ))
                                 : (
                                   <div className="text-white text-center">
-                                    {participantsData ? "No Members" : "Loading teams..."}
+                                    {team.teamMembers.length===0 ? "No Members" : "Loading teams..."}
                                   </div>
                                 )}
                             </ul>
@@ -602,6 +601,7 @@ const handleSendRequest = async (userId) => {
                 </button>
               </div>
             </div>
+            }
           </div>
         </div>
       </motion.div>
