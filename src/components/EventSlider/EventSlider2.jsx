@@ -34,8 +34,8 @@ function EventSlider() {
 
   return (
     <div className="eventShowDown">
-       {/* Title */}
-       <div className="font-playfair text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-[700] text-white text-transparent bg-clip-text mb-12 sm:mb-10">
+      {/* Title */}
+      <div className="font-playfair text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-[700]  bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text mb-12 sm:mb-10">
         TECH FEST EVENTS
       </div>
 

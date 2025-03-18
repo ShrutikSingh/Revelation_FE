@@ -15,19 +15,19 @@ const Sponsorship = () => {
       {/* Title Section */}
       <p
         className="font-playfair text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-2xl font-bold 
-  bg-gradient-to-r text-white text-transparent bg-clip-text"
+  bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text"
       >
         Have a Look at our Past
       </p>
 
       <h1
         className="font-playfair text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-6 
-  bg-gradient-to-r text-white text-transparent bg-clip-text"
+  bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text"
       >
         SPONSORS
       </h1>
       {/* Sponsor Grid Container */}
-      <div className="container mx-auto flex flex-col justify-center items-center gap-16 mt-16">
+      <div className="container mx-auto flex flex-col justify-center items-center gap-8 md:gap-16 mt-16">
         {/* Row 1 - 3 Sponsors */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-[80px] lg:gap-[120px] place-items-center">
           {sponsorsRow1.map((image, index) => (
