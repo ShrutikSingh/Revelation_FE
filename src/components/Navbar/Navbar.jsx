@@ -25,9 +25,6 @@ const Navbar = ({ Token }) => {
   const activeSection =
     location.pathname === "/profile" ? null : location.pathname;
 
-  const [userData, setUserData] = useState({});
-  const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   useEffect(() => {
     fetchUserData();
   }, []);
