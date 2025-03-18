@@ -37,10 +37,11 @@ body {
 .slider{
     /* background-color: black; */
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 230px;
+    height: 230px;
     transform-style: preserve-3d;
     animation: rotate 30s linear infinite;
+    
 }
 
 @keyframes rotate{
@@ -61,7 +62,7 @@ body {
     height: 100%;
     transform-origin: center;
     transform-style: preserve-3d;
-    transform: rotateY(calc(var(--i)*36deg)) translateZ(400px);
+    transform: rotateY(calc(var(--i) * 36deg)) translateZ(430px);
 }
 
 .slider span img{
@@ -72,7 +73,7 @@ body {
     height: 100%;
     border-radius: 20px;
     object-fit: cover;
-    transition: 2s;
+    transition: 0.8s;
     box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.6);
 }
 .slider span {
@@ -86,15 +87,20 @@ body {
     size: 10px;
 }
 .slider span:hover img{
-    transform: translateY(-40px) scale(1.2);
+    transform: translateY(-20px) scale(1.1);
+}
+
+.slider span img:hover {
+    animation-play-state: paused !important;
 }
 
 .slider:hover {
-    animation-play-state: running; /* Ensure the whole slider keeps rotating */
+    animation-play-state: paused !important; /* Pause the rotation when hovered */
 }
 
+.slider:hover, 
 .slider span:hover {
-    animation: none; /* Stops rotation when hovering over a card */
+    animation-play-state: paused !important; /* Pause rotation when hovered */
 }
 
 @media screen and (max-width: 992px){

@@ -2,6 +2,7 @@ import topArrow from "../../assets/top-arrow.webp";
 import facebookIcon from "../../assets/facebook.png";
 import instagramIcon from "../../assets/instagram.png";
 import linkedinIcon from "../../assets/linkedin.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -11,6 +12,8 @@ const Footer = () => {
     });
   };
 
+  const links = [{name:"HOME",to:"/"},{name:"EVENTS",to:"/events"},{name:"SPONSORS",to:"/#sponsors-section"},{name:"TEAM",to:"/teams"}];
+
   return (
     <footer className="bg-black text-gray-300 py-6 px-4 w-full mt-100px">
       <div className="container mx-auto flex flex-col md:flex-row flex-wrap justify-between items-start gap-6">
@@ -18,22 +21,22 @@ const Footer = () => {
         {/* Left Section - Logo & Description */}
         <div className="w-full md:w-1/3 text-center md:text-left">
           <h2 className="text-2xl font-bold text-white flex justify-center md:justify-start">
-            <span className="text-red-600">R</span>EVELATION
+            REVELATION
           </h2>
           <p className="mt-4 text-lg">
-            The premier technical fest crafted by the Academic Society of Computer Engineers, 
-            Department of Computer Science and Technology at IIEST Shibpur.
+          The esteemed technical fest curated by the Academic Society of Computer Engineers, 
+          Department of Computer Science and Technology, IIEST Shibpur.
           </p>
         </div>
 
         {/* Middle Section - Quick Links */}
         <div className="w-full md:w-1/4 text-center md:text-left">
           <h3 className="text-lg font-semibold text-red-600">QUICK LINKS</h3>
-          <ul className="mt-4 space-y-2">
-            {["HOME", "EVENTS", "SPONSORS", "TEAM", "ABOUT US"].map((link, index) => (
-              <li key={index} className="hover:text-red-400 transition duration-300 cursor-pointer">
-                {link}
-              </li>
+          <ul className="mt-4 space-y-2 flex flex-col">
+            {links.map((link, index) => (
+              <a href={link.to} key={`Link${index}`} className="hover:text-red-400 transition duration-300 cursor-pointer">
+                {link.name}
+              </a>
             ))}
           </ul>
         </div>
@@ -47,12 +50,12 @@ const Footer = () => {
               📍 Indian Institute of Engineering Science and Technology Shibpur, 
               Howrah, West Bengal 711103 India
             </p>
-            <p className="mt-2">📞 +91 9083045947</p>
+            <p className="mt-2">📞 +91 9830196251</p>
             <p className="mt-2">📧 gs.cs@cs.iiests.ac.in</p>
           </div>
 
           {/* Social Media Icons */}
-          <div className="flex flex-col space-y-4 mt-6 md:mt-0 md:ml-16 md:pl-2">
+          <div className="flex flex-row md:flex-col gap-4 mt-6 md:mt-0 md:ml-16 md:pl-2">
             {[
               { img: facebookIcon, link: "https://www.facebook.com/revelationiiest?sfnsn=wiwspwa&mibextid=RUbZ1f", alt: "Facebook" },
               { img: instagramIcon, link: "https://www.instagram.com/asce.iiests?igsh=MW95YmJmdzk4cG85Nw==", alt: "Instagram" },
