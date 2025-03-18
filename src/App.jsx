@@ -14,6 +14,7 @@ import Faqs from "./pages/FAQs/Faqs.jsx";
 import Login from "./components/Login/Login.jsx"
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
   }, []);
 
   console.log(token);
+  // statusCode();
 
   return (
     <div>
@@ -41,7 +43,11 @@ function App() {
             <Footer />
           </div>
         } />
-        <Route path="/dashboard/:id" element={<UserDashboard  Token={token} setToken={setToken}/>} />
+        <Route path="/dashboard/:id" element= {
+            <ProtectedRoute Token={token}>
+              <UserDashboard Token={token} setToken={setToken} />
+            </ProtectedRoute>
+          } />
         <Route path="/teams" element={<TeamLeadsPage Token={token} setToken={setToken} />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="*" element={<PageNotFound />} />

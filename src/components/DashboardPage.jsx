@@ -71,6 +71,7 @@ const DashboardPage = () => {
   const [teamParticipants, setTeamParticipants] = useState(null);
   const [participantsData, setParticipantsData] = useState(null);
   const [teamsList, setTeamsList] = useState([]);
+  const [myTeamSize, setMyTeamSize] = useState(0);
 
   const fetchParticipantsData = async () => {
     if (token) {
@@ -86,7 +87,11 @@ const DashboardPage = () => {
 
           console.log("Matching team:", matchingTeam);
 
-          if (matchingTeam) {
+          if ( userResponse.data.body.teams.you.length > 0) {
+            const pendingRequests = await axios.get(`${API_URL}/api/requests/pending/${matchingTeam._id}`, {
+              headers: { Authorization: `Bearer ${token}` },
+            });
+            console.log("Pending requests:", pendingRequests.data);
             setTeamParticipants(matchingTeam);
           }
         }
@@ -197,9 +202,28 @@ const DashboardPage = () => {
     console.log(response.data);
     // alert(`Team "${teamName}" created successfully!`);
     setShowForm(false);
-    setUserTeam({ name: teamName, members: ["You", "sf"] });
+    setUserTeam({ name: teamName});
     setTeamName("");
     setPaymentScreenshot(null);
+
+    fetchEvents();
+    fetchParticipantsData();
+    fetchUserData();
+  };
+  const handledelete =async (e) => {
+    e.preventDefault();
+    const response = await axios.delete(
+      `${API_URL}/api/teams/delete/${teamParticipants._id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    );
+
+    console.log(response.data);
+    setUserTeam(null);
 
     fetchEvents();
     fetchParticipantsData();
@@ -241,20 +265,33 @@ const DashboardPage = () => {
 
   // Add this new function to fetch all users once
   const fetchAllUsers = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/api/users/${id}/get-all`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      console.log("Raw users data:", response.data);
-      if (Array.isArray(response.data.body)) {
-        setAllUsers(response.data.body);
-        console.log("Set users:", response.data.body);
-      } else {
-        console.error("Received data is not an array:", response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching users:", error);
+    let resp;
+    if(token){
+      try{
+       resp=  await axios.get(`${API_URL}/api/auth/status`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        console.log(resp)
+      }catch(error){
+        console.error("Error fetching users:", error);
+     }
     }
+    if(token && resp.status===200){
+        try {
+          const response = await axios.get(`${API_URL}/api/users/${id}/get-all`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          console.log("Raw users data:", response.data);
+          if (Array.isArray(response.data.body)) {
+            setAllUsers(response.data.body);
+            console.log("Set users:", response.data.body);
+          } else {
+            console.error("Received data is not an array:", response.data);
+          }
+        } catch (error) {
+          console.error("Error fetching users:", error);
+        }
+      }
   };
 
   // Add this useEffect after other useEffect declarations
@@ -385,9 +422,11 @@ const handleSendRequest = async (userId, teamId) => {
                     <span className="text-sm md:text-base">{userTeam.members.length +1 } Member{userTeam.members.length === 0 ? "" : "s"}</span>
                   </span>
                   <div className="flex items-center">
+                    {/* {teamParticipants&&(teamParticipants.teamLeader._id === userData._id && ( */}
                     <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm" onClick={() => setShowSearch(!showSearch)}>
                       ADD
                     </button>
+                    {/* ))} */}
                     <button onClick={() => toggleDropdown(userTeam.name)} className="ml-2 text-white">
                       {expandedTeam === userTeam.name ? <FiChevronUp /> : <FiChevronDown />}
                     </button>
@@ -440,6 +479,11 @@ const handleSendRequest = async (userId, teamId) => {
                   <div className="mt-2 bg-black p-3 rounded-lg flex flex-col items-start">
                     <div>
                       <p><strong>Team Leader:</strong> {teamParticipants.teamId.teamLeader.name}</p>
+                      {/* {teamParticipants&&(teamParticipants.teamId.teamLeader._id === userData._id && (
+                      <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm" onClick={() => handledelete()}>
+                        Delete
+                      </button>
+                      ))} */}
                     </div>
                     <div>
                       <p><strong>Members:</strong></p>
@@ -532,11 +576,11 @@ const handleSendRequest = async (userId, teamId) => {
                           </span>
                         </span>
                         <div className="flex items-center">
-                          { !userTeam &&
+                          { !userTeam && userData.isIIESTian===team.teamLeader.isIIESTian &&(
                             <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm"  onClick={() => handleSendRequest(team.teamLeader._id, team._id)}>
                               JOIN
                             </button>
-                          }
+                          )}
                           <button onClick={() => toggleDropdown(team.name)} className="ml-2 text-white">
                             {expandedTeam === team.name ? <FiChevronUp /> : <FiChevronDown />}
                           </button>
