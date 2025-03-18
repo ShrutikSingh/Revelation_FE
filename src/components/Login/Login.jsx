@@ -33,7 +33,9 @@ const Login = ({ setToken }) => {
         onError={() => console.error("Login Failed")}
         useOneTap={false}
       />
+       <p className="text-red-400 font-serif text-sm italic pt-2 whitespace-nowrap ">*IIEST students need to login through gsuit</p>
       <button className="login-button" onClick={() => navigate("/")}>Go to Home</button>
+     
     </div>
   </div>
   );
