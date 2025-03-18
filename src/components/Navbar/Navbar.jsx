@@ -77,7 +77,7 @@ const Navbar = ({ Token }) => {
     <>
       {/* <nav className="fixed top-1 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg "> */}
       <nav
-        className={`fixed top-2 left-2 right-3 w-[95dvw] bg-gray-900 text-white flex items-center justify-between px-3 py-1 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg transition-transform duration-300 ${
+        className={`fixed top-2 left-2 right-3 w-[96dvw] md:w-[98.5dvw] bg-gray-900 text-white flex items-center justify-between px-3 py-1 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg transition-transform duration-300 ${
           visible ? "translate-y-0" : "-translate-y-[115%]"
         }`}
       >
