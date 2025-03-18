@@ -34,117 +34,64 @@ import img31 from "../../assets/img31.jpg";
 import img32 from "../../assets/img32.jpg";
 
 const images = [
-  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
-  img12, img13, img14, img15, img16, img17, img18, img19,
-  img21, img22, img23, img24, img25, img26, img27, img28, img29, img30,img31,img32
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img10,
+  img12,
+  img13,
+  img14,
+  img15,
+  img16,
+  img17,
+  img18,
+  img19,
+  img21,
+  img22,
+  img23,
+  img24,
+  img25,
+  img26,
+  img27,
+  img28,
+  img29,
+  img30,
+  img31,
+  img32,
 ];
 
 const Gallery = () => {
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="font-playfair text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-6 
-        text-white text-transparent bg-clip-text mb-14">
+    <div className="flex flex-col items-center w-full ">
+      <h1 className="font-playfair text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-6 text-white text-transparent bg-clip-text mb-14">
         GALLERY
       </h1>
 
-<section
-  style={{
-    position: "relative",
-    width: "100%",
-    height: "25vw",
-    perspective: "100px",
-    overflow: "hidden",
-    cursor: "grab",
-    borderRadius: "15px",
-    borderTop: "1px solid #ff0000",
-    borderBottom: "1px solid #ff0000",
-    boxShadow: "0 5px 15px -5px #ff0000, 0 -5px 15px -5px #ff0000",
-  }}
->
-  <Marquee speed={80} pauseOnHover={true} gradient={false}>
-    {images.map((image, index) => (
-      <img
-        key={index}
-        src={image}
-        alt={`Gallery ${index}`}
-        style={{
-          height: "380px",  // Ensures images take up the full section height
-          maxHeight: "25vw", // Prevents exceeding the section height
-          width: "480px", // Maintains aspect ratio
-          objectFit: "cover", // Ensures the image covers the area
-          margin: "0 6px",
-          borderRadius: "8px",
-          border: "2px solid black",
-          display: "block",
-        }}
-      />
-    ))}
-  </Marquee>
+      <section className="relative w-full cursor-grab   overflow-hidden ">
+        {/* Top overlay */}
+        <div className="absolute z-[4] left-1/2 top-1/2 -translate-x-1/2 -translate-y-[830dvw]  md:-translate-y-[812dvw] lg:-translate-y-[815dvw] xl:-translate-y-[809dvw] w-[800vw] h-[800vw] bg-black rounded-full" />
 
-{/* Background overlay effect */}
-<div
-  style={{
-    content: '""',
-    position: "absolute",
-    zIndex: 4,
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "500%",
-    height: "500%",
-    borderRadius: "50%",
-    background: "black",
-    top: "-485%", // Adjusted for margin effect
-    paddingTop: "10%", // Acts as a margin effect
-  }}
-></div>
-<div
-  style={{
-    content: '""',
-    position: "absolute",
-    zIndex: 4,
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "500%",
-    height: "500%",
-    borderRadius: "50%",
-    background: "black",
-    bottom: "-482%", // Adjusted for margin effect
-    paddingBottom: "5%", // Acts as a margin effect
-  }}
-></div>
+        <Marquee speed={250} pauseOnHover={true} gradient={false}>
+          {images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`Gallery ${index}`}
+              className="block object-cover rounded-[0.5rem] border-2 border-black 
+                         h-[30dvh] lg:h-[50dvh] mx-[0.375rem]"
+            />
+          ))}
+        </Marquee>
+
+        {/* Bottom overlay */}
+        <div className="absolute z-[4] left-1/2 top-1/2 -translate-x-1/2 translate-y-[30dvw] md:translate-y-[12dvw] lg:translate-y-[15dvw] xl:translate-y-[9dvw] w-[800vw] h-[800vw] bg-black rounded-full" />
       </section>
-
-      {/* Media Queries for Responsiveness */}
-      <style>
-        {`
-          @media (max-width: 1024px) {
-            section {
-              height: 35vw !important;
-            }
-            img {
-              height: 280px !important;
-            }
-          }
-
-          @media (max-width: 768px) {
-            section {
-              height: 40vw !important;
-            }
-            img {
-              height: 200px !important;
-            }
-          }
-
-          @media (max-width: 480px) {
-            section {
-              height: 55vw !important;
-            }
-            img {
-              height: 150px !important;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };
