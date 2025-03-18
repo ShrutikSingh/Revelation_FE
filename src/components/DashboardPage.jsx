@@ -6,8 +6,10 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import EventData from "../data/EventData.jsx";
 import { useParams } from "react-router-dom";
+import Navbar from "./Navbar/Navbar.jsx";
+import Footer from "./Footer/Footer.jsx";
 
-const DashboardPage = () => {
+const DashboardPage = ({Token, setToken}) => {
   const [showForm, setShowForm] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [isNonIIESTian, setIsNonIIESTian] = useState(false);
@@ -97,7 +99,9 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
+    <>
+    <Navbar Token={Token} setToken={setToken} />
+    <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed pt-[120px] pb-4">
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.9 }} // Start slightly below and scaled down
         animate={{ opacity: 1, y: 0, scale: 1 }} // Bring to normal position
@@ -146,7 +150,7 @@ const DashboardPage = () => {
               strokeWidth="2"
             />
           </svg>
-          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg z-10">
+          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto z-10 shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white]">
             {/* {eventData.title} */}
           </div>
 
@@ -342,6 +346,8 @@ const DashboardPage = () => {
         </div>
       </motion.div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

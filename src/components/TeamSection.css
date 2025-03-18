@@ -133,7 +133,7 @@
 }
 
 .TeamsPage-team-3 .TeamsPage-second-row {
-  margin-top: -45px; 
+  margin-top: -40px; 
 }
 
 .TeamsPage-team-4 .TeamsPage-hexagon-row {
@@ -142,7 +142,7 @@
 }
 
 .TeamsPage-team-4 .TeamsPage-second-row {
-  margin-left: 107px;
+  margin-left: 111px;
   margin-top: -40px; 
 }
 
@@ -548,7 +548,7 @@
   }
 }
 
-@media (max-width:350px){
+@media (max-width:370px){
   .TeamsPage-core-title {
     font-size: 16px;
     padding: 8px;
