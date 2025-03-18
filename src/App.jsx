@@ -7,17 +7,16 @@ import UserDashboard from "./components/DashboardPage.jsx";
 import EventDetailsPage from "./components/EventBoard.jsx";
 import EventRules from "./components/Rules.jsx";
 import "./App.css";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import ProfilePage from "./pages/ProfilePage/profilepage.jsx";
 import PageNotFound from "./pages/PageNotFound/PageNotFound.jsx";
 import Faqs from "./pages/FAQs/Faqs.jsx";
-import Login from "./components/Login/Login.jsx"
+import Login from "./components/Login/Login.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 
 function App() {
-
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
@@ -31,8 +30,14 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage Token={token} setToken={setToken} />} />
-        <Route path="/events" element={<EventsPage Token={token} setToken={setToken}/>} />
+        <Route
+          path="/"
+          element={<HomePage Token={token} setToken={setToken} />}
+        />
+        <Route
+          path="/events"
+          element={<EventsPage Token={token} setToken={setToken} />}
+        />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/profile" element={<ProfilePage setToken={setToken} />} />
         <Route path="/event/:id" element={

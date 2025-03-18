@@ -228,6 +228,7 @@ const ProfilePage = ({setToken}) => {
                     name: e.target.value
                   }))}
                   required
+                  placeholder="Enter your name"
                   className="bg-gray-700 p-3 rounded-md text-sm md:text-base text-white"
                 />
                <input

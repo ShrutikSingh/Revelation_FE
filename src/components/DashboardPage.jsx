@@ -9,8 +9,10 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import { API_URL } from '../config/config';
 import { responsiveFontSizes } from "@mui/material";
+import Navbar from "./Navbar/Navbar.jsx";
+import Footer from "./Footer/Footer.jsx";
 
-const DashboardPage = () => {
+const DashboardPage = ({Token, setToken}) => {
   const [showForm, setShowForm] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [isNonIIESTian, setIsNonIIESTian] = useState(false);
@@ -368,7 +370,9 @@ const handleSendRequest = async (userId, teamId) => {
 };
 
   return (
-    <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
+    <>
+    <Navbar Token={Token} setToken={setToken} />
+    <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed pt-[120px] pb-4">
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.9 }} // Start slightly below and scaled down
         animate={{ opacity: 1, y: 0, scale: 1 }} // Bring to normal position
@@ -732,6 +736,8 @@ const handleSendRequest = async (userId, teamId) => {
         </div>
       </motion.div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

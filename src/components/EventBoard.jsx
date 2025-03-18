@@ -70,7 +70,7 @@ const EventBoard = () => {
   const dashlink=`/dashboard/${eventData._id}`;
 
   return (
-    <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden mt-20">
+    <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden mt-[90px] max-md:mt-[55px]">
 
       <div className="relative w-full max-w-4xl xl:max-w-6xl  h-full mx-auto">
         <svg
@@ -116,31 +116,78 @@ const EventBoard = () => {
 
 
         <div className="relative z-10 p-6 h-full max-md:w-full">
-          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto ">
+          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white]">
             {eventData.name}
           </div>
 
           {/* Event Details Section */}
-          <div className="flex justify-between items-start mt-20 h-full max-md:w-full max-md:pt-[350px] max-md:pb-[160px]">
-            <div className="w-2/3 h-full max-md:w-full">
-              <div className="flex flex-col justify-between text-sm max-md:mt-4">
-                <span>📍 {eventData.venue}</span>
-                <div className="flex flex-row justify-between">
-                <span className="font-bold max-md:mt-2">Prize Pool : ₹{eventData.prizePool}</span>
-                {
-                  (eventData.registrationAmount !== 0)?  <span className="font-bold max-md:mt-2">Registration Fee (for non IIESTian) : ₹{eventData.registrationAmount}</span>:<span className="font-bold max-md:mt-2">No Registration Fee!</span>
-                }</div>
-                <div className="flex flex-row justify-between"><span className="max-md:mt2">Event Type : {eventData.type==="Team"?"Team":"Individual"}</span>
-                {
-                  eventData.type==="Team"&&((eventData.teamSize.max===eventData.teamSize.min)?<span className="max-md:mt2">Team Size : Strictly {eventData.teamSize.min} members</span>:<span className="max-md:mt2">Team Size : {eventData.teamSize.min}-{eventData.teamSize.max} members</span>)
-                }
-                </div>
+          <div className="flex justify-between items-start mt-[50px] h-full max-md:w-full max-md:pt-[350px] max-md:pb-[160px] max-md:mt-[80px] pl-3">
+            <div className="w-[80%] h-full max-md:w-full">
+            <div className="grid grid-cols-2 text-sm max-md:grid-cols-1 max-md:mt-4 gap-2">
+
+              {/* Left Side */}
+              <div>
+                <span >
+                  <img src="/location.gif" className="w-4 h-4 inline-block mr-2" /> {eventData.venue}
+                </span>
               </div>
-              <div className="flex flex-row justify-between mt-2 text-sm max-md:flex-col max-md:mt-4">
-                <span>⏰ Start Time : {formatDateTime(eventData.startTime)}</span>
-                <span>⏰ End Time : {formatDateTime(eventData.endTime)}</span>
+              <div></div>
+
+              {/* {left side} */}
+              <div>
+                <span>
+                  <img src="/prize.gif" className="w-4 h-4 inline-block mr-2" /> Prize Pool : ₹{eventData.prizePool}
+                </span>
               </div>
-              <p className="mt-4 text-gray-300 text-left">{eventData.description}</p>
+
+              {/* right  Side */}
+              <div className="text-left">
+                 <span>
+                  <img src="/payment.gif" className="w-5 h-5 inline-block mr-2" /> {eventData.registrationAmount===0? "No Registration fee":`Registration Fee (only for Non-IIESTians) : ₹${eventData.registrationAmount}`}
+                </span>
+              </div>
+
+
+              {/* Second Row */}
+              <div>
+                <span>
+                  <img src="/team1.gif" className="w-5 h-5 inline-block mr-2" /> Event Type :
+                  {eventData.type === "Team" ? "Team" : "Individual"}
+                </span>
+              </div>
+
+              <div className="text-left">
+                {eventData.type === "Team" &&
+                  (eventData.teamSize.max === eventData.teamSize.min ? (
+                    <span>
+                      <img src="/team1.gif" className="w-5 h-5 inline-block mr-2" />
+                      Team Size : Strictly {eventData.teamSize.min} members
+                    </span>
+                  ) : (
+                    <span>
+                      <img src="/team1.gif" className="w-5 h-5 inline-block mr-2" />
+                      Team Size : {eventData.teamSize.min}-{eventData.teamSize.max} members
+                    </span>
+                  ))}
+              </div>
+
+              {/* Third Row */}
+              <div>
+                <span>
+                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> Start Time :
+                  {formatDateTime(eventData.startTime)}
+                </span>
+              </div>
+
+              <div className="text-left">
+                <span>
+                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> End Time :
+                  {formatDateTime(eventData.endTime)}
+                </span>
+              </div>
+
+              </div>
+              <p className="mt-4 text-gray-300 text-left w-[85%]">{eventData.description}</p>
 
               {/* Dashboard Button */}
               <div className="absolute top-[65px] right-0 max-md:left-[100px]">
