@@ -43,19 +43,12 @@ const Faqs = () => {
   return (
     <div className="flex justify-center items-center px-4">
       <div className="w-full max-w-4xl  text-white rounded-lg shadow-lg py-10 px-6 sm:px-10">
-// <<<<<<< siddhu
         <h1
           className="font-playfair text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-[700] mb-10 -mt-20
    bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text text-center"
         >
           FAQs
         </h1>
-// =======
-//       <h1 className="font-playfair text-2xl sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-[700] mb-10 -mt-20
-//   bg-gradient-to-r  bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text text-center">
-//   FAQs
-// </h1>
-// >>>>>>> development
         {faqData.map((faq, index) => (
           <FAQItem key={index} question={faq.question} answer={faq.answer} />
         ))}
