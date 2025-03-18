@@ -4,7 +4,7 @@ import Participants from "../../components/Participants/Participants2";
 import EventSlider2 from "../../components/EventSlider/EventSlider2";
 import Footer from "../../components/Footer/Footer";
 import bgImage from "../../assets/grid.webp";
-import Sponsorship from "../../components/Sponsors/Sponsorship";
+// import Sponsorship from "../../components/Sponsors/Sponsorship";
 import Gallery from "../../components/Gallery/Gallery";
 import Navbar from "../../components/Navbar/Navbar";
 import AboutUs from "../../components/HeroPage/AboutUs";
@@ -35,10 +35,10 @@ const HomePage = ({ Token, setToken }) => {
 
       <EventSlider2 />
       <Gallery />
-
+      {/* 
       <div id="sponsors-section">
         <Sponsorship />
-      </div>
+      </div> */}
 
       <Faqs />
       <Footer />
