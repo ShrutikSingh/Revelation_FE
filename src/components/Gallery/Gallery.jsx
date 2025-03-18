@@ -69,13 +69,17 @@ const images = [
 const Gallery = () => {
   return (
     <div className="flex flex-col items-center w-full ">
-      <h1 className="font-playfair  bg-gradient-to-br from-gray-600 via-white to-black text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-6  text-transparent bg-clip-text mb-14">
+// <<<<<<< siddhu
+      <h1 className="font-playfair text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-6  bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text mb-14">
+// =======
+//       <h1 className="font-playfair  bg-gradient-to-br from-gray-600 via-white to-black text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-6  text-transparent bg-clip-text mb-14">
+// >>>>>>> development
         GALLERY
       </h1>
 
-      <section className="relative w-full cursor-grab   overflow-hidden ">
+      <section className="relative w-full h-fit cursor-grab   overflow-hidden ">
         {/* Top overlay */}
-        <div className="absolute z-[4] left-1/2 top-1/2 -translate-x-1/2 -translate-y-[830dvw]  md:-translate-y-[812dvw] lg:-translate-y-[815dvw] xl:-translate-y-[809dvw] w-[800vw] h-[800vw] bg-black rounded-full" />
+        <div className="absolute z-[4] left-1/2 top-1/2 -translate-x-1/2 -translate-y-[1223dvw]  md:-translate-y-[1212dvw] lg:-translate-y-[1208dvw] xl:-translate-y-[1205dvw] w-[1200vw] h-[1200vw] bg-black rounded-full" />
 
         <Marquee speed={250} pauseOnHover={true} gradient={false}>
           {images.map((image, index) => (
@@ -83,14 +87,13 @@ const Gallery = () => {
               key={index}
               src={image}
               alt={`Gallery ${index}`}
-              className="block object-cover rounded-[0.5rem] border-2 border-black 
-                         h-[30dvh] lg:h-[50dvh] mx-[0.375rem]"
+              className="block object-cover rounded-[0.5rem] border-2 border-black h-[30dvh] mx-[0.375rem]"
             />
           ))}
         </Marquee>
 
         {/* Bottom overlay */}
-        <div className="absolute z-[4] left-1/2 top-1/2 -translate-x-1/2 translate-y-[30dvw] md:translate-y-[12dvw] lg:translate-y-[15dvw] xl:translate-y-[9dvw] w-[800vw] h-[800vw] bg-black rounded-full" />
+        <div className="absolute z-[4] left-1/2 top-1/2 -translate-x-1/2 translate-y-[23dvw] md:translate-y-[12dvw] lg:translate-y-[08dvw] xl:translate-y-[5dvw] w-[1200vw] h-[1200vw] bg-black rounded-full" />
       </section>
     </div>
   );
