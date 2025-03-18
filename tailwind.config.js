@@ -6,11 +6,13 @@ export default {
       fontFamily: {
         title: ["Kiwi-Maru", "serif"],
         playfair: ["Playfair Display", "serif"],
+        stencil: ["Big Shoulders Stencil", "sans-serif"], 
+        tektur : ["Tektur", "sans-serif"]
       },
     },
   },
   corePlugins: {
-    preflight: true, // Disable Tailwind's default CSS reset
+    preflight: true, // Disable Tailwind's default CSS reset if needed
   },
   plugins: [],
 };

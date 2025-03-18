@@ -15,7 +15,7 @@ const Sponsorship = () => {
       {/* Title Section */}
       <p
         className="font-playfair text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-2xl font-bold 
-  bg-gradient-to-r text-white text-transparent bg-clip-text"
+  bg-gradient-to-r  bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text"
       >
         Have a Look at our Past
       </p>
