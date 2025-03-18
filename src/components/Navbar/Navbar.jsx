@@ -77,32 +77,53 @@ const Navbar = ({ Token }) => {
     <>
       {/* <nav className="fixed top-1 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg "> */}
       <nav
-        className={`fixed top-2 left-2 right-3 w-[calc(100%-1rem)] bg-gray-900 text-white flex items-center justify-between px-3 py-1 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg transition-transform duration-300 ${
+        className={`fixed top-2 left-2 right-3 w-[95dvw] bg-gray-900 text-white flex items-center justify-between px-3 py-1 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg transition-transform duration-300 ${
           visible ? "translate-y-0" : "-translate-y-[115%]"
-        }`}>
-        {/* Logos Section */} 
+        }`}
+      >
+        {/* Logos Section */}
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="flex items-center justify-center flex-grow">
-          <a href="https://revelation2k25.tech" target="_blank" rel="noopener noreferrer">
-
-            <img src={revelation} alt="Revelation Logo" className="w-28 sm:w-36 md:w-44 h-auto cursor-pointer hover:scale-110 transition-transform" />
-         
-
-
+            <a
+              href="https://revelation2k25.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={revelation}
+                alt="Revelation Logo"
+                className="w-28 sm:w-36 md:w-44 h-auto cursor-pointer hover:scale-110 transition-transform"
+              />
             </a>
           </div>
-          <a href="https://www.iiests.ac.in" target="_blank" rel="noopener noreferrer">
-            <img src={iiestLogo} alt="IIEST Logo" className="w-7 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform" />
+          <a
+            href="https://www.iiests.ac.in"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={iiestLogo}
+              alt="IIEST Logo"
+              className="w-7 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform"
+            />
           </a>
-          <a href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
-            <img src={ascLogo} alt="ASC Logo" className="w-7 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform" />
-            </a>
+          <a
+            href="https://www.linkedin.com/company/academic-society-of-computer-engineers-asce-iiest-shibpur/posts/?feedView=all"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={ascLogo}
+              alt="ASC Logo"
+              className="w-7 sm:w-8 md:w-10 cursor-pointer hover:scale-110 transition-transform"
+            />
+          </a>
         </div>
-{/* //       <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg">
+        {/* //       <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-3 py-3 border-2 border-gray-600 rounded-lg shadow-lg z-50 bg-opacity-0 backdrop-blur-lg">
 
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="flex items-center justify-center flex-grow"> */}
-            {/* <img
+        {/* <img
               src={revelation}
               alt="Revelation Logo"
               className="w-28 sm:w-36 md:w-44 h-auto"
@@ -182,11 +203,16 @@ const Navbar = ({ Token }) => {
             </div>
           ) : (
             // <button onClick={() => handleNavigation("/login")}>Login</button>
-            <button className=" mr-4 bg-black-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
+            <button
+              className=" mr-4 bg-black-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"
+              onClick={() => handleNavigation("/login")}
+            >
+              Login
+            </button>
 
-//             //<div className="flex justify-center items-center">
-//             <button className="mr-4 bg-black-600 text-white font-serif px-5 py-1 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
-//            // </div>
+            //             //<div className="flex justify-center items-center">
+            //             <button className="mr-4 bg-black-600 text-white font-serif px-5 py-1 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
+            //            // </div>
           )}
         </div>
 
@@ -230,11 +256,15 @@ const Navbar = ({ Token }) => {
             </div>
           ) : (
             // <button onClick={() => handleNavigation("/login")}>Login</button>
-            <button className=" mr-4 bg-black-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
+            <button
+              className=" mr-4 bg-black-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"
+              onClick={() => handleNavigation("/login")}
+            >
+              Login
+            </button>
 
-//               // <button className="mt-6 mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"
-//             <button className=" mr-4 bg-black-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
-
+            //               // <button className="mt-6 mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"
+            //             <button className=" mr-4 bg-black-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md"onClick={() => handleNavigation("/login")}>Login</button>
           )}
           {[
             { id: "/", icon: homeIcon, label: "Home" },
