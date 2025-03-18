@@ -83,16 +83,16 @@ const DashboardPage = () => {
         let teamsArray = [];
 
         if (eventData.type === "Team" && userTeam) {
-          const matchingTeam = userResponse.data.body.teams.find(
-            team => team._id === userTeam.id
-          );
+          const matchingTeam = userResponse.data.body.teams.you[0];
+
+          console.log("Matching team:", matchingTeam);
 
           if (matchingTeam) {
             setTeamParticipants(matchingTeam);
-            teamsArray = responseData.teams.filter(team => team._id !== userTeam.id); 
+            teamsArray = responseData.teams.others.filter(team => team._id !== userTeam.id); 
           }
         }
-        if(teamsArray.length === 0) teamsArray = responseData.teams;
+        if(teamsArray.length === 0) teamsArray = responseData.teams.others;
         setTeamsList(teamsArray);
         setParticipantsData(responseData);
       } catch (error) {
@@ -244,13 +244,16 @@ const DashboardPage = () => {
   // Add this new function to fetch all users once
   const fetchAllUsers = async () => {
     try {
-      const response = await axios.get(`${API_URL}/api/users/get-all`, {
+      const response = await axios.get(`${API_URL}/api/users/${id}/get-all`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      console.log("Users data:", response.data);
-      // Access the body array from the response
-      const users = response.data.body || [];
-      setAllUsers(users);
+      console.log("Raw users data:", response.data);
+      if (Array.isArray(response.data.body)) {
+        setAllUsers(response.data.body);
+        console.log("Set users:", response.data.body);
+      } else {
+        console.error("Received data is not an array:", response.data);
+      }
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -263,18 +266,21 @@ const DashboardPage = () => {
 
   // Replace the searchMembers function with this new one
   const searchMembers = (query) => {
+    console.log("Current query:", query);
+    console.log("All users available:", allUsers);
+    
     if (!query.trim()) {
       setMemberSearchResults([]);
       return;
     }
-    
-    const filteredResults = allUsers.filter(user => 
-      user.email.toLowerCase().startsWith(query.toLowerCase())
+
+    const lowerQuery = query.toLowerCase();
+    const filtered = allUsers.filter(user => 
+      user?.email?.toLowerCase().startsWith(lowerQuery)
     );
-    
-    console.log("Search query:", query);
-    console.log("Filtered results:", filteredResults);
-    setMemberSearchResults(filteredResults);
+
+    console.log("Filtered results:", filtered);
+    setMemberSearchResults(filtered);
   };
 
   // Add this new function after your other function declarations
@@ -406,7 +412,7 @@ const handleSendRequest = async (userId) => {
                       <div className="absolute w-full mt-1 max-h-48 overflow-y-auto bg-gray-800 border border-red-500 rounded-lg z-50 custom-scrollbar">
                         {memberSearchResults.map((user, index) => (
                           <div 
-                            key={index}
+                            key={user._id || index}
                             className="p-2 hover:bg-gray-700 text-white border-b border-gray-700 last:border-b-0 flex justify-between items-center"
                           >
                             <div>
@@ -432,21 +438,21 @@ const handleSendRequest = async (userId) => {
                 )}
 
                 {/* Dropdown content for the team  */}
-                {expandedTeam === userTeam.name && (
+                {expandedTeam === userTeam.name && (teamParticipants && (
                   <div className="mt-2 bg-black p-3 rounded-lg flex flex-col items-start">
                     <div>
-                      <p><strong>Team Leader:</strong> {teamParticipants.teamLeader.name}</p>
+                      <p><strong>Team Leader:</strong> {teamParticipants.teamId.teamLeader.name}</p>
                     </div>
                     <div>
                       <p><strong>Members:</strong></p>
                       <ul className="ml-4 list-disc">
-                        {teamParticipants.teamMembers.length>0 ? teamParticipants.teamMembers.map((member, i) => (
+                        {teamParticipants.teamId.teamMembers.length>0 ? teamParticipants.teamId.teamMembers.map((member, i) => (
                           <li key={i}>{member.name}</li>
                         )):"No Members"}
                       </ul>
                     </div>
                   </div>
-                )}
+                ))}
               </div>
             )}
 
