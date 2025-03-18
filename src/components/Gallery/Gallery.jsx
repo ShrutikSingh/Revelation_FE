@@ -69,11 +69,7 @@ const images = [
 const Gallery = () => {
   return (
     <div className="flex flex-col items-center w-full ">
-// <<<<<<< siddhu
       <h1 className="font-playfair text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-6  bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text mb-14">
-// =======
-//       <h1 className="font-playfair  bg-gradient-to-br from-gray-600 via-white to-black text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mt-6  text-transparent bg-clip-text mb-14">
-// >>>>>>> development
         GALLERY
       </h1>
 

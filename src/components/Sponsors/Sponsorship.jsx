@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Unstop from "../../assets/unstop.png";
-import splitkaro from "../../assets/sponsors/splitkaro.jpg";
-import winzo from "../../assets/winzo.png";
-import smartplanet from "../../assets/smartplanet.jpg";
+import Unstop from "./sponsors/unstop.png";
+import splitkaro from "./sponsors/splitkaro.jpg";
+import winzo from "./sponsors/winzo.png";
+import smartplanet from "./sponsors/smartplanet.jpg";
 import "./Sponsorship.css";
 
 const sponsorsRow1 = [Unstop, splitkaro, winzo];
@@ -15,11 +15,7 @@ const Sponsorship = () => {
       {/* Title Section */}
       <p
         className="font-playfair text-xl sm:text-lg md:text-xl lg:text-2xl xl:text-2xl font-bold 
-// <<<<<<< siddhu
         bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text"
-// =======
-//   bg-gradient-to-r  bg-gradient-to-br from-gray-600 via-white to-black text-transparent bg-clip-text"
-// >>>>>>> development
       >
         Have a Look at our Past
       </p>
