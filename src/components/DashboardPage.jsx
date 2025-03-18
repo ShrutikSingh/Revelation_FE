@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import { API_URL } from '../config/config';
+import { responsiveFontSizes } from "@mui/material";
 
 const DashboardPage = () => {
   const [showForm, setShowForm] = useState(false);
@@ -72,10 +73,13 @@ const DashboardPage = () => {
   const [participantsData, setParticipantsData] = useState(null);
   const [teamsList, setTeamsList] = useState([]);
   const [myTeamSize, setMyTeamSize] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [individualData,setIndividualData] = useState([]);
 
   const fetchParticipantsData = async () => {
     if (token) {
       try {
+        setIsLoading(true);
         const userResponse = await axios.get(`${API_URL}/api/events/${id}/participants`, {
           headers: { Authorization: `Bearer ${token}` },
         });        
@@ -83,23 +87,29 @@ const DashboardPage = () => {
         let responseData = userResponse.data.body;
 
         if (eventData.type === "Team" && userTeam) {
-          const matchingTeam = userResponse.data.body.teams.you[0];
+          if (responseData.teams.you && responseData.teams.you.length > 0) {
+            const myTeam = responseData.teams.you[0];
+            console.log("My team data:", myTeam);
+            setTeamParticipants(myTeam);
+            setTeamsList(responseData.teams.others || []);
+            setParticipantsData(responseData);
 
-          console.log("Matching team:", matchingTeam);
 
-          if ( userResponse.data.body.teams.you.length > 0) {
-            const pendingRequests = await axios.get(`${API_URL}/api/requests/pending/${matchingTeam._id}`, {
-              headers: { Authorization: `Bearer ${token}` },
-            });
-            console.log("Pending requests:", pendingRequests.data);
-            setTeamParticipants(matchingTeam);
           }
         }
-        setTeamsList(responseData.teams.others);
-        console.log(responseData.teams.others.length);
-        setParticipantsData(responseData);
+
+        if (eventData.type === "Single" ) {
+          if (responseData.individuals) {
+            setIndividualData(responseData.individuals);
+            console.log(responseData.individuals);
+
+          }
+        }
+
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       }
     }
   };
@@ -184,7 +194,7 @@ const DashboardPage = () => {
     }
     else{
       const participantData="true";
-      formData.append("participantData", JSON.stringify(participantsData));
+      formData.append("participantData", JSON.stringify(participantData));
     }
     formData.append("paymentProof", paymentScreenshot);
 
@@ -209,11 +219,13 @@ const DashboardPage = () => {
     fetchEvents();
     fetchParticipantsData();
     fetchUserData();
+
+    window.location.reload();
   };
-  const handledelete =async (e) => {
+  const handleDeleteTeam =async (e, teamId) => {
     e.preventDefault();
     const response = await axios.delete(
-      `${API_URL}/api/teams/delete/${teamParticipants._id}`,
+      `${API_URL}/api/teams/delete/${teamId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -222,7 +234,7 @@ const DashboardPage = () => {
       }
     );
 
-    console.log(response.data);
+    console.log("DELETE TEAM RESPONSE", response.data);
     setUserTeam(null);
 
     fetchEvents();
@@ -262,6 +274,7 @@ const DashboardPage = () => {
   const [memberSearchQuery, setMemberSearchQuery] = useState("");
   const [memberSearchResults, setMemberSearchResults] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [showSearchContainer, setShowSearchContainer] = useState(false);
 
   // Add this new function to fetch all users once
   const fetchAllUsers = async () => {
@@ -321,7 +334,16 @@ const DashboardPage = () => {
   // Add this new function after your other function declarations
 const handleSendRequest = async (userId, teamId) => {
   try {
-    console.log(userId);
+    // console.log(userId);
+    let pendingReq;
+    if(eventData.type==="Team"){
+      pendingReq= await axios.get(`${API_URL}/api/requests/pending/${teamId?teamId:userTeam.id}`);
+      if((pendingReq.data.body.requests.length)+(pendingReq.data.body.team.teamMembers.length)+1>=eventData.teamSize.max){
+        alert("Team is Full");
+        return;
+      }
+    }
+
     const response = await axios.post(
       `${API_URL}/api/events/${id}/make-request`,
       {
@@ -399,7 +421,7 @@ const handleSendRequest = async (userId, teamId) => {
             {eventData.name}
           </div>
 
-          <div className="relative z-10 p-6 h-full flex flex-col items-center">
+          <div className="relative z-10 p-6 h-full flex flex-col items-center gap-6">
             <div className="bg-red-800 px-4 py-2 inline-block border-2 border-red-600 mb-10 ml-20 mt-10 rounded-lg">
               <h1 className="text-2xl font-bold mb-0 text-white">Dashboard</h1>
             </div>
@@ -410,31 +432,77 @@ const handleSendRequest = async (userId, teamId) => {
             </div>
 
             {!userTeam ? (
+              <>
+              {eventData.type==="Team" &&
               <div className="self-start">
-                <DashboardButton link="#" content="Create a Team" onClick={handleCreateClick} />
+                <DashboardButton link="#" content= "Create a Team" onClick={handleCreateClick} />
               </div>
+              }
+              </>
             ) : (
-              <div className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2 w-full">
-                <div className="flex items-center justify-between flex-wrap">
-                  <span className="ml-3 text-sm md:text-base">{userTeam.name}</span>
-                  <span className="flex items-center">
-                    <FaUser  className="text-red-500 mr-1" />
-                    <span className="text-sm md:text-base">{userTeam.members.length +1 } Member{userTeam.members.length === 0 ? "" : "s"}</span>
-                  </span>
-                  <div className="flex items-center">
-                    {/* {teamParticipants&&(teamParticipants.teamLeader._id === userData._id && ( */}
-                    <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm" onClick={() => setShowSearch(!showSearch)}>
-                      ADD
-                    </button>
-                    {/* ))} */}
-                    <button onClick={() => toggleDropdown(userTeam.name)} className="ml-2 text-white">
-                      {expandedTeam === userTeam.name ? <FiChevronUp /> : <FiChevronDown />}
-                    </button>
-                  </div>
+              <>
+                <div className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2 w-full">
+                  {isLoading ? (
+                    <div className="text-center py-4">Loading team data...</div>
+                  ) : teamParticipants ? (
+                    <div className="flex items-center justify-between flex-wrap">
+                      <span className="ml-3 text-sm md:text-base">{teamParticipants.name}</span>
+                      <span className="flex items-center">
+                        <FaUser className="text-red-500 mr-1" />
+                        <span className="text-sm md:text-base">
+                          {(teamParticipants.teamMembers?.length || 0) + 1} Members
+                        </span>
+                      </span>
+                      <div className="flex items-center">
+                        {userData && teamParticipants.teamLeader._id === userData._id && (
+                          <>
+                            <button 
+                              className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg mr-4 text-sm" 
+                              onClick={() => setShowSearchContainer(!showSearchContainer)}
+                            >
+                              ADD
+                            </button>
+                            <button 
+                              className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm" 
+                              onClick={(e) => handleDeleteTeam(e, teamParticipants._id)}
+                            >
+                              DELETE TEAM
+                            </button>
+                          </>
+                        )}
+                        <button onClick={() => toggleDropdown(userTeam.name)} className="ml-2 text-white">
+                          {expandedTeam === userTeam.name ? <FiChevronUp /> : <FiChevronDown />}
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-4">Error loading team data</div>
+                  )}
+
+                  {/* Team members dropdown */}
+                  {expandedTeam === userTeam.name && teamParticipants && (
+                    <div className="mt-2 bg-black p-3 rounded-lg flex flex-col items-start">
+                      <div>
+                        <p><strong>Team Leader:</strong> {teamParticipants.teamLeader.name}</p>
+                      </div>
+                      <div>
+                        <p><strong>Members:</strong></p>
+                        <ul className="ml-4 list-disc">
+                          {teamParticipants.teamMembers && teamParticipants.teamMembers.length > 0 ? 
+                            teamParticipants.teamMembers.map((member, i) => (
+                              <li key={i}>{member.name}</li>
+                            ))
+                            : <div>No Members</div>
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                {/* search bar for team members */}
-                {showSearch && (
-                  <div className="mt-2 relative">
+
+                {/* Search container outside the team card */}
+                {showSearchContainer && userData && teamParticipants.teamLeader._id === userData._id && (
+                  <div className="w-full bg-black p-4 rounded-lg border border-red-500 mt-4">
                     <input
                       type="text"
                       placeholder="Search by email..."
@@ -445,62 +513,74 @@ const handleSendRequest = async (userId, teamId) => {
                       }}
                       className="w-full p-2 rounded-lg bg-gray-800 text-white border border-red-500"
                     />
-                    {memberSearchResults.length > 0 && (
-                      <div className="absolute w-full mt-1 max-h-48 overflow-y-auto bg-gray-800 border border-red-500 rounded-lg z-50 custom-scrollbar">
-                        {memberSearchResults.map((user, index) => (
-                          <div 
-                            key={user._id || index}
-                            className="p-2 hover:bg-gray-700 text-white border-b border-gray-700 last:border-b-0 flex justify-between items-center"
-                          >
-                            <div>
-                              <div className="font-medium">{user.name}</div>
-                              <div className="text-sm text-gray-400">{user.email}</div>
-                            </div>
-                            <button
-                              onClick={() => handleSendRequest(user._id, null)}
-                              className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors"
+                    <div className="relative">
+                      {memberSearchResults.length > 0 && (
+                        <div className="mt-2 max-h-48 overflow-y-auto bg-gray-800 border border-red-500 rounded-lg custom-scrollbar">
+                          {memberSearchResults.map((user, index) => (
+                            <div 
+                              key={user._id || index}
+                              className="p-2 hover:bg-gray-700 text-white border-b border-gray-700 last:border-b-0 flex justify-between items-center"
                             >
-                              Send Request
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                    {memberSearchQuery && memberSearchResults.length === 0 && (
-                      <div className="absolute w-full mt-1 p-2 bg-gray-800 border border-red-500 rounded-lg z-50 text-white text-center">
-                        No results found
-                      </div>
-                    )}
+                              <div>
+                                <div className="font-medium">{user.name}</div>
+                                <div className="text-sm text-gray-400">{user.email}</div>
+                              </div>
+                              {user._id !== userData._id && (
+                                <button
+                                  onClick={() => {
+                                    handleSendRequest(user._id, null);
+                                    setShowSearchContainer(false);
+                                  }}
+                                  className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors"
+                                >
+                                  Send Request
+                                </button>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {memberSearchQuery && memberSearchResults.length === 0 && (
+                        <div className="mt-2 p-2 bg-gray-800 border border-red-500 rounded-lg text-white text-center">
+                          No results found
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
-
-                {/* Dropdown content for the team  */}
-                {expandedTeam === userTeam.name && (teamParticipants && (
-                  <div className="mt-2 bg-black p-3 rounded-lg flex flex-col items-start">
-                    <div>
-                      <p><strong>Team Leader:</strong> {teamParticipants.teamId.teamLeader.name}</p>
-                      {/* {teamParticipants&&(teamParticipants.teamId.teamLeader._id === userData._id && (
-                      <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm" onClick={() => handledelete()}>
-                        Delete
-                      </button>
-                      ))} */}
-                    </div>
-                    <div>
-                      <p><strong>Members:</strong></p>
-                      <ul className="ml-4 list-disc">
-                        {teamParticipants.teamId.teamMembers.length>0 ? teamParticipants.teamId.teamMembers.map((member, i) => (
-                          <li key={i}>{member.name}</li>
-                        )):"No Members"}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              </>
             )}
+
+          {eventData.type === "Single" && (
+              <>
+                
+
+                {(!individualData.find((user)=>(user._id)===userData._id)) && <div className="self-start">
+                  <DashboardButton link="#" content= "Register" onClick={handleCreateClick} />
+                </div>}
+
+                <div className="ml-3 text-sm md:text-base">All Participants</div>
+           
+                {individualData.map((indiv,index)=>   <div key={`individual${index}`} className="w-full flex items-center justify-between flex-wrap">
+                <div className=" flex justify-between items-center bg-black text-white p-2  rounded-lg border border-red-500 mb-2 w-full">
+                      <span className="ml-3 text-sm md:text-base">{indiv.name} {indiv._id===userData._id &&
+                      <span className="ml-3 text-sm md:text-base bg-red-600 text-white py-2 px-4 rounded-xl">YOU</span>
+                      }</span>
+                      
+                      <span className="ml-3 text-sm md:text-base">{indiv.email}</span>
+
+                     
+                </div>
+                  </div>)}
+                  
+               
+              </>
+            )}
+            
 
             {showForm && (
               <form onSubmit={handleSubmit} className="mt-10 bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-md">
-                <label className="block text-lg mb-2 font-semibold">Enter Team Name:</label>
+                {eventData.type==='Team' && <><label className="block text-lg mb-2 font-semibold">Enter Team Name:</label>
                 <input
                   type="text"
                   value={teamName}
@@ -508,7 +588,9 @@ const handleSendRequest = async (userId, teamId) => {
                   required
                   className="w-full p-2 border rounded-md text-black mb-2"
                   placeholder="Team Name"
-                />
+                /></>}
+                {!userData.phoneNumber &&
+                <>
                 <label className="block text-lg mb-2 font-semibold">Enter your phone number:</label>
                 <input
                   type="phone"
@@ -518,7 +600,7 @@ const handleSendRequest = async (userId, teamId) => {
                   className="w-full p-2 border rounded-md text-black"
                   placeholder="Phone Number"
                 />
-
+                </>}
                 {/* Payment Section for Non-IIESTians */}
                 {isNonIIESTian &&( eventData.registrationAmount!==0 && (
                   <div className="mt-4">
