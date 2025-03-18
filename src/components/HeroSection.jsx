@@ -16,8 +16,7 @@ const HeroSection = () => {
       </h1>
       <div className="TeamsPage-hero-description">
         <p>
-          This is about the teams, some intro text that you can add to create 
-          the hype of the showing teams and all. This is about the teams.
+        A strong vision is nothing without the people who bring it to reality. Meet the dedicated individuals who drive our initiatives forward - leaders, innovators, and collaborators working together to turn ideas into reality. Their passion, teamwork, and excellence shape the foundation of everything we do. Get to know the minds behind our success!
         </p>
       </div>
     </div>

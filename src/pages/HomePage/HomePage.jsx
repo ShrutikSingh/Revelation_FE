@@ -14,7 +14,7 @@ import Faqs from "../FAQs/Faqs";
 const HomePage = ({ Token, setToken }) => {
   return (
     <div
-      className="w-full min-h-screen flex flex-col items-center gap-y-[120px]"
+      className="w-full min-h-screen flex flex-col items-center gap-y-[120px] overflow-x-hidden"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
@@ -35,7 +35,7 @@ const HomePage = ({ Token, setToken }) => {
 
       <EventSlider2 />
       <Gallery />
-
+      
       <div id="sponsors-section">
         <Sponsorship />
       </div>
