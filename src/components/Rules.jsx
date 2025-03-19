@@ -60,28 +60,23 @@ const Rules = () => {
       </div>
       {/* Rules List */}
       <ul className="list-decimal list-inside text-gray-300 text-left">
-        {/* {eventData.rules.map((rule, index) => (
-          <li key={index}>{rule}</li>
-        ))} */}
-        {eventData.rules}
+      {eventData.rules.slice(0, -1).map((rule, index) => (
+        <li key={index}>{rule}</li>
+      ))}
+        {/* {eventData.rules} */}
       </ul>
 
       {/* Coordinators Title */}
-      {/* <div className="border border-red-500 p-2 inline-block text-sm uppercase font-semibold mt-6 mb-2">
+      <div className="border border-red-500 p-2 inline-block text-sm uppercase font-semibold mt-6 mb-2">
         Coordinators :
       </div>
 
-      <div className="text-gray-300 text-center">
-        {eventData.coordinators.map((coordinator, index) => (
-          <div key={index} className="flex flex-row items-center gap-2 justify-center">
-          <span className="font-medium">{coordinator.name}</span>
-      <div className="flex items-center gap-1">
-        <img src="phone.svg" alt="Call Icon" className="w-5 h-5 mt-1 ml-5" />
-        <span className="text-gray-400">{coordinator.phone}</span>
+      <div className="text-gray-300 text-left">
+        <div className="gap-2">
+          <span className="font-medium">{eventData.rules[eventData.rules.length - 1]}</span>
+        </div>
       </div>
-          </div>
-        ))}
-      </div> */}
+
     </div>
   );
 };

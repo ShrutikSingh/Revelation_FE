@@ -191,17 +191,21 @@ const EventBoard = () => {
 
               {/* Dashboard Button */}
               <div className="absolute top-[65px] right-0 max-md:left-[100px]">
-                <Link to={dashlink}>
-                  <DashboardButton link={dashlink} content="Dashboard" />
+                <Link to={eventData.registrationFrom==="website" && dashlink}>
+                  <DashboardButton link={eventData.registrationFrom==="website" && dashlink} content="Dashboard" />
                 </Link>
               </div>
 
               {/* Register via Dashboard Button (Uses Link for Navigation) */}
               <div className="absolute bottom-10 mt-10 flex gap-20 max-md:flex-col max-md:gap-5 max-md:bottom-[60px]">
-
-                <Link to={dashlink}>
-                  <DashboardButton link={dashlink} content="Register via Dashboard" />
-                </Link>
+                {eventData.registrationFrom==="notReq"?
+                <Link>
+                  <DashboardButton content="No Registration Needed"/>
+                </Link> :
+                <Link to={eventData.registrationFrom==="website"?dashlink:eventData.registrationLink}>
+                  <DashboardButton link={eventData.registrationFrom==="website"?dashlink:eventData.registrationLink} content="Register"/>
+                </Link>}
+                
                 <HashLink smooth to="#ruless">
                 <DashboardButton link="#" content="Rules" /></HashLink>
               </div>

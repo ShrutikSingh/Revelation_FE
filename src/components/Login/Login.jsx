@@ -16,7 +16,7 @@ const Login = ({ setToken }) => {
       });
 
       const token = backendResponse.data.token;
-      localStorage.setItem("token", token);
+      localStorage.setItem("Token", token);
       setToken(token); // Add this line to update the token state
       navigate("/");
     } catch (error) {
