@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import event1 from "../../assets/Event_img/BrainDead.webp";
 import event2 from "../../assets/Event_img/HackQuest.webp";
 import event3 from "../../assets/Event_img/Ludo.webp";
-import event4 from "../../assets/Event_img/CodeStorm.webp";
+import event4 from "../../assets/Event_img/codeStorm.webp";
 import event5 from "../../assets/Event_img/Fifa.webp";
 import event6 from "../../assets/Event_img/Ganitam.webp";
 import event7 from "../../assets/Event_img/MurderMystery.webp";
