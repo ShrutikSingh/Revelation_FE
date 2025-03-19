@@ -155,7 +155,7 @@ const EventList = ({ setToken }) => {
                     </button>
                 </a>
                 <div className="text-[#FF0000] text-sm font-bold px-4 py-2 rounded-md">
-                    LIVE <span className="text-white">Blood Donation Camp is live now!</span>
+                    LIVE <span className="text-white"> Revelation4.0 is live now!!!</span>
                 </div>
             </div>
 
