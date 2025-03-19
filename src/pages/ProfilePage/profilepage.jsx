@@ -161,13 +161,13 @@ const ProfilePage = ({setToken}) => {
     <div className="registered-events">
       <div className="events-list">
           {request.yourRequests.map((req) => (
-              <div key={request.id} className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex items-center w-full">
+              <div key={request.id} className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex max-sm:flex-wrap max-sm:justify-between items-center w-full">
                 {console.log(req)}
-                <span className="font-medium mr-5">{req.event.name}</span>
-                <span className="text-sm mr-5 text-gray-300">{req.team.name}</span>
-                <span className="text-sm mr-5 text-gray-300">{req.receiver.name}</span>
-                <span className="text-sm mr-5 text-gray-300">{req.status.toUpperCase()}</span>
-                <button className=" mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md" onClick={(e) => handleDeleteRequest(e, req._id)} >DELETE</button>
+                <span className="font-medium mr-5 max-sm:text-[10px]">{req.event.name}</span>
+                <span className="text-sm mr-5 text-gray-300 max-sm:text-[10px]">{req.team.name}</span>
+                <span className="text-sm mr-5 text-gray-300 max-sm:text-[10px]">{req.receiver.name}</span>
+                <span className="text-sm mr-5 text-gray-300 max-sm:text-[10px]">{req.status.toUpperCase()}</span>
+                <button className=" mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md max-sm:text-[10px] max-sm:px-2 max-sm:py-0" onClick={(e) => handleDeleteRequest(e, req._id)} >DELETE</button>
               </div>
           ))}
       </div>
@@ -177,15 +177,15 @@ const ProfilePage = ({setToken}) => {
     <div className="registered-events">
       <div className="events-list">
           {request.requestsForYou.map((req) => (
-              <div key={request.id} className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex items-center w-full">
+              <div key={request.id} className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex items-center w-full max-sm:flex-wrap max-sm:justify-between">
                 {console.log(req)}
-                <span className="font-medium mr-5">{req.event.name}</span>
-                <span className="text-sm mr-5 text-gray-300">{req.team.name}</span>
-                <span className="text-sm mr-8 text-gray-300">{req.sender.name}</span>
-                {req.status==='pending'?<><button className=" mr-4 bg-green-600 text-white px-5 py-2 rounded-lg border-2 border-green-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md" onClick={(e) => handleRequestReply(e,true,req._id)}>
+                <span className="font-medium mr-5 max-sm:text-[10px]">{req.event.name}</span>
+                <span className="text-sm mr-5 text-gray-300 max-sm:text-[10px]">{req.team.name}</span>
+                <span className="text-sm mr-8 text-gray-300 max-sm:text-[10px]">{req.sender.name}</span>
+                {req.status==='pending'?<><button className=" mr-4 bg-green-600 text-white px-5 py-2 rounded-lg border-2 border-green-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md max-sm:text-[10px] max-sm:px-2 max-sm:py-0" onClick={(e) => handleRequestReply(e,true,req._id)}>
                 Accept
                 </button>
-                <button className=" mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md" onClick={(e) => handleRequestReply(e,false,req._id)}>
+                <button className=" mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md max-sm:text-[10px] max-sm:px-2 max-sm:py-0" onClick={(e) => handleRequestReply(e,false,req._id)}>
                 Decline
                 </button></>:req.status.toUpperCase()}
               </div>
@@ -199,7 +199,7 @@ const ProfilePage = ({setToken}) => {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center pt-20 p-4"
+      className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center pt-20 p-4 overflow-hidden"
       style={{ backgroundImage: `url(${background})` }}
     >
       <Navbar userData={userData} />
@@ -228,7 +228,7 @@ const ProfilePage = ({setToken}) => {
           {!isEditing ? (
             <>
               <div className="mt-6 space-y-3">
-                <div className="bg-gray-700 p-3 rounded-md text-sm md:text-base">
+                <div className="bg-gray-700 p-3 rounded-md text-sm md:text-base break-words">
                   <span className="font-semibold text-white">{userData ? "" : "Email:"} </span>
                   <span className="text-gray-300">{userData ? userData.email : "Loading..."}</span>
                 </div>
@@ -237,10 +237,10 @@ const ProfilePage = ({setToken}) => {
                 </div>
               </div>
 
-              <button className="mt-6 mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md" onClick={() => setIsEditing(true)}>
+              <button className="mt-6 mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md max-sm:py-1 max-sm:text-sm max-sm:px-1" onClick={() => setIsEditing(true)}>
                 Edit Profile
               </button>
-            <button className="mt-6 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md" onClick={handleLogout}>
+            <button className="mt-6 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md max-sm:py-1 max-sm:text-sm max-sm:px-1" onClick={handleLogout}>
               Logout
             </button>
         </>
@@ -298,12 +298,12 @@ const ProfilePage = ({setToken}) => {
           <h2 className="text-lg font-bold text-red-500">Your Requests</h2>
           <div className="mt-3 space-y-2">
             {request.yourRequests.length>0 ? <div className="events-list">
-              <div className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex items-center w-full">
-                <span className="font-medium mr-5">Event Name</span>
-                <span className="text-sm mr-5 text-gray-300">Team Name</span>
-                <span className="text-sm mr-20 text-gray-300">Requsted Person Name</span>
-                <span className="text-sm mr-5 text-gray-300">Status</span>
-                <span className="text-sm mr-5 text-gray-300">Action</span>
+              <div className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex items-center w-full max-sm:hidden">
+                <span className="font-medium max-sm:text-sm mr-5">Event Name</span>
+                <span className="text-sm max-sm:text-[10px] mr-5 text-gray-300">Team Name</span>
+                <span className="text-sm max-sm:text-[10px] mr-20 text-gray-300">Requested Person Name</span>
+                <span className="text-sm max-sm:text-[10px] mr-5 text-gray-300">Status</span>
+                <span className="text-sm max-sm:text-[10px] mr-5 text-gray-300">Action</span>
               </div>
           </div>:<div className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex justify-center items-center w-full">
           <span className="font-medium">No Data</span>
@@ -315,11 +315,11 @@ const ProfilePage = ({setToken}) => {
           <h2 className="text-lg font-bold text-red-500">Requests for you</h2>
           <div className="mt-3 space-y-2">
             {request.requestsForYou.length>0?<div className="events-list">
-              <div key={request.id} className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex items-center w-full">
-                <span className="font-medium mr-5">Event Name</span>
-                <span className="text-sm mr-5 text-gray-300">Team Name</span>
-                <span className="text-sm mr-5 text-gray-300">Requsters Name</span>
-                <span className="text-sm mr-5 text-gray-300">Accept/Decline</span>
+              <div key={request.id} className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex items-center w-full max-sm:hidden">
+                <span className="font-medium mr-5 max-sm:text-[10px]">Event Name</span>
+                <span className="text-sm mr-5 text-gray-300 max-sm:text-[10px]">Team Name</span>
+                <span className="text-sm mr-5 text-gray-300 max-sm:text-[10px]">Requesters Name</span>
+                <span className="text-sm mr-5 text-gray-300 max-sm:text-[10px]">Accept/Decline</span>
               </div>
           </div>:<div className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex justify-center items-center w-full">
           <span className="font-medium">No Data</span>

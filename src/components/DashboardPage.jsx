@@ -408,7 +408,7 @@ const handleSendRequest = async (userId, flag, teamId) => {
         transition={{ duration: 0.6, ease: "easeInOut" }} // Smooth transition
         className="bg-transparent text-white p-6 relative w-full max-w-4xl mx-auto"
       >
-        <div className="relative w-full h-full mx-auto">
+        <div className="relative w-full h-full mx-auto pb-5">
           <svg
             className="absolute top-5 left-0 w-full h-full z-0"
             viewBox="0 0 900 1500"
@@ -449,15 +449,15 @@ const handleSendRequest = async (userId, flag, teamId) => {
               strokeWidth="2"
             />
           </svg>
-          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg z-10">
+          <div className="absolute left-10 top-[-15px] text-4xl max-md:text-base font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg z-10 shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white]">
             {eventData.name}
           </div>
 
           <div className="relative z-10 p-6 h-full flex flex-col items-center gap-6">
-            <div className="bg-red-800 px-4 py-2 inline-block border-2 border-red-600 mb-10 ml-20 mt-10 rounded-lg">
-              <h1 className="text-2xl font-bold mb-0 text-white">Dashboard</h1>
+            <div className="bg-red-800 px-4 py-2 inline-block border-2 border-red-600 mb-10 ml-8 mt-10 rounded-lg">
+              <h1 className="text-2xl font-bold mb-0 text-white max-md:text-base text-center">Dashboard</h1>
             </div>
-            <div className="absolute mt-10 right-0 max-md:mt-[131px]">
+            <div className="absolute mt-10 right-0 max-md:mt-[-35px]">
               <Link to={dashName}>
                 <DashboardButton content="Event " />
               </Link>
@@ -467,14 +467,14 @@ const handleSendRequest = async (userId, flag, teamId) => {
               <>
               {console.log(isPendingReq)}
               {!isPendingReq && eventData.type==="Team" && eventData.isRegistrationOpen &&
-              <div className="self-start">
+              <div className="self-start ">
                 <DashboardButton link="#" content= "Create a Team" onClick={handleCreateClick} />
               </div>
               }
               </>
             ) : (
               <>
-                <div className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2 w-full">
+                <div className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2 w-[105%] ml-10">
                   {isLoading ? (
                     <div className="text-center py-4">Loading team data...</div>
                   ) : teamParticipants ? (
@@ -482,28 +482,28 @@ const handleSendRequest = async (userId, flag, teamId) => {
                       <span className="ml-3 text-sm md:text-base">{teamParticipants.name}</span>
                       <span className="flex items-center">
                         <FaUser className="text-red-500 mr-1" />
-                        <span className="text-sm md:text-base">
+                        <span className="text-sm md:text-base max-sm:mr-4">
                           {(teamParticipants.teamMembers?.length || 0) + 1} Members
                         </span>
                       </span>
-                      <div className="flex items-center">
+                      <div className="flex items-center max-sm:w-full">
                         {userData && teamParticipants.teamLeader._id === userData._id && eventData.isRegistrationOpen && (
-                          <>
+                          <div className="w-full flex flex-row justify-between max-sm:my-1" >
                             <button 
-                              className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg mr-4 text-sm" 
+                              className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg mr-4 text-sm ml-2 max-sm:mt-1 max-sm:mb-1 max-sm:text-[10px] max-sm:px-2" 
                               onClick={() => setShowSearchContainer(!showSearchContainer)}
                             >
                               ADD
                             </button>
                             <button 
-                              className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm" 
+                              className="bg-red-500 hover:bg-red-700 text-white px-4 max-sm:px-2 rounded-lg text-sm max-sm:text-[10px] mr-2 max-sm:mt-1 max-sm:mb-1" 
                               onClick={(e) => handleDeleteTeam(e, teamParticipants._id)}
                             >
                               DELETE TEAM
                             </button>
-                          </>
+                          </div>
                         )}
-                        <button onClick={() => toggleDropdown(userTeam.name)} className="ml-2 text-white">
+                        <button onClick={() => toggleDropdown(userTeam.name)} className="ml-2 text-white max-sm:absolute max-sm:top-[180px] max-sm:right-0">
                           {expandedTeam === userTeam.name ? <FiChevronUp /> : <FiChevronDown />}
                         </button>
                       </div>
@@ -535,7 +535,7 @@ const handleSendRequest = async (userId, flag, teamId) => {
 
                 {/* Search container outside the team card */}
                 {showSearchContainer && userData && teamParticipants.teamLeader._id === userData._id && (
-                  <div className="w-full bg-black p-4 rounded-lg border border-red-500 mt-4">
+                  <div className="w-[105%] ml-10 bg-black p-4 rounded-lg border border-red-500 mt-4">
                     <input
                       type="text"
                       placeholder="Search by email..."
@@ -552,11 +552,11 @@ const handleSendRequest = async (userId, flag, teamId) => {
                           {memberSearchResults.map((user, index) => (
                             <div 
                               key={user._id || index}
-                              className="p-2 hover:bg-gray-700 text-white border-b border-gray-700 last:border-b-0 flex justify-between items-center"
+                              className="p-2 hover:bg-gray-700 text-white border-b border-gray-700 last:border-b-0 flex max-sm:flex-col max-sm:items-center justify-between items-center"
                             >
-                              <div>
-                                <div className="font-medium">{user.name}</div>
-                                <div className="text-sm text-gray-400">{user.email}</div>
+                              <div className="flex flex-col justify-center">
+                                <div className="font-medium max-sm:text-[10px]">{user.name}</div>
+                                <div className="text-sm text-gray-400 max-sm:text-[10px]">{user.email}</div>
                               </div>
                               {user._id !== userData._id && (
                                 <button
