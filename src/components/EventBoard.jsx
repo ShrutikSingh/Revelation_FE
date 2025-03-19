@@ -123,7 +123,7 @@ const EventBoard = () => {
 
 
         <div className="relative z-10 p-6 h-full max-md:w-full">
-          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white]">
+          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white] max-sm:text-3xl">
             {eventData.name}
           </div>
 
@@ -198,7 +198,7 @@ const EventBoard = () => {
               <p className="mt-4 text-gray-300 text-left w-[85%]">{eventData.description}</p>
 
               {/* Dashboard Button */}
-              <div className="absolute top-[65px] right-0 max-md:left-[100px]">
+              <div className="absolute top-[65px] right-0 max-md:left-[100px] max-md:top-[120px]">
                 <Link to={eventData.registrationFrom==="website" && dashlink}>
                   <DashboardButton link={eventData.registrationFrom==="website" && dashlink} content="Dashboard" />
                 </Link>
