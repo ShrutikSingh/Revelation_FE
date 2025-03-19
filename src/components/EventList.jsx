@@ -140,9 +140,11 @@ const EventList = ({setToken}) => {
 
         {/* Download Button & Live Announcement */}
         <div className="flex flex-col items-center">
+            <a href="https://drive.google.com/file/d/1hSx-K3X2m-KuE0mrxwLTuRlBqFkOYxtX/view?usp=drivesdk">
             <button className="px-6 py-2 border-2 border-[#810000] text-white text-lg font-bold rounded-md transition">
-                DOWNLOAD SCHEDULE
+                VIEW SCHEDULE
             </button>
+            </a>
             <div className="text-[#FF0000] text-sm font-bold px-4 py-2 rounded-md">
                 LIVE <span className="text-white">Blood Donation Camp is live now!</span>
             </div>
@@ -202,9 +204,11 @@ const EventList = ({setToken}) => {
 
                 {/* Download Button & Live Announcement */}
                 <div className="flex flex-col items-center">
+                    <a href="https://drive.google.com/file/d/1hSx-K3X2m-KuE0mrxwLTuRlBqFkOYxtX/view?usp=drivesdk">
                     <button className="px-6 py-2 border-2 border-[#810000] text-white text-lg font-bold rounded-md hover:bg-[#810000] transition">
-                        DOWNLOAD SCHEDULE
+                        VIEW SCHEDULE
                     </button>
+                    </a>
                     <div className="text-[#FF0000] text-[12px] font-semibold px-4 py-2 rounded-md">
                         LIVE. <span className="text-white text-[12px]"> Revelation4.0 is live now!!!</span>
                     </div>
