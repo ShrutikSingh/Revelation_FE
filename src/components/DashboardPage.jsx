@@ -655,10 +655,10 @@ const handleSendRequest = async (userId, flag, teamId) => {
                 {individualData.length>0 && <div className="ml-3 text -sm md:text-base">All Participants</div>}
                 {individualData.map((indiv,index)=>   <div key={`individual${index}`} className="w-full flex items-center justify-between flex-wrap">
                 <div className=" flex justify-between items-center bg-black text-white p-2  rounded-lg border border-red-500 mb-2 w-full">
-                      {indiv._id===userData._id &&
-                      <span className="text-sm md:text-base text-white rounded-xl">*</span>
-                      }
                       <span className="ml-3 text-sm md:text-base">{indiv.email}</span>    
+                      {indiv._id===userData._id &&
+                      <span className="mr-3 text-3xl text-red-500">*</span>
+                      }
                 </div>
                   </div>)}
               </>
