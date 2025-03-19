@@ -13,27 +13,33 @@ const eventSchedule = [
         day: "DAY-1",
         date: "March 21, 2025",
         events: [
-            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
-            { name: "Ganitam", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d8365d1fac73aa4df88cb1'},
-            { name: "Hackathon", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Blood Donation Camp", startTime: "11:00 AM ", endTime: " 3:00 PM", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
+            { name: "Inauguration", startTime: "5:00 PM ", endTime: " 7:00 PM", isLive: false, gif: "vite.svg",id:'67d8365d1fac73aa4df88cb1'},
+            { name: "Root Access", startTime: "6:00 PM ", endTime: "-----", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Brain Dead", startTime: "6:00 PM", endTime: "------", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Ganitam", startTime: "7:00 PM ", endTime: " 9:00 PM", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
         ]
     },
     {
         day: "DAY-2",
         date: "March 22, 2025",
         events: [
-            { name: "Root Access", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27'},
-            { name: "BrainDead", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "BGMI", startTime: "11:00 AM ", endTime: " 2:00 PM", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Ludo", startTime: "2:00 PM ", endTime: " 10:00 PM", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27'},
+            { name: "Codestorm", startTime: "3:00 PM ", endTime: " 5:00 PM", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Techno Quiz", startTime: "5:00 PM ", endTime: " 8:00 PM", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "FIFA", startTime: "8:00 PM ", endTime: " 10:00 PM", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
         ]
     },
     {
         day: "DAY-3",
         date: "March 23, 2025",
         events: [
-            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "Murder Mystery", startTime: "00:00", endTime: "02:18", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
+            { name: "Valorant", startTime: "10:00 AM ", endTime: " 2:00 PM", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Murder Mystery", startTime: "2:00 PM ", endTime: " 5:30 PM", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "HackQuest", startTime: "", endTime: "", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
+            { name: "Cultural Events", startTime: "6:00 PM ", endTime: "-----", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
+            { name: "Closing Ceremony", startTime: "6:00 PM ", endTime: "------", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
         ]
     }
 ];
