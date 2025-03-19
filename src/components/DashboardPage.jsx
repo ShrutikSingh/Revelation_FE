@@ -93,12 +93,12 @@ const DashboardPage = ({Token, setToken}) => {
             const myTeam = responseData.teams.you[0];
             console.log("My team data:", myTeam);
             setTeamParticipants(myTeam);
-            setTeamsList(responseData.teams.others || []);
             setParticipantsData(responseData);
-
-
+            
+            
           }
         }
+        setTeamsList(responseData.teams.others || []);
 
         if (eventData.type === "Single" ) {
           if (responseData.individuals) {
