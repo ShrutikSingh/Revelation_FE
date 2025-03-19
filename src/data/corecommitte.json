@@ -4,31 +4,31 @@
     "members": [
       { "position":"Professor-in-charge",
         "name": "Prof. Malay Kule",
-        "image": "/assets/Malay Kule.jpg",
-        "linkedin": "https://www.linkedin.com/",
-        "instagram": "https://www.instagram.com/"
+        "image": "/assets/Malay Kule.webp",
+        "linkedin": "https://www.linkedin.com/in/malay-kule-013a3388/?originalSubdomain=in",
+        "instagram": "https://www.linkedin.com/in/malay-kule-013a3388/?originalSubdomain=in"
       },
       { "position":"General Secretary",
         "name": "Roushan Das",
-        "image": "/assets/Roushan Das.jpg",
+        "image": "/assets/Roushan Das.webp",
         "linkedin": "https://www.linkedin.com/in/roushan-das-a6289a22a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        "instagram": "https://www.instagram.com/_roushan.02_?igsh=MTlyYm1ocnczeXg1MQ=="
+        "instagram": "https://www.instagram.com/__roushan.02__?igsh=MTlyYm1ocnczeXg1MQ=="
       },
       { "position":"Treasurer",
         "name": "Subinoy Sikdar",
-        "image": "/assets/spiderman.png",
-        "linkedin": "https://www.linkedin.com/",
-        "instagram": "https://www.instagram.com/"
+        "image": "/assets/Subinoy Sikdar.webp",
+        "linkedin": "https://www.linkedin.com/in/subinoy-sikdar-683237130/?originalSubdomain=in",
+        "instagram": "https://www.instagram.com/subinoy_sikdar/"
       },
       { "position":"Assistant Secretary",
         "name": "Sarthi Singh",
-        "image": "/assets/Sarthi Singh.jpg",
+        "image": "/assets/Sarthi Singh.webp",
         "linkedin": "https://www.linkedin.com/in/sarthisingh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        "instagram": "https://www.instagram.com/sarthi.singh?igsh=MWFwYXB2Z3FkNDd6aw%3D%3D&utm_source=qr"
+        "instagram": "https://www.instagram.com/_sarthi.singh_?igsh=MWFwYXB2Z3FkNDd6aw%3D%3D&utm_source=qr"
       },
       { "position":"Auditor",
         "name": "Saugata Choudhury",
-        "image": "/assets/spiderman.png",
+        "image": "/assets/Saugata_Choudhury.jpg",
         "linkedin": "https://www.linkedin.com/",
         "instagram": "https://www.instagram.com/"
       }

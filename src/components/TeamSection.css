@@ -20,6 +20,7 @@
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
+  margin: 10px;
 }
 
 .TeamsPage-core-card {
@@ -31,9 +32,6 @@
   padding: 20px;
   /* transition: box-shadow 0.1s ease-in-out;  */
   box-shadow: 0 0 10px 4px red;
-}
-.TeamsPage-core-card:hover {
-  box-shadow: 0 0 10px 8px red;
 }
 
 .TeamsPage-core-position {
@@ -49,9 +47,7 @@
   box-shadow: 0 0 10px 4px white; 
   width: 200px;
 }
-.TeamsPage-core-position:hover {
-  box-shadow: 0 0 10px 8px white; 
-}
+
 
 .TeamsPage-team-section {
   width: 75%;
@@ -63,10 +59,13 @@
   position: relative;
   margin-top: 40px;
   border-radius: 30px;
-  box-shadow: 0 0 10px 5px red;
+  box-shadow: 0 0 10px 4px red;
+}
+.TeamsPage-core-card:hover {
+  box-shadow: 0 0 10px 6px red;
 }
 .TeamsPage-team-section:hover {
-  box-shadow: 0 0 10px 10px red;
+  box-shadow: 0 0 10px 6px red;
 }
 
 .TeamsPage-team-section.TeamsPage-right {
@@ -97,10 +96,14 @@
   align-items: center;
   justify-content: space-around;
   padding: 20px 20px;
-  box-shadow: 0 0 10px 7px white; 
+  box-shadow: 0 0 10px 4px white; 
+}
+
+.TeamsPage-core-position:hover {
+  box-shadow: 0 0 10px 6px white; 
 }
 .TeamsPage-team-title:hover {
-  box-shadow: 0 0 10px 9px white; 
+  box-shadow: 0 0 10px 6px white; 
 }
 .TeamsPage-right .TeamsPage-team-title {
   border-top-right-radius: 0px;
@@ -130,7 +133,7 @@
 }
 
 .TeamsPage-team-3 .TeamsPage-second-row {
-  margin-top: -45px; 
+  margin-top: -40px; 
 }
 
 .TeamsPage-team-4 .TeamsPage-hexagon-row {
@@ -139,7 +142,7 @@
 }
 
 .TeamsPage-team-4 .TeamsPage-second-row {
-  margin-left: 107px;
+  margin-left: 111px;
   margin-top: -40px; 
 }
 
@@ -218,10 +221,7 @@
   }
   
 }
-@media (max-width: 1025px) {
-  .TeamsPage-team-section:hover {
-    box-shadow: 0 0 10px 8px red;
-  }
+@media (max-width: 1045px) {
   .TeamsPage-team-section {
     padding: 16px;
   }
@@ -231,6 +231,13 @@
   
   .TeamsPage-core-title {
     font-size: 35px;
+    width: 35%;
+  }
+  .TeamsPage-core-position {
+    padding: 8px 14px;
+    margin-top: 24px;
+    font-size: 14px;
+    width: 150px;
   }
 
   .TeamsPage-team-title {
@@ -289,9 +296,6 @@
   }
 }
 @media (max-width:920px){
-  .TeamsPage-team-section:hover {
-    box-shadow: 0 0 10px 7px red;
-  }
   .TeamsPage-team-section {
     padding: 12px;
   }
@@ -302,7 +306,9 @@
     font-size: 16px;
     padding: 12px 14px;
   }
-
+  .TeamsPage-core-title{
+    font-size: 30px;
+  }
   .TeamsPage-right .TeamsPage-team-title {
     padding-right: 25px;
   }
@@ -330,7 +336,7 @@
   
 }
 
-@media (max-width:780px){
+@media (max-width:820px){
   .TeamsPage-core-members {
     margin-bottom: 20px;
     margin-top: -20px;
@@ -340,15 +346,33 @@
     font-size: 24px;
     padding: 10px;
   }
-
+  .TeamsPage-core-position {
+    padding: 8px 14px;
+    margin-top: 24px;
+    font-size: 14px;
+    width: 150px;
+  }
   .TeamsPage-core-card {
     box-shadow: 0 0 10px 2.5px red;
   }
-  
+  .TeamsPage-team-section:hover {
+    box-shadow: 0 0 10px 3px red;
+  }
+  .TeamsPage-core-card:hover {
+    box-shadow: 0 0 10px 4px red;
+  }
+  .TeamsPage-team-section:hover {
+    box-shadow: 0 0 10px 4.5px red;
+  }
   .TeamsPage-core-position {
     box-shadow: 0 0 10px 3px white; 
   }
-
+  .TeamsPage-core-position:hover {
+    box-shadow: 0 0 10px 5px white; 
+  }
+  .TeamsPage-team-title:hover {
+    box-shadow: 0 0 10px 5px white; 
+  }
   .TeamsPage-team-section {
     padding: 20px 5px;
     margin-top: 30px;
@@ -362,27 +386,23 @@
   }
 
   .TeamsPage-team-3 .TeamsPage-second-row {
-    margin-top: -20px; 
+    margin-top: -25px; 
   }
   
   .TeamsPage-team-4 .TeamsPage-second-row {
     margin-left: 61px;
-    margin-top: -20px; 
+    margin-top: -25px; 
   }
 
   .TeamsPage-team-5 .TeamsPage-second-row {
-    margin-top: -20px; 
+    margin-top: -25px; 
   }
   .TeamsPage-team-2 {
     width: 60%;
   }
   
 }
-@media (max-width: 680px) {
-  .TeamsPage-team-section:hover {
-    box-shadow: 0 0 10px 6px red;
-  }
-
+@media (max-width: 715px) {
   .TeamsPage-core-members {
     margin-bottom: 20px;
     margin-top: -20px;
@@ -397,10 +417,6 @@
     box-shadow: 0 0 10px 2.5px red;
   }
   
-  .TeamsPage-core-position {
-    box-shadow: 0 0 10px 3px white; 
-  }
-
   .TeamsPage-team-section {
     width: 95%;
     flex-direction: column;
@@ -483,6 +499,12 @@
   .TeamsPage-team-4 {
     width: 75%;
   }
+  .TeamsPage-core-position {
+    padding: 8px 14px;
+    margin-top: 18px;
+    font-size: 14px;
+    width: 130px;
+  }
 }
 @media (max-width:440px){
   .TeamsPage-team-3 .TeamsPage-second-row {
@@ -523,5 +545,42 @@
 
   .TeamsPage-team-5 .TeamsPage-second-row {
     margin-top: -17px; 
+  }
+}
+
+@media (max-width:370px){
+  .TeamsPage-core-title {
+    font-size: 16px;
+    padding: 8px;
+  }
+  .TeamsPage-team-3 .TeamsPage-second-row {
+    margin-top: -20px; 
+  }
+
+  .TeamsPage-team-4 .TeamsPage-second-row {
+    margin-left: 52px;
+    margin-top: -20px; 
+  }
+
+  .TeamsPage-team-5 .TeamsPage-second-row {
+    margin-top: -20px; 
+  }
+}
+@media (max-width:350px){
+  .TeamsPage-core-title {
+    font-size: 16px;
+    padding: 8px;
+  }
+  .TeamsPage-team-3 .TeamsPage-second-row {
+    margin-top: -15px; 
+  }
+
+  .TeamsPage-team-4 .TeamsPage-second-row {
+    margin-left: 47px;
+    margin-top: -15px; 
+  }
+
+  .TeamsPage-team-5 .TeamsPage-second-row {
+    margin-top: -15px; 
   }
 }

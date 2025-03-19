@@ -27,9 +27,7 @@ const FAQItem = ({ question, answer }) => {
           isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <p className="text-lg font-normal mt-3 text-[13px] lg:text-[14px] text-white">
-          {answer}
-        </p>
+        <p className="font-normal mt-3 text-sm text-white">{answer}</p>
       </div>
     </div>
   );

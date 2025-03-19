@@ -69,8 +69,15 @@ const EventBoard = () => {
 
   const dashlink=`/dashboard/${eventData._id}`;
 
+  const adjustTime = (dateTime) => {
+      const date = new Date(dateTime);
+      date.setMinutes(date.getMinutes() - (5 * 60 + 30)); // Subtract 5 hours 30 minutes
+      return date;
+    };
+  
+
   return (
-    <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden">
+    <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden mt-[90px] max-md:mt-[55px]">
 
       <div className="relative w-full max-w-4xl xl:max-w-6xl  h-full mx-auto">
         <svg
@@ -96,7 +103,7 @@ const EventBoard = () => {
           </clipPath>
           <rect width="100%" height="100%" fill="black" clipPath="url(#clipper)" />
           <image
-                        href={eventData.posterImage.url}
+                        href={eventData.backgroundImage.url}
                         alt={eventData.name}
                         width="100%"
                         height="100%"
@@ -116,34 +123,97 @@ const EventBoard = () => {
 
 
         <div className="relative z-10 p-6 h-full max-md:w-full">
-          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto ">
+          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white]">
             {eventData.name}
           </div>
 
           {/* Event Details Section */}
-          <div className="flex justify-between items-start mt-20 h-full max-md:w-full max-md:pt-[350px] max-md:pb-[160px]">
-            <div className="w-2/3 h-full max-md:w-full">
-              <div className="flex flex-col justify-between text-sm max-md:mt-4">
-                <span>📍 {eventData.venue}</span>
-                <span className="font-bold max-md:mt-2">Prize Pool:10,000</span>
+          <div className="flex justify-between items-start mt-[50px] h-full max-md:w-full max-md:pt-[350px] max-md:pb-[160px] max-md:mt-[80px] pl-3">
+            <div className="w-[80%] h-full max-md:w-full">
+            <div className="grid grid-cols-2 text-sm max-md:grid-cols-1 max-md:mt-4 gap-2">
+
+              {/* Left Side */}
+              <div>
+                <span >
+                  <img src="/location.gif" className="w-4 h-4 inline-block mr-2" /> {eventData.venue}
+                </span>
               </div>
-              <div className="flex flex-col justify-between mt-2 text-sm max-md:mt-4">
-                <span>⏰ {formatDateTime(eventData.startTime)}</span>
-                <span>⏰ {formatDateTime(eventData.endTime)}</span>
+              <div></div>
+
+              {/* {left side} */}
+              <div>
+                <span>
+                  <img src="/prize.gif" className="w-4 h-4 inline-block mr-2" /> Prize Pool : ₹{eventData.prizePool}
+                </span>
               </div>
-              <p className="mt-4 text-gray-300 text-left">{eventData.description}Gear up withkjbf fbf khf h feuhrfuher h refuh ruh ruhe fiurh fruh rhieruh irheuheiruh rh r hriuh  your laptops and get ready for the second edition of Fresher’s Contest presented by CodeIIEST. Whether you conquered the first edition or are just stepping into CP, this contest is for YOU! Step into the limelight, capture the beauty of coding and most importantly have fun racking your brains!</p>
+
+              {/* right  Side */}
+              <div className="text-left">
+                 <span>
+                  <img src="/payment.gif" className="w-5 h-5 inline-block mr-2" /> {eventData.registrationAmount===0? "No Registration fee":`Registration Fee (only for Non-IIESTians) : ₹${eventData.registrationAmount}`}
+                </span>
+              </div>
+
+
+              {/* Second Row */}
+              <div>
+                <span>
+                  <img src="/team1.gif" className="w-5 h-5 inline-block mr-2" /> Event Type :
+                  {eventData.type === "Team" ? "Team" : "Individual"}
+                </span>
+              </div>
+
+              <div className="text-left">
+                {eventData.type === "Team" &&
+                  (eventData.teamSize.max === eventData.teamSize.min ? (
+                    <span>
+                      <img src="/team1.gif" className="w-5 h-5 inline-block mr-2" />
+                      Team Size : Strictly {eventData.teamSize.min} members
+                    </span>
+                  ) : (
+                    <span>
+                      <img src="/team1.gif" className="w-5 h-5 inline-block mr-2" />
+                      Team Size : {eventData.teamSize.min}-{eventData.teamSize.max} members
+                    </span>
+                  ))}
+              </div>
+
+              {/* Third Row */}
+              <div>
+                <span>
+                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> Start Time : 
+                  { ' '+formatDateTime(adjustTime(eventData.startTime))}
+                </span>
+              </div>
+
+
+              <div className="text-left">
+                <span>
+                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> End Time : 
+                  {' '+formatDateTime(adjustTime(eventData.endTime))}
+                </span>
+              </div>
+
+              </div>
+              <p className="mt-4 text-gray-300 text-left w-[85%]">{eventData.description}</p>
 
               {/* Dashboard Button */}
               <div className="absolute top-[65px] right-0 max-md:left-[100px]">
-                <DashboardButton link={dashlink} content="Dashboard" />
+                <Link to={eventData.registrationFrom==="website" && dashlink}>
+                  <DashboardButton link={eventData.registrationFrom==="website" && dashlink} content="Dashboard" />
+                </Link>
               </div>
 
               {/* Register via Dashboard Button (Uses Link for Navigation) */}
               <div className="absolute bottom-10 mt-10 flex gap-20 max-md:flex-col max-md:gap-5 max-md:bottom-[60px]">
-
-                <Link to={dashlink}>
-                  <DashboardButton link={dashlink} content="Register via Dashboard" />
-                </Link>
+                {eventData.registrationFrom==="notReq"?
+                <Link>
+                  <DashboardButton content="No Registration Needed"/>
+                </Link> :
+                <Link to={eventData.registrationFrom==="website"?dashlink:eventData.registrationLink}>
+                  <DashboardButton link={eventData.registrationFrom==="website"?dashlink:eventData.registrationLink} content="Register"/>
+                </Link>}
+                
                 <HashLink smooth to="#ruless">
                 <DashboardButton link="#" content="Rules" /></HashLink>
               </div>
@@ -153,12 +223,11 @@ const EventBoard = () => {
           {/* EventCard for Sidebar */}
           <div className="absolute right-[-20px] bottom-[-0px] max-md:left-[-15px] max-md:top-40">
             <EventCard
-              title={eventData.name}
-              description="The Competitive Coding Contest"
               imageUrl={eventData.posterImage.url}
-              dayText="Day 1"
+              dayText={eventData.day}
             />
           </div>
+      {/* <EventRules /> */}
         </div>
       </div>
     </div>

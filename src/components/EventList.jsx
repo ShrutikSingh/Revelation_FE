@@ -5,39 +5,46 @@ import NormalDayLeft from "./NormalDayLeft";
 import NormalDayRight from "./NormalDayRight";
 import HighlightedDay from "./HighlightedDay";
 import { useRef } from "react"; // Import useRef
-
+import axios from "axios";
+import { API_URL } from '../config/config';
 
 const eventSchedule = [
     {
         day: "DAY-1",
         date: "March 21, 2025",
         events: [
-            { name: "Inauguration", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d59ca882cf9619f8bf5122' },
-            { name: "Ganitam", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27'},
-            { name: "Hackathon", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Blood Donation Camp", startTime: "11:00 AM ", endTime: " 3:00 PM", isLive: false, gif: "vite.svg",id:'67dabbd1c4b1123c4c064648' },
+            { name: "Inauguration", startTime: "5:00 PM ", endTime: " 7:00 PM", isLive: false, gif: "vite.svg",id:'67d8365d1fac73aa4df88cb1', flag: true},
+            { name: "Root Access", startTime: "6:00 PM ", endTime: "-----", isLive: false, gif: "vite.svg",id:'67dabd1bc4b1123c4c064663' },
+            { name: "Brain Dead", startTime: "6:00 PM", endTime: "------", isLive: false, gif: "vite.svg",id:'67dabe0fc4b1123c4c0646d9' },
+            { name: "Ganitam", startTime: "7:00 PM ", endTime: " 9:00 PM", isLive: false, gif: "vite.svg",id:'67dac16ac4b1123c4c064a15' },
         ]
     },
     {
         day: "DAY-2",
         date: "March 22, 2025",
         events: [
-            { name: "Root Access", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27'},
-            { name: "BrainDead", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "BGMI", startTime: "11:00 AM ", endTime: " 2:00 PM", isLive: false, gif: "vite.svg",id:'67dabfa6c4b1123c4c0648c6' },
+            { name: "Ludo", startTime: "2:00 PM ", endTime: " 10:00 PM", isLive: false, gif: "vite.svg",id:'67dacfb5c4b1123c4c065989'},
+            { name: "Codestorm", startTime: "3:00 PM ", endTime: " 5:00 PM", isLive: false, gif: "vite.svg",id:'67dab7f3c4b1123c4c064560' },
+            { name: "Techno Quiz", startTime: "5:00 PM ", endTime: " 8:00 PM", isLive: false, gif: "vite.svg",id:'67dabb39c4b1123c4c064638' },
+            { name: "FIFA", startTime: "8:00 PM ", endTime: " 10:00 PM", isLive: false, gif: "vite.svg",id:'67daba91c4b1123c4c064629' },
         ]
     },
     {
         day: "DAY-3",
         date: "March 23, 2025",
         events: [
-            { name: "BLOOD DONATION CAMP", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "Murder Mystery", startTime: "00:00", endTime: "02:18", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "Codestorm", startTime: "09:00", endTime: "11:00", isLive: false, gif: "vite.svg",id:'67d59ca882cf9619f8bf5122' },
+            { name: "Valorant", startTime: "10:00 AM ", endTime: " 2:00 PM", isLive: false, gif: "vite.svg",id:'67dac30fc4b1123c4c064b5b' },
+            { name: "Murder Mystery", startTime: "2:00 PM ", endTime: " 5:30 PM", isLive: false, gif: "vite.svg",id:'67dac075c4b1123c4c0648f6' },
+            { name: "HackQuest", startTime: "", endTime: "", isLive: false, gif: "vite.svg",id:'67dac264c4b1123c4c064b3f' },
+            { name: "Cultural Events", startTime: "6:00 PM ", endTime: "-----", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' ,  flag: true },
+            { name: "Closing Ceremony", startTime: "6:00 PM ", endTime: "------", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a',  flag: true },
         ]
     }
 ];
 
-const EventList = () => {
+const EventList = ({setToken}) => {
     const leftRef = useRef(null);
     const centerRef = useRef(null);
     const rightRef = useRef(null);
@@ -52,7 +59,21 @@ const EventList = () => {
         console.log("Updated normalDays:", normalDays);
     }, [highlighted, normalDays]);
 
+    const [events, setEvents] = useState([]);
+    const fetchEvents = async () => {
+        try {
+          const response = await axios.get(`${API_URL}/api/events/get-all`);
+          setEvents(response.data.body);
+        } catch (error) {
+          console.error("Error fetching events:", error);
+        }
+    };
 
+    useEffect(() => {
+        fetchEvents();
+    }, []);
+
+    console.log(events);
 
     useEffect(() => {
         const handleResize = () => {

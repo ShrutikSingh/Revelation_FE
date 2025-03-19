@@ -8,13 +8,13 @@
   text-align: center;
   padding-top: 15vh;
   position: relative;
-  background-image: url("/assets/background.png");
+  background-image: url("/assets/background.webp");
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
   overflow: hidden;
-  clip-path: inset(0 0 18% 0); /* Clips the bottom part */
-  gap: 30px;
+  clip-path: inset(0 0 15% 0); /* Clips the bottom part */
+  gap: 25px;
 }
 
 /* Subheading (Meet the MASTERMINDS) */
@@ -58,7 +58,7 @@
 .TeamsPage-hero-description {
   margin-top: 20px;
   width: 700px;
-  height: 40vh;
+  height: 45vh;
   padding: 20px;
   background: #111;
   color: #aaa;
@@ -67,7 +67,7 @@
 }
 
 .TeamsPage-hero-description p {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.5;
   background-color: transparent;
 }
@@ -112,7 +112,7 @@
   }
 
   .TeamsPage-hero-description p {
-      font-size: 16px; 
+      font-size: 18px; 
   }
 }
 
@@ -144,7 +144,7 @@
   }
 
   .TeamsPage-hero-description p {
-      font-size: 16px; 
+      font-size: 14px; 
   }
   .TeamsPage-hero-description {
     box-shadow: 0px 0px 30px rgba(255,255,255, 1);
@@ -154,10 +154,14 @@
    
   }
 }
-
+@media(max-width:450px){
+  .TeamsPage-hero-description p {
+    font-size: 13px; 
+}
+}
 @media (max-width: 395px) {
   .TeamsPage-hero-section {
-      gap: 20px;
+      gap: 15px;
   }
 
   .TeamsPage-hero-subtitle {
@@ -173,7 +177,35 @@
   }
 
   .TeamsPage-hero-description p {
-      font-size: 15px; 
+      font-size: 12px; 
+  }
+  .TeamsPage-hero-description {
+    box-shadow: 0px 0px 30px rgba(255,255,255, 1);
+  }
+  .TeamsPage-hero-section {
+    height: 90vh;
+  }
+}
+
+@media (max-width: 320px) {
+  .TeamsPage-hero-section {
+      gap: 12px;
+  }
+
+  .TeamsPage-hero-subtitle {
+      font-size: 14px;
+  }
+
+  .TeamsPage-hero-title {
+      font-size: 24px; 
+  }
+
+  .TeamsPage-bracket img {
+      height: 40px;
+  }
+
+  .TeamsPage-hero-description p {
+      font-size: 11px; 
   }
   .TeamsPage-hero-description {
     box-shadow: 0px 0px 30px rgba(255,255,255, 1);

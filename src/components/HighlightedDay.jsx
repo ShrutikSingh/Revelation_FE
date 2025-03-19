@@ -16,7 +16,7 @@ const HighlightedDay = ({ inday }) => {
             {/* Events List */}
             <div className="mt-6 flex flex-col items-center space-y-8 relative">
                 {inday.events.map((e, index) => (
-                    <div key={e.name} className="relative flex flex-col items-center w-full h-[86px]">
+                    <div key={e.name} className="relative flex flex-col items-center w-full h-[60px]">
 
                         {/* Event Component */}
                         <div className="relative w-[90%] ">
@@ -39,10 +39,10 @@ const HighlightedDay = ({ inday }) => {
                         {index < inday.events.length - 1 && (
                             <div className="flex flex-col items-center">
                                 {/* Dashed Line */}
-                                <div className="w-0.5 h-6 border-l-2 border-dashed border-gray-500"></div>
+                                <div className="w-0.5 h-2 border-l-2 border-dashed border-gray-500"></div>
 
                                 {/*  Curved SVG Arrow */}
-                                <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                <svg className="w-6 h-4 text-gray-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                 </svg>
                             </div>

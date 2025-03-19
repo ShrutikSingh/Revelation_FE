@@ -7,9 +7,12 @@ const Event = ({ event, type }) => {
 
   const handleEventClick = (e) => {
     e.stopPropagation();
-    console.log("Button Click");
-    alert(`Wait for version Web2.0....`);
-    // navigate(`/event/${event.id}`);
+    // console.log(event.isLive);
+    if(event.flag!==undefined && event.flag===true){
+      return;
+    }
+    // alert(`Wait for version Web2.0....`);
+    navigate(`/event/${event.id}`);
   }
   const timeToMinutes = (time) => {
     const [hours, minute] = time.split(":").map(Number);
@@ -36,7 +39,7 @@ const Event = ({ event, type }) => {
 
     return () => clearInterval(interval);
 }, [event]);
-  const gifname = "/" +event.name + ".png";
+  const gifname = "/" +event.name + ".gif";
 
   return (
     <div
@@ -48,7 +51,7 @@ const Event = ({ event, type }) => {
         <p className={`${type.t === "1" ? "text-[11px]" : "text-[15px]"} font-semibold ${live ? "text-red-500" : ""}`}>
           {event.name}
         </p>
-        <p className="text-xs">{event.startTime}-{event.endTime}</p>
+        <p className="text-xs">{event.startTime}</p>
       </div>
     </div>
   );

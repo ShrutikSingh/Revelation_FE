@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-const EventCard = () => {
+const EventCard = ({imageUrl,dayText}) => {
   // Hardcoded demo data (Replace with API call when backend is ready)
   const demoData = {
-    imageUrl: "../../public/codeStorm.jpg", // Replace with actual image URL
-    dayText: "Day 1"
+    imageUrl: imageUrl, // Replace with actual image URL
+    dayText
   };
 
   const [eventData, setEventData] = useState({ imageUrl: "", dayText: "" });
@@ -19,7 +19,7 @@ const EventCard = () => {
   return (
     <div className="relative w-[220px] h-[280px] mx-auto">
       <svg className="absolute top-0 left-0 w-full h-full">
-        <polygon points="0,40 40,0 220,0 220,220 160,280 0,280" className="fill-red-600" />
+        <polygon points="0,40 40,0 220,0 220,220 160,280 0,280" className="fill-red-600" stroke="#8D8D8D" strokeWidth="1"/>
       </svg>
 
 
@@ -36,10 +36,16 @@ const EventCard = () => {
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#eventClip)"
         />
+        <polygon
+          points="0,41 41,0 220,0 220,220 160,280 0,280"
+          className="fill-none"
+          stroke="#8D8D8D"
+          strokeWidth="2"
+          />
       </svg>
 
       <div className="absolute top-10 right-2 text-white text-xs font-bold tracking-widest rotate-[-90deg]">
-        {eventData.dayText}
+        day {eventData.dayText}
       </div>
     </div>
   );
