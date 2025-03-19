@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import event1 from "../../assets/Event_img/BrainDead.webp";
-import event2 from "../../assets/Event_img/buildWithUs.webp";
-import event3 from "../../assets/Event_img/Chess.webp";
-import event4 from "../../assets/Event_img/codeStorm.webp";
+import event2 from "../../assets/Event_img/HackQuest.webp";
+import event3 from "../../assets/Event_img/Ludo.webp";
+import event4 from "../../assets/Event_img/CodeStorm.webp";
 import event5 from "../../assets/Event_img/Fifa.webp";
 import event6 from "../../assets/Event_img/Ganitam.webp";
-import event7 from "../../assets/Event_img/MurderMysstery.webp";
+import event7 from "../../assets/Event_img/MurderMystery.webp";
 import event8 from "../../assets/Event_img/RootAccess.webp";
-import event9 from "../../assets/Event_img/Techno_Quiz.webp";
+import event9 from "../../assets/Event_img/TechnoQuiz.webp";
 import event10 from "../../assets/Event_img/Valorant.webp";
 import "./EventSlider2.css";
 
