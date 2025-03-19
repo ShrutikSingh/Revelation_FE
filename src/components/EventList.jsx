@@ -24,20 +24,20 @@ const eventSchedule = [
         day: "DAY-2",
         date: "March 22, 2025",
         events: [
-            { name: "BGMI", startTime: "11:00 AM ", endTime: " 2:00 PM", isLive: false, gif: "vite.svg",id:'67dabfa6c4b1123c4c0648c6' },
             { name: "Ludo", startTime: "2:00 PM ", endTime: " 10:00 PM", isLive: false, gif: "vite.svg",id:'67dacfb5c4b1123c4c065989'},
             { name: "Codestorm", startTime: "3:00 PM ", endTime: " 5:00 PM", isLive: false, gif: "vite.svg",id:'67dab7f3c4b1123c4c064560' },
             { name: "Techno Quiz", startTime: "5:00 PM ", endTime: " 8:00 PM", isLive: false, gif: "vite.svg",id:'67dabb39c4b1123c4c064638' },
             { name: "FIFA", startTime: "8:00 PM ", endTime: " 10:00 PM", isLive: false, gif: "vite.svg",id:'67daba91c4b1123c4c064629' },
+            { name: "BGMI", startTime: "11:00 PM ", endTime: " 2:00 PM", isLive: false, gif: "vite.svg",id:'67dabfa6c4b1123c4c0648c6' },
         ]
     },
     {
         day: "DAY-3",
         date: "March 23, 2025",
         events: [
+            { name: "HackQuest", startTime: "9:00 AM", endTime: "", isLive: false, gif: "vite.svg",id:'67dac264c4b1123c4c064b3f' },
             { name: "Valorant", startTime: "10:00 AM ", endTime: " 2:00 PM", isLive: false, gif: "vite.svg",id:'67dac30fc4b1123c4c064b5b' },
             { name: "Murder Mystery", startTime: "2:00 PM ", endTime: " 5:30 PM", isLive: false, gif: "vite.svg",id:'67dac075c4b1123c4c0648f6' },
-            { name: "HackQuest", startTime: "", endTime: "", isLive: false, gif: "vite.svg",id:'67dac264c4b1123c4c064b3f' },
             { name: "Cultural Events", startTime: "6:00 PM ", endTime: "-----", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' ,  flag: true },
             { name: "Closing Ceremony", startTime: "6:00 PM ", endTime: "------", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a',  flag: true },
         ]
@@ -140,7 +140,7 @@ const EventList = ({setToken}) => {
 
         {/* Download Button & Live Announcement */}
         <div className="flex flex-col items-center">
-            <a href="https://drive.google.com/file/d/1hSx-K3X2m-KuE0mrxwLTuRlBqFkOYxtX/view?usp=drivesdk">
+            <a href="https://drive.google.com/file/d/1P0HodDoGuqDVjj7U7ob0fHXfR9qLbu8a/view?usp=sharing">
             <button className="px-6 py-2 border-2 border-[#810000] text-white text-lg font-bold rounded-md transition">
                 VIEW SCHEDULE
             </button>
@@ -204,7 +204,7 @@ const EventList = ({setToken}) => {
 
                 {/* Download Button & Live Announcement */}
                 <div className="flex flex-col items-center">
-                    <a href="https://drive.google.com/file/d/1hSx-K3X2m-KuE0mrxwLTuRlBqFkOYxtX/view?usp=drivesdk">
+                    <a href="https://drive.google.com/file/d/1P0HodDoGuqDVjj7U7ob0fHXfR9qLbu8a/view?usp=sharing">
                     <button className="px-6 py-2 border-2 border-[#810000] text-white text-lg font-bold rounded-md hover:bg-[#810000] transition">
                         VIEW SCHEDULE
                     </button>
