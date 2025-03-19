@@ -24,7 +24,7 @@ const ProfilePage = ({setToken}) => {
   }, []);
 
   const fetchUserData = async () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Token");
     if (token) {
       try {
         const userResponse = await axios.get(`${API_URL}/api/auth/status`, {
@@ -47,7 +47,7 @@ const ProfilePage = ({setToken}) => {
 
   const fetchRequestData = async () => {
     // setLoading(true);
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Token");
     if (token) {
       try {
         const userResponse = await axios.get(`${API_URL}/api/users/get-requests`, {
@@ -66,7 +66,7 @@ const ProfilePage = ({setToken}) => {
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Token");
     
     try {
       const response = await axios.put(
@@ -87,7 +87,12 @@ const ProfilePage = ({setToken}) => {
 
   const handleRequestReply = async (e,isAccepted,requestId) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    if(isAccepted!==undefined){
+      const isConfirmed = window.confirm(`Are you sure you want to ${isAccepted?"accept":"decline"} request?`);
+      if(!isConfirmed) return;
+    }
+
+    const token = localStorage.getItem("Token");
     try {
       const response = await axios.post(
         `${API_URL}/api/events/reply-request`,
@@ -106,8 +111,29 @@ const ProfilePage = ({setToken}) => {
     }
   };
 
+  const handleDeleteRequest= async(e, reqId)=>{
+    e.preventDefault();
+    const isConfirmed = window.confirm("Are you sure you want to delete request?");
+    if(!isConfirmed) return;
+    const token = localStorage.getItem("Token");
+    try {
+      const response = await axios.delete(
+        `${API_URL}/api/requests/delete/${reqId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+
+      console.log(response.data);
+      // window.location.reload();
+    } catch (error) {
+      setError(error.response?.data?.message || 'Error updating profile');
+    }
+    fetchRequestData();
+  }
+
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("Token");
     setToken(null);
     navigate("/");
   };
@@ -141,6 +167,7 @@ const ProfilePage = ({setToken}) => {
                 <span className="text-sm mr-5 text-gray-300">{req.team.name}</span>
                 <span className="text-sm mr-5 text-gray-300">{req.receiver.name}</span>
                 <span className="text-sm mr-5 text-gray-300">{req.status.toUpperCase()}</span>
+                <button className=" mr-4 bg-red-600 text-white px-5 py-2 rounded-lg border-2 border-red-600 transition-all duration-300 hover:bg-black hover:shadow-red-500 shadow-md" onClick={(e) => handleDeleteRequest(e, req._id)} >DELETE</button>
               </div>
           ))}
       </div>
@@ -276,6 +303,7 @@ const ProfilePage = ({setToken}) => {
                 <span className="text-sm mr-5 text-gray-300">Team Name</span>
                 <span className="text-sm mr-20 text-gray-300">Requsted Person Name</span>
                 <span className="text-sm mr-5 text-gray-300">Status</span>
+                <span className="text-sm mr-5 text-gray-300">Action</span>
               </div>
           </div>:<div className="bg-gray-800 border border-red-500 text-white p-3 rounded-md flex justify-center items-center w-full">
           <span className="font-medium">No Data</span>

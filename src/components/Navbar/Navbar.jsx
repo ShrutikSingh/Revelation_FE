@@ -30,7 +30,7 @@ const Navbar = ({ Token }) => {
   }, []);
 
   const fetchUserData = async () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Token");
     if (token) {
       try {
         const userResponse = await axios.get(`${API_URL}/api/auth/status`, {
@@ -42,12 +42,12 @@ const Navbar = ({ Token }) => {
           setIsValidToken(true);
         } else {
           setIsValidToken(false);
-          localStorage.removeItem("token");
+          localStorage.removeItem("Token");
         }
       } catch (error) {
         console.error("Error fetching data:", error);
         setIsValidToken(false);
-        localStorage.removeItem("token");
+        localStorage.removeItem("Token");
       }
     }
   };

@@ -17,10 +17,10 @@ import Footer from "./components/Footer/Footer.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem("Token"));
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("Token");
     if (storedToken) setToken(storedToken);
   }, []);
 

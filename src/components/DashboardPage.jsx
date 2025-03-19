@@ -40,6 +40,7 @@ const DashboardPage = ({Token, setToken}) => {
 
   useEffect(() => {
       fetchUserData();
+      fetchPendingRequest();
     }, []);
     
   const fetchEvents = async () => {
@@ -55,7 +56,7 @@ const DashboardPage = ({Token, setToken}) => {
   const [userData, setUserData] = useState(null);
   
   
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("Token");
   const fetchUserData = async () => {
     if (token) {
       try {
@@ -70,6 +71,25 @@ const DashboardPage = ({Token, setToken}) => {
       }
     }
   };
+
+  const [isPendingReq, setIsPendingReq]= useState(null);
+
+  const fetchPendingRequest= async ()=>{
+    if (token) {
+      try {
+        const userResponse = await axios.get(`${API_URL}/api/requests/pending-via-user/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        if(userResponse.status===200){
+          setIsPendingReq(userResponse.data.body);
+        }else setIsPendingReq(false);
+
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+  }
   
   const [teamParticipants, setTeamParticipants] = useState(null);
   const [participantsData, setParticipantsData] = useState(null);
@@ -226,6 +246,9 @@ const DashboardPage = ({Token, setToken}) => {
   };
   const handleDeleteTeam =async (e, teamId) => {
     e.preventDefault();
+    const isConfirmed = window.confirm("Are you sure you want to delete your Team?");
+    if(!isConfirmed) return;
+
     const response = await axios.delete(
       `${API_URL}/api/teams/delete/${teamId}`,
       {
@@ -334,9 +357,14 @@ const DashboardPage = ({Token, setToken}) => {
   };
 
   // Add this new function after your other function declarations
-const handleSendRequest = async (userId, teamId) => {
+const handleSendRequest = async (userId, flag, teamId) => {
   try {
     // console.log(userId);
+    if(flag!==undefined && !flag){
+      alert("This member already have a pending request");
+      return;
+    }
+
     let pendingReq;
     if(eventData.type==="Team"){
       pendingReq= await axios.get(`${API_URL}/api/requests/pending/${teamId?teamId:userTeam.id}`);
@@ -437,7 +465,8 @@ const handleSendRequest = async (userId, teamId) => {
 
             {!userTeam ? (
               <>
-              {eventData.type==="Team" &&
+              {console.log(isPendingReq)}
+              {!isPendingReq && eventData.type==="Team" && eventData.isRegistrationOpen &&
               <div className="self-start">
                 <DashboardButton link="#" content= "Create a Team" onClick={handleCreateClick} />
               </div>
@@ -458,7 +487,7 @@ const handleSendRequest = async (userId, teamId) => {
                         </span>
                       </span>
                       <div className="flex items-center">
-                        {userData && teamParticipants.teamLeader._id === userData._id && (
+                        {userData && teamParticipants.teamLeader._id === userData._id && eventData.isRegistrationOpen && (
                           <>
                             <button 
                               className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg mr-4 text-sm" 
@@ -532,7 +561,7 @@ const handleSendRequest = async (userId, teamId) => {
                               {user._id !== userData._id && (
                                 <button
                                   onClick={() => {
-                                    handleSendRequest(user._id, null);
+                                    handleSendRequest(user._id, user.flag, null);
                                     setShowSearchContainer(false);
                                   }}
                                   className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors"
@@ -559,7 +588,7 @@ const handleSendRequest = async (userId, teamId) => {
               <>
                 
 
-                {(!individualData.find((user)=>(user._id)===userData._id)) && <div className="self-start">
+                {eventData.isRegistrationOpen && (!individualData.find((user)=>(user._id)===userData._id)) && <div className="self-start">
                   <DashboardButton link="#" content= "Register" onClick={handleCreateClick} />
                 </div>}
 
@@ -634,9 +663,11 @@ const handleSendRequest = async (userId, teamId) => {
             {/* Join Team Button  */}
             {
               eventData.type === "Team" && !userTeam && 
-              <div className="self-start mt-20">
-                <DashboardButton link="#" content="Join a Team" onClick={handleJoinClick} />
-              </div>
+             (eventData.isRegistrationOpen ? <div className="self-start mt-20">
+                <DashboardButton link="#" content={isPendingReq?"pending request (check profile)":"Join a Team"} onClick={handleJoinClick} />
+              </div>:<div className="self-start mt-20">
+                <DashboardButton link="#" content="Registrations are Not Live" onClick={handleJoinClick} />
+              </div>)
             }
 
             {/* Search Bar */}
@@ -662,8 +693,8 @@ const handleSendRequest = async (userId, teamId) => {
                           </span>
                         </span>
                         <div className="flex items-center">
-                          { !userTeam && userData.isIIESTian===team.teamLeader.isIIESTian &&(
-                            <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm"  onClick={() => handleSendRequest(team.teamLeader._id, team._id)}>
+                          { !userTeam && userData.isIIESTian===team.teamLeader.isIIESTian && eventData.isRegistrationOpen && !isPendingReq &&(
+                            <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm"  onClick={() => handleSendRequest(team.teamLeader._id, undefined, team._id)}>
                               JOIN
                             </button>
                           )}
