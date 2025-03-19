@@ -13,10 +13,10 @@ const eventSchedule = [
         day: "DAY-1",
         date: "March 21, 2025",
         events: [
-            { name: "BLOOD DONATION CAMP", startTime: "11:00 AM ", endTime: " 3:00 PM", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
+            { name: "Blood Donation Camp", startTime: "11:00 AM ", endTime: " 3:00 PM", isLive: false, gif: "vite.svg",id:'67d6a6134d8c2fab9eabc65a' },
             { name: "Inauguration", startTime: "5:00 PM ", endTime: " 7:00 PM", isLive: false, gif: "vite.svg",id:'67d8365d1fac73aa4df88cb1'},
             { name: "Root Access", startTime: "6:00 PM ", endTime: "-----", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
-            { name: "BrainDead", startTime: "6:00 PM", endTime: "------", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
+            { name: "Brain Dead", startTime: "6:00 PM", endTime: "------", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
             { name: "Ganitam", startTime: "7:00 PM ", endTime: " 9:00 PM", isLive: false, gif: "vite.svg",id:'67ca20445271f42d6a18da27' },
         ]
     },
