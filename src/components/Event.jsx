@@ -7,7 +7,10 @@ const Event = ({ event, type }) => {
 
   const handleEventClick = (e) => {
     e.stopPropagation();
-    console.log("Button Click");
+    // console.log(event.isLive);
+    if(event.flag!==undefined && event.flag===true){
+      return;
+    }
     // alert(`Wait for version Web2.0....`);
     navigate(`/event/${event.id}`);
   }
