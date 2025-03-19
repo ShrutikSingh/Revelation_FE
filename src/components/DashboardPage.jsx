@@ -597,9 +597,9 @@ const handleSendRequest = async (userId, flag, teamId) => {
                   <DashboardButton link="#" content= "Register" onClick={handleCreateClick} />
                 </div>}
 
-           
+                {individualData.length>0 && <div className="ml-3 text -sm md:text-base">All Participants</div>}
+
                 {individualData.map((indiv,index)=>   <div key={`individual${index}`} className="w-full flex items-center justify-between flex-wrap">
-                <div className="ml-3 text -sm md:text-base">All Participants</div>
                 <div className=" flex justify-between items-center bg-black text-white p-2  rounded-lg border border-red-500 mb-2 w-full">
                       {/* <span className="ml-3 text-sm md:text-base">{indiv._id===userData._id &&
                       <span className="ml-3 text-sm md:text-base bg-red-600 text-white py-2 px-4 rounded-xl">YOU</span>
