@@ -219,7 +219,9 @@ const DashboardPage = ({Token, setToken}) => {
       formData.append("teamData", JSON.stringify(teamData));
     }
     else{
-      const participantData="true";
+      const participantData={
+        phoneNumber
+      };
       formData.append("participantData", JSON.stringify(participantData));
     }
     formData.append("paymentProof", paymentScreenshot);
@@ -591,31 +593,11 @@ const handleSendRequest = async (userId, flag, teamId) => {
 
           {eventData.type === "Single" && (
               <>
-                
-
-                {eventData.isRegistrationOpen && (!individualData.find((user)=>(user._id)===userData._id)) && <div className="self-start">
+                {eventData.isRegistrationOpen && (!individualData.find((user)=>(user._id)===userData._id)) ? <div className="self-start">
                   <DashboardButton link="#" content= "Register" onClick={handleCreateClick} />
-                </div>}
-
-                {individualData.length>0 && <div className="ml-3 text -sm md:text-base">All Participants</div>}
-
-                {individualData.map((indiv,index)=>   <div key={`individual${index}`} className="w-full flex items-center justify-between flex-wrap">
-                <div className=" flex justify-between items-center bg-black text-white p-2  rounded-lg border border-red-500 mb-2 w-full">
-                      {/* <span className="ml-3 text-sm md:text-base">{indiv._id===userData._id &&
-                      <span className="ml-3 text-sm md:text-base bg-red-600 text-white py-2 px-4 rounded-xl">YOU</span>
-                      }</span> */}
-                      
-                      <span className="ml-3 text-sm md:text-base">{indiv.email}</span>
-
-                     
-                </div>
-                  </div>)}
-                  
-               
+                </div>:<p>Already registered</p>}
               </>
             )}
-            
-
             {showForm && (
               <form onSubmit={handleSubmit} className="mt-10 bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-md">
                 {eventData.type==='Team' && <><label className="block text-lg mb-2 font-semibold">Enter Team Name:</label>
@@ -666,6 +648,20 @@ const handleSendRequest = async (userId, flag, teamId) => {
                   Register
                 </button>
               </form>
+            )}
+
+            {eventData.type === "Single" && (
+              <>
+                {individualData.length>0 && <div className="ml-3 text -sm md:text-base">All Participants</div>}
+                {individualData.map((indiv,index)=>   <div key={`individual${index}`} className="w-full flex items-center justify-between flex-wrap">
+                <div className=" flex justify-between items-center bg-black text-white p-2  rounded-lg border border-red-500 mb-2 w-full">
+                      <span className="ml-3 text-sm md:text-base">{indiv.email}</span>    
+                      {indiv._id===userData._id &&
+                      <span className="mr-3 text-3xl text-red-500">*</span>
+                      }
+                </div>
+                  </div>)}
+              </>
             )}
 
             {/* Join Team Button  */}
