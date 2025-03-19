@@ -12,6 +12,7 @@ import event10 from "../../assets/Event_img/Valorant.webp";
 import event11 from "../../assets/Event_img/BloodDonation.webp";
 import event12 from "../../assets/Event_img/Bgmi.webp";
 import "./EventSlider2.css";
+import { Link } from "react-router-dom";
 
 const events = [
   { id: 1, image: event1, title: "Brain Dead" },
@@ -48,9 +49,11 @@ function EventSlider() {
         <div className="slider" ref={sliderRef}>
           {events.map((event, index) => (
             <span key={event.id} style={{ "--i": index }}>
-              <img src={event.image} alt={event.title} />
-              {/* <h4>{event.title}</h4> */}
-            </span>
+                <Link to={'/events'}>
+                <img src={event.image} alt={event.title}  />
+                {/* <h4>{event.title}</h4> */}
+                </Link>
+              </span>
           ))}
         </div>
       </div>

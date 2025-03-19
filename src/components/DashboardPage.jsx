@@ -159,7 +159,7 @@ const DashboardPage = ({Token, setToken}) => {
     if (userData) { // Add check for userData
       setIsNonIIESTian(!userData.isIIESTian);
       setPaymentAmount(eventData.registrationAmount);
-      setQrCode("/qr.png");
+      setQrCode("/qr.jpg");
       if(userData.phoneNumber){
         setPhoneNumber(userData.phoneNumber);
       }
@@ -204,6 +204,10 @@ const DashboardPage = ({Token, setToken}) => {
     }
     if (!token) {
       alert("Please login first!");
+      return;
+    }
+    if(phoneNumber.length!==10){
+      alert("Please enter a valid phone number!");
       return;
     }
     let formData = new FormData();
@@ -641,6 +645,9 @@ const handleSendRequest = async (userId, flag, teamId) => {
                     <p className="text-yellow-400 text-sm mb-2">
                       Pay <strong>₹{paymentAmount}</strong> using the QR code below and upload the payment screenshot.
                     </p>
+                    <p className="text-yellow-400 text-sm mb-2">
+                      Add event name in the notes while paying.
+                    </p>
                     {qrCode && <img src={qrCode} alt="Payment QR Code" className="w-32 mx-auto mb-4" />}
                     <input
                       type="file"
@@ -694,7 +701,7 @@ const handleSendRequest = async (userId, flag, teamId) => {
                           </span>
                         </span>
                         <div className="flex items-center">
-                          { !userTeam && userData.isIIESTian===team.teamLeader.isIIESTian && eventData.isRegistrationOpen && !isPendingReq &&(
+                          { !userTeam && userData?.isIIESTian===team.teamLeader?.isIIESTian && eventData.isRegistrationOpen && !isPendingReq &&(
                             <button className="bg-red-500 hover:bg-red-700 text-white px-4 rounded-lg text-sm"  onClick={() => handleSendRequest(team.teamLeader._id, undefined, team._id)}>
                               JOIN
                             </button>
