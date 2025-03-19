@@ -69,6 +69,13 @@ const EventBoard = () => {
 
   const dashlink=`/dashboard/${eventData._id}`;
 
+  const adjustTime = (dateTime) => {
+      const date = new Date(dateTime);
+      date.setMinutes(date.getMinutes() - (5 * 60 + 30)); // Subtract 5 hours 30 minutes
+      return date;
+    };
+  
+
   return (
     <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden mt-[90px] max-md:mt-[55px]">
 
@@ -174,15 +181,16 @@ const EventBoard = () => {
               {/* Third Row */}
               <div>
                 <span>
-                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> Start Time :
-                  {formatDateTime(eventData.startTime)}
+                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> Start Time : 
+                  { ' '+formatDateTime(adjustTime(eventData.startTime))}
                 </span>
               </div>
 
+
               <div className="text-left">
                 <span>
-                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> End Time :
-                  {formatDateTime(eventData.endTime)}
+                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> End Time : 
+                  {' '+formatDateTime(adjustTime(eventData.endTime))}
                 </span>
               </div>
 
