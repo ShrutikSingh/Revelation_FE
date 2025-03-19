@@ -282,7 +282,7 @@ const DashboardPage = ({Token, setToken}) => {
 
   const indexOfLastTeam = currentPage * teamsPerPage;
   const indexOffirstTeam = indexOfLastTeam - teamsPerPage;
-  const currentTeams = filteredTeams.slice(indexOffirstTeam, indexOfLastTeam);
+
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -295,6 +295,7 @@ const DashboardPage = ({Token, setToken}) => {
     );
   });
 
+  const currentTeams = filteredTeamsList.slice(indexOffirstTeam, indexOfLastTeam);
   // Add these new states after other useState declarations
   const [memberSearchQuery, setMemberSearchQuery] = useState("");
   const [memberSearchResults, setMemberSearchResults] = useState([]);
@@ -680,12 +681,12 @@ const handleSendRequest = async (userId, flag, teamId) => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-50 p-2 border rounded-md text-black self-center mb-5"
               />
-              {filteredTeamsList.length > 0 ? (
+              {currentTeams.length > 0 ? (
                 <ul className="mt-2 text-white">
-                  {filteredTeamsList?.map((team, index) => (
+                  {currentTeams.map((team, index) => (
                     <li key={index} className="bg-black text-white p-1 rounded-lg border border-red-500 mb-2 ml-2">
                       <div className="flex items-center justify-between flex-wrap">
-                        <span className="">{team.name}</span>
+                        <span className="">{indexOffirstTeam+index + 1}.{team.name}</span>
                         <span className="flex items-center">
                           <FaUser className="text-red-500 mr-1" />
                           <span className="text-sm md:text-base">
@@ -743,7 +744,7 @@ const handleSendRequest = async (userId, flag, teamId) => {
                   Prev
                 </button>
 
-                {Array.from({ length: Math.ceil(filteredTeams.length / teamsPerPage) }, (_, i) => (
+                {Array.from({ length: Math.ceil(filteredTeamsList.length / teamsPerPage) }, (_, i) => (
                   <button
                     key={i + 1}
                     onClick={() => paginate(i + 1)}
