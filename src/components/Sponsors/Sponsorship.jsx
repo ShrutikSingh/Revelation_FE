@@ -2,12 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import Unstop from "./sponsors/unstop.png";
 import splitkaro from "./sponsors/splitkaro.jpg";
+import blankbox from "./sponsors/grid.webp";
+import techno from "./sponsors/techno1.png";
 import winzo from "./sponsors/winzo.png";
 import smartplanet from "./sponsors/smartplanet.jpg";
 import "./Sponsorship.css";
 
-const sponsorsRow1 = [Unstop, splitkaro, winzo];
-const sponsorsRow2 = [smartplanet, splitkaro];
+const sponsorsRow1 = [techno, Unstop, winzo];
+const sponsorsRow2 = [splitkaro,smartplanet];
 
 const Sponsorship = () => {
   return (

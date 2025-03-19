@@ -14,16 +14,18 @@ import Faqs from "./pages/FAQs/Faqs.jsx";
 import Login from "./components/Login/Login.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem("Token"));
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("Token");
     if (storedToken) setToken(storedToken);
   }, []);
 
   console.log(token);
+  // statusCode();
 
   return (
     <div>
@@ -38,25 +40,20 @@ function App() {
         />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/profile" element={<ProfilePage setToken={setToken} />} />
-        <Route
-          path="/event/:id"
-          element={
-            <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
-              <Navbar Token={token} setToken={setToken} />
-              <EventDetailsPage />
-              <EventRules />
-              <Footer />
-            </div>
-          }
-        />
-        <Route
-          path="/dashboard/:id"
-          element={<UserDashboard Token={token} setToken={setToken} />}
-        />
-        <Route
-          path="/teams"
-          element={<TeamLeadsPage Token={token} setToken={setToken} />}
-        />
+        <Route path="/event/:id" element={
+          <div className="bg-[url('/grid.png')] bg-cover bg-center bg-fixed">
+            <Navbar Token={token} setToken={setToken} />
+            <EventDetailsPage />
+            <EventRules />
+            <Footer />
+          </div>
+        } />
+        <Route path="/dashboard/:id" element= {
+            <ProtectedRoute Token={token}>
+              <UserDashboard Token={token} setToken={setToken} />
+            </ProtectedRoute>
+          } />
+        <Route path="/teams" element={<TeamLeadsPage Token={token} setToken={setToken} />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

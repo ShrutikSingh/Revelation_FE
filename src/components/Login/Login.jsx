@@ -16,7 +16,7 @@ const Login = ({ setToken }) => {
       });
 
       const token = backendResponse.data.token;
-      localStorage.setItem("token", token);
+      localStorage.setItem("Token", token);
       setToken(token); // Add this line to update the token state
       navigate("/");
     } catch (error) {
@@ -33,7 +33,7 @@ const Login = ({ setToken }) => {
         onError={() => console.error("Login Failed")}
         useOneTap={false}
       />
-       <p className="text-red-400 font-serif text-sm italic pt-2 whitespace-nowrap ">*IIEST students need to login through gsuit</p>
+       <p className="text-red-400 font-serif text-sm italic pt-2 whitespace-nowrap ">*IIEST students need to login through gsuite</p>
       <button className="login-button" onClick={() => navigate("/")}>Go to Home</button>
      
     </div>

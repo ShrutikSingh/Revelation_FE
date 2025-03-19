@@ -69,6 +69,13 @@ const EventBoard = () => {
 
   const dashlink=`/dashboard/${eventData._id}`;
 
+  const adjustTime = (dateTime) => {
+      const date = new Date(dateTime);
+      date.setMinutes(date.getMinutes() - (5 * 60 + 30)); // Subtract 5 hours 30 minutes
+      return date;
+    };
+  
+
   return (
     <div className="bg-transparent text-white p-6 relative w-full max-w-screen h-[500px] max-md:max-h-[1800px] max-md:h-full mx-auto  overflow-hidden mt-[90px] max-md:mt-[55px]">
 
@@ -116,7 +123,7 @@ const EventBoard = () => {
 
 
         <div className="relative z-10 p-6 h-full max-md:w-full">
-          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white]">
+          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg max-md:mx-auto shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white] max-sm:text-3xl">
             {eventData.name}
           </div>
 
@@ -174,15 +181,16 @@ const EventBoard = () => {
               {/* Third Row */}
               <div>
                 <span>
-                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> Start Time :
-                  {formatDateTime(eventData.startTime)}
+                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> Start Time : 
+                  { ' '+formatDateTime(adjustTime(eventData.startTime))}
                 </span>
               </div>
 
+
               <div className="text-left">
                 <span>
-                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> End Time :
-                  {formatDateTime(eventData.endTime)}
+                  <img src="/stopwatch.gif" className="w-4 h-4 inline-block mr-2" /> End Time : 
+                  {' '+formatDateTime(adjustTime(eventData.endTime))}
                 </span>
               </div>
 
@@ -190,18 +198,22 @@ const EventBoard = () => {
               <p className="mt-4 text-gray-300 text-left w-[85%]">{eventData.description}</p>
 
               {/* Dashboard Button */}
-              <div className="absolute top-[65px] right-0 max-md:left-[100px]">
-                <Link to={dashlink}>
-                  <DashboardButton link={dashlink} content="Dashboard" />
+              <div className="absolute top-[65px] right-0 max-md:left-[100px] max-md:top-[120px]">
+                <Link to={eventData.registrationFrom==="website" && dashlink}>
+                  <DashboardButton link={eventData.registrationFrom==="website" && dashlink} content="Dashboard" />
                 </Link>
               </div>
 
               {/* Register via Dashboard Button (Uses Link for Navigation) */}
               <div className="absolute bottom-10 mt-10 flex gap-20 max-md:flex-col max-md:gap-5 max-md:bottom-[60px]">
-
-                <Link to={dashlink}>
-                  <DashboardButton link={dashlink} content="Register via Dashboard" />
-                </Link>
+                {eventData.registrationFrom==="notReq"?
+                <Link>
+                  <DashboardButton content="No Registration Needed"/>
+                </Link> :
+                <Link to={eventData.registrationFrom==="website"?dashlink:eventData.registrationLink}>
+                  <DashboardButton link={eventData.registrationFrom==="website"?dashlink:eventData.registrationLink} content="Register"/>
+                </Link>}
+                
                 <HashLink smooth to="#ruless">
                 <DashboardButton link="#" content="Rules" /></HashLink>
               </div>
