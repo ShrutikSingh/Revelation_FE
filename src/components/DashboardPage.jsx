@@ -456,7 +456,7 @@ const handleSendRequest = async (userId, flag, teamId) => {
               strokeWidth="2"
             />
           </svg>
-          <div className="absolute left-10 top-[-15px] text-4xl max-md:text-base font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg z-10 shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white]">
+          <div className="absolute left-10 top-[-15px] text-4xl font-bold bg-red-800 px-4 py-2 inline-block border-2 border-red-600 rounded-lg z-10 shadow-[0_0_10px_3px_white] transition-shadow duration-300 hover:shadow-[0_0_20px_6px_white] max-sm:text-[21px] max-sm:px-1 max-sm:left-5">
             {eventData.name}
           </div>
 
@@ -464,7 +464,7 @@ const handleSendRequest = async (userId, flag, teamId) => {
             <div className="bg-red-800 px-4 py-2 inline-block border-2 border-red-600 mb-10 ml-8 mt-10 rounded-lg">
               <h1 className="text-2xl font-bold mb-0 text-white max-md:text-base text-center">Dashboard</h1>
             </div>
-            <div className="absolute mt-10 right-0 max-md:mt-[-35px]">
+            <div className="absolute mt-10 right-0 max-md:mt-[-35px] max-md:right-[-20px]">
               <Link to={dashName}>
                 <DashboardButton content="Event " />
               </Link>
